@@ -6,6 +6,8 @@
 ##
 
 SRC =	src/Game.cpp		\
+		src/mini_games/schoolPriorities.cpp	\
+		src/mini_games/SchoolPriorities.cpp	\
 		main.cpp
 
 
