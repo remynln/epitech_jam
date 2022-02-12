@@ -10,7 +10,6 @@ SRC =	src/Game.cpp						\
 		src/mini_games/SchoolPriorities.cpp \
 		src/mini_games/beetsaber.cpp 		\
 		src/Scenario.cpp					\
-		src/init_scenario.cpp				\
 		main.cpp
 
 OBJ =	$(SRC:.cpp=.o)

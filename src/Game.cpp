@@ -26,7 +26,7 @@ Game::Game()
          { createBg("assets/background.jpg", sf::Vector2f(0, 0)) }
     )
     , win(sf::VideoMode(1200, 800), "Game"),
-    scenario(init_scenario()),
+    scenario(Scenario()),
     inScenario(true)
 {
 }

@@ -172,9 +172,3 @@ void beet_saber_game(sf::RenderWindow *window)
     }
     return;
 }
-
-int main() {
-    sf::RenderWindow window(sf::VideoMode(1200, 800), "TEST");
-    
-    beet_saber_game(&window);
-}
