@@ -19,6 +19,7 @@
 #include <iostream>
 #include <vector>
 #include "../../headers/BeetSaber.hpp"
+#include "../../headers/Scenario.hpp"
 
 static bool is_all_under_window(std::vector<CubeComming> cubes)
 {
@@ -74,11 +75,12 @@ static void start_beetsaber(sf::Text *text, sf::RenderWindow *window)
     }
 }
 
-static void loop_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow *window)
+static void loop_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow *window, Scenario *scene)
 {
     std::vector<CubeComming> cubes;
     sf::Clock clock;
     sf::Time time;
+    bool first_flech = false;
 
     for (int i = 0; i < NB_CUBES; i++) {
         cubes.push_back(CubeComming());
@@ -88,7 +90,9 @@ static void loop_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow 
         time = clock.restart();
         for (int i = 0; i < NB_CUBES; i++) {
             cubes.at(i).update(time.asSeconds());
-            cubes.at(i).check_collision(window);
+            if (cubes.at(i).check_collision(window, &first_flech)) {
+                scene->giveSuccess("Premier Appui sur une Fleche");
+            }
         }
         window->clear();
         window->draw(*sprite);
@@ -117,7 +121,7 @@ static void end_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow *
     }
 }
 
-void beet_saber_game(sf::RenderWindow *window)
+void Scenario::BeetSaber_MiniGame(sf::RenderWindow *window)
 {
     sf::Texture texture;
     sf::Sprite sprite;
@@ -127,8 +131,9 @@ void beet_saber_game(sf::RenderWindow *window)
     if (set_basic(&texture, &sprite, &font, &text) == 84) {
         return;
     }
+    this->giveSuccess("Rencontre Avec Remy!");
     start_beetsaber(&text, window);
-    loop_beetsaber(&sprite, &text, window);
+    loop_beetsaber(&sprite, &text, window, this);
     end_beetsaber(&sprite, &text, window);
     return;
 }

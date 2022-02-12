@@ -25,7 +25,7 @@ class CubeComming {
         ~CubeComming();
 
         void update(float delatime);
-        void check_collision(sf::RenderWindow *window);
+        bool check_collision(sf::RenderWindow *window, bool *first_flech);
         void draw(sf::RenderWindow *window);
 
         sf::Texture *texture;
@@ -38,8 +38,5 @@ class CubeComming {
     protected:
     private:
 };
-
-
-void beet_saber_game(sf::RenderWindow *window);
 
 #endif

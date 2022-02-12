@@ -71,16 +71,22 @@ void CubeComming::update(float delatime)
     }
 }
 
-void CubeComming::check_collision(sf::RenderWindow *window)
+bool CubeComming::check_collision(sf::RenderWindow *window, bool *first_flech)
 {
+    bool ret_value = false;
     sf::FloatRect boundssprite;
 
     if (is_touched == false && sf::Keyboard::isKeyPressed(key)) {
         boundssprite = sprite.getGlobalBounds();
+        if (*first_flech == false) {
+            ret_value = true;
+            *first_flech = true;
+        }
         if (boundssprite.top < Y_MAX && boundssprite.top > Y_MAX - PAD_SPACE_KEY) {
             is_touched = true;
         }
     }
+    return (ret_value);
 }
 
 void CubeComming::draw(sf::RenderWindow *window)
