@@ -33,3 +33,6 @@
 
 # Johann
 bidule
+
+# custom config
+.clangd
