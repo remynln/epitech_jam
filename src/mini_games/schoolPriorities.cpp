@@ -5,8 +5,7 @@
 ** gameplay
 */
 
-#include "../../headers/SchoolPriorities.hpp"
-
+#include "SchoolPriorities.hpp"
 #include <iostream>
 
 Priorities schoolPriorities(sf::RenderWindow *window)

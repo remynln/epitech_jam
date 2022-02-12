@@ -5,7 +5,7 @@
 ** SchoolPriorities
 */
 
-#include "../../headers/SchoolPriorities.hpp"
+#include "SchoolPriorities.hpp"
 
 SchoolPriorities::SchoolPriorities()
 {

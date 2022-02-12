@@ -1,26 +1,29 @@
 ##
 ## EPITECH PROJECT, 2022
-## B-PDG-300-TLS-3-1-PDGD11-leo.maman [WSL: Ubuntu]
+## Epitech JAM
 ## File description:
 ## Makefile
 ##
 
 SRC =	src/Game.cpp		\
 		src/mini_games/schoolPriorities.cpp	\
-		src/mini_games/SchoolPriorities.cpp	\
+		src/mini_games/SchoolPriorities.cpp \
 		main.cpp
 
+OBJ =	$(SRC:.cpp=.o)
 
-CPPFLAGS = -std=c++2a -Wall -Wextra 
+CPPFLAGS	= -I./headers/
 
-HEADERS = -L headers/
+CFLAGS	= -std=c++2a -W -J4 -Wall -Werror -Wextra
 
-NAME = MyGKrellm
+CSFMLFLAGS	= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+NAME	=	weNeedToFindAName
 
 all: $(NAME)
 
-$(NAME):
-	g++ -o $(NAME) $(SRC) $(HEADERS) $(CFLAGS) -lncurses -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+$(NAME): $(OBJ)
+	g++ -o $(NAME) $(OBJ) $(CSFMLFLAGS)
 
 clean:
 	rm -rf *.o

@@ -5,7 +5,7 @@
 ** Scenario
 */
 
-#include "scenario.hpp"
+#include "Scenario.hpp"
 
 Scenario::Scenario(std::string name) : _name(name)
 {

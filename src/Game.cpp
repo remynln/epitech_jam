@@ -6,7 +6,7 @@
 */
 
 #include <iostream>
-#include "../headers/Game.hpp"
+#include "Game.hpp"
 
 BackgroundImages *createBg(std::string file,
     sf::Vector2f pos,
