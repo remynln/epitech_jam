@@ -5,7 +5,9 @@
 // beet saber
 //
 
+#include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/Rect.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Clock.hpp>
@@ -87,8 +89,13 @@ static void loop_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow 
     std::vector<CubeComming> cubes;
     sf::Clock clock;
     sf::Time time;
+    sf::RectangleShape rect(sf::Vector2f(X_MAX, PAD_SPACE_KEY));
     bool first_flech = false;
 
+    rect.setPosition(0, Y_MAX - PAD_SPACE_KEY);
+    rect.setFillColor(sf::Color::Transparent);
+    rect.setOutlineColor(sf::Color::Red);
+    rect.setOutlineThickness(10);
     for (int i = 0; i < NB_CUBES; i++) {
         cubes.push_back(CubeComming());
     }
@@ -107,6 +114,7 @@ static void loop_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow 
         for (int i = 0; i < NB_CUBES; i++) {
             cubes.at(i).draw(window);
         }
+        window->draw(rect);
         window->display();
     }
 }
@@ -142,12 +150,5 @@ void Scenario::BeetSaber_MiniGame(sf::RenderWindow *window)
     start_beetsaber(&text, window);
     loop_beetsaber(&sprite, &text, window, this);
     end_beetsaber(&sprite, &text, window);
-    return;
+    this->giveSuccess("Joueur Pro de beat saber");
 }
-//int main()
-//{
-//    sf::RenderWindow window(sf::VideoMode(X_MAX, Y_MAX), "TEST");
-//
-//    Scenario scene;
-//    scene.BeetSaber_MiniGame(&window);
-//}

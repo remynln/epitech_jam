@@ -35,33 +35,35 @@ void Scenario::Psykoloke_MiniScene(sf::RenderWindow *window)
     sf::Text text;
     sf::Clock clock;
     sf::Time time;
+    bool speak_mr = true;
 
     if (set_basic(&texture, &sprite, &font, &text) == 84) {
         return;
     }
-    text.setString("Pourquoi vivre ?\nPourquoi la vie ?\nPourquoi la non mort ?");
-    text.setPosition(50, 50);
-    time = clock.getElapsedTime();
-    while (time.asSeconds() < 5.0) {
-        window->clear();
-        window->draw(sprite);
-        window->draw(text);
-        window->display();
+    std::wstring str[] = {
+        L"Pourquoi vivre ?\nPourquoi la vie ?\nPourquoi la non mort ?",
+        L"Pensez à ce que vous avez bien fait,\nque pouvez vous dire de ce que vous avez bien fait."
+    };
+    for (int i = 0; i < str->length(); i++) {
+        text.setString(str[i]);
+        if (speak_mr) {
+            text.setPosition(0, 0);
+        } else {
+            text.setPosition(50, 50);
+        }
+        speak_mr = !speak_mr;
+        clock.restart();
         time = clock.getElapsedTime();
-    }
-    clock.restart();
-    time = clock.getElapsedTime();
-    text.setString(std::wstring(L"Pensez à ce que vous avez bien fait,\nque pouvez vous dire de ce que vous avez bien fait."));
-    text.setPosition(100, 50);
-    while (time.asSeconds() < 5.0) {
-        window->clear();
-        window->draw(sprite);
-        window->draw(text);
-        window->display();
-        time = clock.getElapsedTime();
+        while (time.asSeconds() < 5.0) {
+            window->clear();
+            window->draw(sprite);
+            window->draw(text);
+            window->display();
+            time = clock.getElapsedTime();
+        }
     }
 }
-//
+
 //int main()
 //{
 //    sf::RenderWindow window(sf::VideoMode(1200, 800), "TEST");
