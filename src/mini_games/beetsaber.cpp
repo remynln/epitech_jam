@@ -54,11 +54,18 @@ static void start_beetsaber(sf::Text *text, sf::RenderWindow *window)
 {
     sf::Clock clock;
     sf::Time time;
+    sf::Texture texture;
 
+    texture.loadFromFile("assets/images/beetsaber/REMY.jpg");
+    sf::Sprite sprite(texture);
+    sprite.setPosition((int) (X_MAX / 2) - 150, (int) (Y_MAX / 2) - 150);
+    sprite.setScale(0.2, 0.2);
+    clock.restart();
     time = clock.getElapsedTime();
     text->setString("Vous avez choisie de rencontrer Remy (champion du monde de BeatSaber) ! ...");
     while (time.asSeconds() < 4.0) {
         window->clear();
+        window->draw(sprite);
         window->draw(*text);
         window->display();
         time = clock.getElapsedTime();
@@ -68,6 +75,7 @@ static void start_beetsaber(sf::Text *text, sf::RenderWindow *window)
     time = clock.getElapsedTime();
     while (time.asSeconds() < 4.0) {
         window->clear();
+        window->draw(sprite);
         window->draw(*text);
         window->display();
         time = clock.getElapsedTime();
@@ -136,3 +144,10 @@ void Scenario::BeetSaber_MiniGame(sf::RenderWindow *window)
     end_beetsaber(&sprite, &text, window);
     return;
 }
+//int main()
+//{
+//    sf::RenderWindow window(sf::VideoMode(X_MAX, Y_MAX), "TEST");
+//
+//    Scenario scene;
+//    scene.BeetSaber_MiniGame(&window);
+//}
