@@ -68,6 +68,7 @@ void Scenario::Start(sf::RenderWindow *window)
     };
 
     giveSuccess("Première essai");
+    _successPopUp.displaySuccess(std::wstring(L"Première essai"), "assets/school.png");
     while (window->isOpen() && scene != maxScene) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -84,7 +85,7 @@ void Scenario::Start(sf::RenderWindow *window)
     }
 }
 
-Scenario::Scenario() : _name("start")//, _successPopUp(Success())
+Scenario::Scenario() : _name("start"), _successPopUp(Success())
 {
     initSuccess();
     setMap("start", std::bind(&Scenario::Start, this, std::placeholders::_1), false);

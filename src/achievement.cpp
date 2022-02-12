@@ -14,16 +14,16 @@ Success::Success()
     _text.setFont(_font);
     _text.setCharacterSize(24);
     _text.setFillColor(sf::Color::Blue);
-    _text.setPosition(sf::Vector2f(300, 100));
+    _text.setPosition({300, 100});
     _text.setOutlineThickness(2);
-    if (!_bananaT.loadFromFile("assets/banana.jpg"))
+    if (!_bananaT.loadFromFile("assets/school.png"))
         throw 84;
     _bananaS.setTexture(_bananaT);
     _bananaS.setScale(300.0f/_bananaS.getLocalBounds().width, 300.0f/_bananaS.getLocalBounds().height);
-    _bananaS.setPosition(sf::Vector2f(300, 0));
-    if (!_sb.loadFromFile("ressources/baptiste.ogg"))
-        throw 84;
-    _sound.setBuffer(_sb);
+    _bananaS.setPosition({300, 0});
+    //if (!_sb.loadFromFile("ressources/baptiste.ogg"))
+    //    throw 84;
+    //_sound.setBuffer(_sb);
 }
 
 /**
@@ -39,14 +39,14 @@ void Success::displaySuccess(std::wstring text, std::string path, std::string au
     if (!_monkeyT.loadFromFile(path))
         throw 84;
     if (audio != "ressources/baptiste.ogg") {
-        if (!_sb.loadFromFile(audio))
-            throw 84;
-        _sound.setBuffer(_sb);
+        //if (!_sb.loadFromFile(audio))
+        //    throw 84;
+        //_sound.setBuffer(_sb);
     }
     _monkeyS.setTexture(_monkeyT);
     _monkeyS.setScale(300.0f/_monkeyS.getLocalBounds().width, 300.0f/_monkeyS.getLocalBounds().height);
     _win.create(sf::VideoMode(600, 300), text);
-    _sound.play();
+    //_sound.play();
     while (_win.isOpen()) {
         while (_win.pollEvent(_event)) {
             if (_event.type == sf::Event::Closed)
