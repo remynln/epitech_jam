@@ -7,25 +7,22 @@
 
 #include "Scenario.hpp"
 
-Scenario::Scenario(std::string name) : _name(name)
+Scenario::Scenario() : _name("start")
 {
 
 }
 
-Scenario::~Scenario()
+void Scenario::setMap(std::string name, void (*func)(sf::RenderWindow *))
 {
-    for (auto module : _choice)
-        if (module.second)
-            delete module.second;
+    _choice[name] = func;
 }
 
-void Scenario::addScene(std::string text, std::string picture)
+void Scenario::startScenario(sf::RenderWindow *window)
 {
-    _scene.push_back(make_pair(text, picture));
+    _choice[_name](window);
 }
 
-void Scenario::setMap(std::string name, Scenario *scenario)
+void Scenario::setScenario(std::string name)
 {
-    if (_choice.count(name) == 0)
-        _choice[name] = scenario;
+    _name = name;
 }

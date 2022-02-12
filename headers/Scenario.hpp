@@ -11,21 +11,21 @@
     #include <string>
     #include <map>
     #include <vector>
+    #include <SFML/Graphics.hpp>
+    #include <SFML/System.hpp>
 
     class Scenario {
         public:
-            Scenario(std::string name);
-            ~Scenario();
+            Scenario();
 
-            const std::string &getName() const;
-            void addScene(std::string text, std::string picture);
-            void setMap(std::string, Scenario *);
+            void setMap(std::string, void (*)(sf::RenderWindow *));
+            void startScenario(sf::RenderWindow *);
+            void setScenario(std::string name);
         private:
-            const std::string _name;
-            std::vector<std::pair<std::string, std::string>> _scene;
-            std::map<std::string, Scenario *> _choice;
+            std::string _name;
+            std::map<std::string, void (*)(sf::RenderWindow *)> _choice;
     };
 
-    void init_scenario();
+    Scenario init_scenario();
 
 #endif /* !SCENARIO */

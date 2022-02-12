@@ -8,7 +8,8 @@
 #ifndef GAME_HPP_
     #define GAME_HPP_
 
-    #include "../headers/Player.hpp"
+    #include "Player.hpp"
+    #include "Scenario.hpp"
     #include <vector>
     #include <SFML/Audio.hpp>
     #include <SFML/Graphics.hpp>
@@ -26,13 +27,15 @@ class Game {
         ~Game();
 
         void render();
+        void startScenario();
+        void handleEvent();
 
         std::vector<BackgroundImages *> backgrondImages;
         sf::RenderWindow win;
         Player player;
-
-    protected:
+        Scenario scenario;
     private:
+        bool inScenario;
 };
 
 #endif /* !GAME_HPP_ */
