@@ -15,8 +15,8 @@
     #define NB_CUBES 20
     #define Y_MAX 800
     #define X_MAX 1200
-    #define SCALE_OFFSET 0.2
-    #define RATIO_SCALE 3
+    #define SCALE_OFFSET 0.02
+    #define RATIO_SCALE 4
     #define PAD_SPACE_KEY 200
 
 class CubeComming {

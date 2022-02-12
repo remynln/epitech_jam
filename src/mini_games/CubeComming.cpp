@@ -27,26 +27,30 @@ CubeComming::CubeComming()
     texture = new sf::Texture;
     times = 0.0;
     flech_direction = rand() % 4;
-    switch (flech_direction) {
-        case 0:
-            texture->loadFromFile("assets/images/beetsaber/bas.png");
-            key = sf::Keyboard::Key::Down;
-            break;
-        case 1:
-            texture->loadFromFile("assets/images/beetsaber/droite.png");
-            key = sf::Keyboard::Key::Right;
-            break;
-        case 2:
-            texture->loadFromFile("assets/images/beetsaber/haut.png");
-            key = sf::Keyboard::Key::Up;
-            break;
-        case 3:
-            texture->loadFromFile("assets/images/beetsaber/gauche.png");
-            key = sf::Keyboard::Key::Left;
-            break;
-        default:
-            break;
+    std::string paths_blue[] = {
+        "assets/images/beetsaber/true_bas_blue.png",
+        "assets/images/beetsaber/true_droite_blue.png",
+        "assets/images/beetsaber/true_haut_blue.png",
+        "assets/images/beetsaber/true_gauche_blue.png"
+    };
+    std::string paths_red[] = {
+        "assets/images/beetsaber/true_bas_red.png",
+        "assets/images/beetsaber/true_droite_red.png",
+        "assets/images/beetsaber/true_haut_red.png",
+        "assets/images/beetsaber/true_gauche_red.png"
+    };
+    sf::Keyboard::Key keys[] = {
+        sf::Keyboard::Key::Down,
+        sf::Keyboard::Key::Right,
+        sf::Keyboard::Key::Up,
+        sf::Keyboard::Key::Left
+    };
+    if (rand() % 2 == 0) {
+        texture->loadFromFile(paths_blue[flech_direction]);
+    } else {
+        texture->loadFromFile(paths_red[flech_direction]);
     }
+    key = keys[flech_direction];
     sprite.setTexture(*texture);
     sprite.setScale(0.2, 0.2);
     sprite.setPosition(x + (int) (X_MAX / 4), -y);
@@ -81,7 +85,7 @@ bool CubeComming::check_collision(sf::RenderWindow *window, bool *first_flech)
             ret_value = true;
             *first_flech = true;
         }
-        if (boundssprite.top < Y_MAX && boundssprite.top > Y_MAX - PAD_SPACE_KEY) {
+        if (boundssprite.top < Y_MAX && boundssprite.top + boundssprite.height > Y_MAX - PAD_SPACE_KEY) {
             is_touched = true;
         }
     }
