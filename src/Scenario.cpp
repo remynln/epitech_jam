@@ -88,22 +88,25 @@ void Scenario::Start(sf::RenderWindow *window)
 Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(scenario._choice), _success(scenario._success), _successPopUp(scenario._successPopUp)
 {
     initSuccess();
-    setMap("start", std::bind(&Scenario::Start, this, std::placeholders::_1), false);
-    setMap("rencontre", std::bind(&Scenario::Rencontre, this, std::placeholders::_1), false);
-    setMap("beetsaber_end", std::bind(&Scenario::BeetSaber_MiniGame, this, std::placeholders::_1), true);
+    initChoice();
 }
 
 Scenario::Scenario() : _name("start"), _successPopUp(Success())
 {
     initSuccess();
-    setMap("start", std::bind(&Scenario::Start, this, std::placeholders::_1), false);
-    setMap("rencontre", std::bind(&Scenario::Rencontre, this, std::placeholders::_1), false);
-    setMap("beetsaber_end", std::bind(&Scenario::BeetSaber_MiniGame, this, std::placeholders::_1), true);
+    initChoice();
 }
 
 Scenario::~Scenario()
 {
     setSuccess();
+}
+
+void Scenario::initChoice()
+{
+    setMap("start", std::bind(&Scenario::Start, this, std::placeholders::_1), false);
+    setMap("rencontre", std::bind(&Scenario::Rencontre, this, std::placeholders::_1), false);
+    setMap("beetsaber_end", std::bind(&Scenario::BeetSaber_MiniGame, this, std::placeholders::_1), true);
 }
 
 void Scenario::initSuccess()
