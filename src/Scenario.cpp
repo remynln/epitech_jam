@@ -107,6 +107,7 @@ void Scenario::initChoice()
     setMap("start", std::bind(&Scenario::Start, this, std::placeholders::_1), false);
     setMap("rencontre", std::bind(&Scenario::Rencontre, this, std::placeholders::_1), false);
     setMap("beetsaber_end", std::bind(&Scenario::BeetSaber_MiniGame, this, std::placeholders::_1), true);
+    setMap("psykologu", std::bind(&Scenario::Psykoloke_MiniScene, this, std::placeholders::_1), false);
 }
 
 void Scenario::initSuccess()
