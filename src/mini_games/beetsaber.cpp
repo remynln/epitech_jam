@@ -22,7 +22,7 @@ class CubeComming
 {
     public:
     sf::Texture *texture;
-    sf::Sprite sprite; 
+    sf::Sprite sprite;
     sf::Keyboard::Key key;
     float times;
     int flech_direction;
@@ -128,9 +128,6 @@ static int set_basic(sf::Texture *texture, sf::Sprite *sprite, sf::Font *font, s
     text->setString("Appui sur les fleches quand les cubes arrivent");
     text->setFont(*font);
     text->setCharacterSize(20);
-    for (int i = 0; i < NB_CUBES; i++) {
-        cubes.push_back(CubeComming());
-    }
     return (0);
 }
 
@@ -148,6 +145,9 @@ void beet_saber_game(sf::RenderWindow *window)
     if (set_basic(&texture, &sprite, &font, &text, cubes) == 84) {
         return;
     }
+    for (int i = 0; i < NB_CUBES; i++) {
+        cubes.push_back(CubeComming());
+    }
     while (!is_all_under_window(cubes)) {
         time = clock.restart();
         for (int i = 0; i < NB_CUBES; i++) {
@@ -164,11 +164,17 @@ void beet_saber_game(sf::RenderWindow *window)
     }
     time = clock.restart();
     text.setString("Par felix le chat chanceux de la chance, tu gagnes");
-    while (time.asSeconds() < 1.0) {
+    while (time.asSeconds() < 3.0) {
         window->clear();
         window->draw(text);
         window->display();
         time = clock.getElapsedTime();
     }
     return;
+}
+
+int main() {
+    sf::RenderWindow window(sf::VideoMode(1200, 800), "TEST");
+    
+    beet_saber_game(&window);
 }
