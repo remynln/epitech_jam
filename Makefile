@@ -14,6 +14,7 @@ SRC =	src/Game.cpp						\
 		src/mini_games/CubeComming.cpp		\
 		src/Scenario.cpp					\
 		src/achievement.cpp 				\
+		src/DecisionWall.cpp				\
 		main.cpp
 
 OBJ =	$(SRC:.cpp=.o)

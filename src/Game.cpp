@@ -8,6 +8,16 @@
 #include <iostream>
 #include "Game.hpp"
 
+void lecole()
+{
+    std::cout << "L'ecole" << std::endl;
+}
+
+void larue()
+{
+    std::cout << "La rue, la vré" << std::endl;
+}
+
 BackgroundImages *createBg(std::string file,
     sf::Vector2f pos,
     sf::Vector2f size = sf::Vector2f(0, 0))
@@ -22,12 +32,22 @@ BackgroundImages *createBg(std::string file,
 }
 
 Game::Game()
-    : backgrondImages(
-         { createBg("assets/background.jpg", sf::Vector2f(0, 0)) }
-    )
+    : backgrondImages({
+        createBg("assets/route1.png", sf::Vector2f(-374, -570)),
+        createBg("assets/tree.png", sf::Vector2f(-404, -470), sf::Vector2f(0.8, 0.8)),
+        createBg("assets/tree.png", sf::Vector2f(400, -800), sf::Vector2f(0.8, 0.8))
+        //createBg("assets/school.png", sf::Vector2f(-100, -800), sf::Vector2f(1.2, 1.2)),
+        //createBg("assets/street.jpg", sf::Vector2f(1200, -800), sf::Vector2f(0.4, 0.4))
+    })
     , win(sf::VideoMode(1200, 800), "Game"),
     scenario(Scenario()),
-    _inScenario(true)
+    _inScenario(true),
+    walls({
+        new DecisionWall(-880, {
+            new Door(-100, 200, "assets/school.png", lecole),
+            new Door(1200, 1800, "assets/street.jpg", larue),
+        }, *this)
+    })
 {
 }
 
@@ -74,13 +94,26 @@ void Game::render()
             return (win.close());
         _inScenario = false;
     }
-    this->player.pos += this->player.speed;
+    bool isInWall = false;
+    for (DecisionWall *wall : this->walls) {
+        if (wall->isInWall(this->player.pos) && this->player.speed.y < 0)
+            isInWall = true;
+        wall->checkCollisions();
+    }
+    this->player.pos.x += this->player.speed.x;
+    if (!isInWall) {
+        this->player.pos.y += this->player.speed.y;
+    }
     for (BackgroundImages *bg : backgrondImages) {
         bg->spt.setPosition(bg->pos - this->player.pos);
     }
     win.clear();
     for (BackgroundImages *bg : backgrondImages) {
         win.draw(bg->spt);
+    }
+
+    for (DecisionWall *wall : this->walls) {
+        wall->renderDoors();
     }
     win.display();
 }
