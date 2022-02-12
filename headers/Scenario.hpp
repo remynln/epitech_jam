@@ -15,6 +15,7 @@
     #include <SFML/System.hpp>
     #include <functional>
     #include "achievement.hpp"
+    #include <unordered_map>
 
     class Scenario {
         public:
