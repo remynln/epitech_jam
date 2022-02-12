@@ -1,1 +1,0 @@
-# epitech_jam
