@@ -8,6 +8,8 @@
 SRC =	src/Game.cpp						\
 		src/mini_games/schoolPriorities.cpp	\
 		src/mini_games/SchoolPriorities.cpp \
+		src/mini_games/defeatKFC.cpp \
+		src/mini_games/DefeatKFC.cpp \
 		src/mini_games/beetsaber.cpp 		\
 		src/mini_games/CubeComming.cpp		\
 		src/Scenario.cpp					\
