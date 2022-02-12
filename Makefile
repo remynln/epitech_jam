@@ -5,9 +5,10 @@
 ## Makefile
 ##
 
-SRC =	src/Game.cpp		\
+SRC =	src/Game.cpp						\
 		src/mini_games/schoolPriorities.cpp	\
 		src/mini_games/SchoolPriorities.cpp \
+		src/mini_games/beetsaber.cpp 		\
 		main.cpp
 
 OBJ =	$(SRC:.cpp=.o)
@@ -26,7 +27,7 @@ $(NAME): $(OBJ)
 	g++ -o $(NAME) $(OBJ) $(CSFMLFLAGS)
 
 clean:
-	rm -rf *.o
+	rm -rf $(OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
