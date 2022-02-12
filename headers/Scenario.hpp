@@ -30,6 +30,7 @@
 
             void Start(sf::RenderWindow *window);
             void Rencontre(sf::RenderWindow *window);
+            void BeetSaber_MiniGame(sf::RenderWindow *window);
         private:
             void initSuccess();
             void setSuccess();
