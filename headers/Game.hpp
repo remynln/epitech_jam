@@ -14,6 +14,7 @@
     #include <SFML/Audio.hpp>
     #include <SFML/Graphics.hpp>
     #include <SFML/System.hpp>
+    #include <unordered_map>
 
 struct BackgroundImages {
     sf::Texture tex;
@@ -35,7 +36,7 @@ class Game {
         Player player;
         Scenario scenario;
     private:
-        bool inScenario;
+        bool _inScenario;
 };
 
 #endif /* !GAME_HPP_ */

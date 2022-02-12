@@ -7,16 +7,16 @@
 
 #include "achievement.hpp"
 
-success::success()
+Success::Success()
 {
-    if (!_font.loadFromFile("arial.ttf"))
+    if (!_font.loadFromFile("assets/Roboto.ttf"))
         throw 84;
     _text.setFont(_font);
     _text.setCharacterSize(24);
     _text.setFillColor(sf::Color::Blue);
     _text.setPosition(sf::Vector2f(300, 100));
     _text.setOutlineThickness(2);
-    if (!_bananaT.loadFromFile("banana.jpg"))
+    if (!_bananaT.loadFromFile("assets/banana.jpg"))
         throw 84;
     _bananaS.setTexture(_bananaT);
     _bananaS.setScale(300.0f/_bananaS.getLocalBounds().width, 300.0f/_bananaS.getLocalBounds().height);
@@ -33,7 +33,7 @@ success::success()
  * @param path Le path de l'image du singe
  * @param audio Le path du son à jouer, (défaut = baptiste.ogg)
  */
-void success::displaySuccess(std::wstring text, std::string path, std::string audio)
+void Success::displaySuccess(std::wstring text, std::string path, std::string audio)
 {
     _text.setString(text);
     if (!_monkeyT.loadFromFile(path))
@@ -61,7 +61,7 @@ void success::displaySuccess(std::wstring text, std::string path, std::string au
 }
 
 
-success::~success()
+Success::~Success()
 {
 }
 

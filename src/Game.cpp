@@ -27,7 +27,7 @@ Game::Game()
     )
     , win(sf::VideoMode(1200, 800), "Game"),
     scenario(Scenario()),
-    inScenario(true)
+    _inScenario(true)
 {
 }
 
@@ -68,9 +68,11 @@ void Game::handleEvent()
 void Game::render()
 {
     handleEvent();
-    if (inScenario) {
+    if (_inScenario) {
         scenario.startScenario(&win);
-        inScenario = false;
+        if (scenario.isAnEnd())
+            return (win.close());
+        _inScenario = false;
     }
     this->player.pos += this->player.speed;
     for (BackgroundImages *bg : backgrondImages) {

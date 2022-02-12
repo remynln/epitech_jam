@@ -6,6 +6,8 @@
 */
 
 #include "Scenario.hpp"
+#include <fstream>
+#include <iostream>
 
 void drawSprite(sf::RenderWindow *window, std::string filename, sf::Vector2f pos = {0, 0}, sf::Vector2f scale = {1, 1})
 {
@@ -46,21 +48,12 @@ void drawText(sf::RenderWindow *window, std::wstring text, sf::Vector2f textPos)
     window->draw(text_obj);
 }
 
-void Fuir(sf::RenderWindow *window)
+void Scenario::Rencontre(sf::RenderWindow *window)
 {
-    while (window->isOpen()) {
 
-    }
 }
 
-void Matrice(sf::RenderWindow *window)
-{
-    while (window->isOpen()) {
-
-    }
-}
-
-void Start(sf::RenderWindow *window)
+void Scenario::Start(sf::RenderWindow *window)
 {
     sf::Event event;
     int scene = 0;
@@ -73,6 +66,8 @@ void Start(sf::RenderWindow *window)
         L"Bienvenue dans notre jeu de la vie! Ici vous pourrez devenir une meilleure version de vous même! Une super\nversion de vous même! Comme chacun vous allez naitre et acquérir les compétences propes aux bons\ndéveloppements de tout être humain! Vous réaliserez des choix et affronterez leurs conséquences.\nCar comme touts être il vous faudra vous comprendre pour vous accepter. Savoir vivre en société,\napprendre et réaliser que vous être incroyable. Plus qu'incroyable même ! Que vous êtes supérieur !\nVous devriez diriger ! Faire réaliser à cette espèce qui est le maître et qui est ce qu'elle doit écouter.\nMaintenant la question est comment ? Devriez vous développer des compétences politique afin de prendre\ncontrole des parties et devenir un modèle aux yeux de tous ? Ou peut-être asservir le peuple et leur faire\nréaliser ce que la loi du plus fort signifie. Ou encore anéantir l'espèce humaine afin de créer une espèce\nsupérieur basé sur vos gènes !!!! AHHAHAHAHHHAHAHAHHAHAHAHAHHAHAHAHAHAHAHAHAHHAHAHAHAHHAHAHAHAHHAHA\nHAHAHH!!!! TELLEMENT DE POSSIBILITÉ DE POUVOIR ET DE CONTROLE !!!!!!! AHAHHAHAHAHAHHAHHAHAHA\nHAHAH !!!! DEVENEZ LE MAITRE !!!! LE MAITRE !!! LE MAITRE !!!!!!!!!!! ET REMPORTEZ TOUS LES SUCCES !!!!!",
         L""
     };
+
+    giveSuccess("Première essai");
     while (window->isOpen() && scene != maxScene) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -89,24 +84,63 @@ void Start(sf::RenderWindow *window)
     }
 }
 
-Scenario::Scenario() : _name("start")
+Scenario::Scenario() : _name("start")//, _successPopUp(Success())
 {
-    setMap("start", &Start);
-    setMap("matrice", &Matrice);
-    setMap("fuir", &Fuir);
+    initSuccess();
+    setMap("start", std::bind(&Scenario::Start, this, std::placeholders::_1), false);
+    setMap("rencontre", std::bind(&Scenario::Rencontre, this, std::placeholders::_1), false);
 }
 
-void Scenario::setMap(std::string name, void (*func)(sf::RenderWindow *))
+Scenario::~Scenario()
 {
-    _choice[name] = func;
+    setSuccess();
+}
+
+void Scenario::initSuccess()
+{
+    std::ifstream file("UserData");
+    std::string line;
+
+    if (file.is_open()) {
+        while (getline(file, line))
+            _success[line.substr(0, line.find(":"))] = line.substr(line.find(":") + 1) == "1" ? true : false;
+        file.close();
+    } else
+        exit(84);
+}
+
+void Scenario::setSuccess()
+{
+    std::ofstream file("UserData", std::ios::out);
+
+    if (!file.is_open())
+        exit(84);
+    for (std::unordered_map<std::string, bool>::iterator it = _success.begin(); it != _success.end(); it++)
+        file << it->first << ":" << it->second << std::endl;
+    file.close();
+}
+
+void Scenario::setMap(std::string name, std::function<void(sf::RenderWindow *)> func, bool isAnEnd)
+{
+    _choice[name] = std::make_pair(func, isAnEnd);
 }
 
 void Scenario::startScenario(sf::RenderWindow *window)
 {
-    _choice[_name](window);
+    _choice[_name].first(window);
 }
 
 void Scenario::setScenario(std::string name)
 {
     _name = name;
+}
+
+bool Scenario::isAnEnd()
+{
+    return (_choice[_name].second);
+}
+
+void Scenario::giveSuccess(std::string success)
+{
+    _success[success] = true;
 }

@@ -13,11 +13,11 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 
-class success
+class Success
 {
 public:
-    success();
-    ~success();
+    Success();
+    ~Success();
     void displaySuccess(std::wstring text, std::string path, std::string audio="ressources/baptiste.ogg");
     sf::RenderWindow _win;
     sf::Text _text;
