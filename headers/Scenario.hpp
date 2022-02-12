@@ -35,6 +35,7 @@
             void Psykoloke_MiniScene(sf::RenderWindow *window);
 
         private:
+            void initChoice();
             void initSuccess();
             void setSuccess();
             std::string _name;
