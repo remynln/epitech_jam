@@ -19,7 +19,6 @@
     #define RATIO_SCALE 3
     #define PAD_SPACE_KEY 200
 
-/*
 class CubeComming {
     public:
         CubeComming();
@@ -39,7 +38,7 @@ class CubeComming {
     protected:
     private:
 };
-*/
+
 
 void beet_saber_game(sf::RenderWindow *window);
 
