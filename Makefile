@@ -12,6 +12,7 @@ SRC =	src/Game.cpp						\
 		src/mini_games/DefeatKFC.cpp \
 		src/mini_games/beetsaber.cpp 		\
 		src/mini_games/CubeComming.cpp		\
+		src/mini_games/psykologu.cpp		\
 		src/Scenario.cpp					\
 		src/achievement.cpp 				\
 		main.cpp
