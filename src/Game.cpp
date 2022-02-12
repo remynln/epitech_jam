@@ -24,8 +24,8 @@ BackgroundImages *createBg(std::string file,
 Game::Game()
     : backgrondImages(
          { createBg("assets/background.jpg", sf::Vector2f(0, 0)) }
-    )
-    , win(sf::VideoMode(1200, 800), "Game"),
+    ), 
+    win(sf::VideoMode(1200, 800), "Game"),
     scenario(Scenario()),
     _inScenario(true)
 {

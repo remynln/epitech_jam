@@ -21,6 +21,7 @@
         public:
             Scenario();
             ~Scenario();
+            Scenario(const Scenario &scenario);
 
             void setMap(std::string, std::function<void(sf::RenderWindow *)>, bool isAnEnd);
             void startScenario(sf::RenderWindow *);

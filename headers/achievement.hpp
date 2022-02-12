@@ -17,6 +17,7 @@ class Success
 {
     public:
         Success();
+        Success(const Success &success);
         ~Success();
 
         void displaySuccess(std::wstring text, std::string path, std::string audio = "ressources/baptiste.ogg");

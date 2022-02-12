@@ -26,6 +26,10 @@ Success::Success()
     //_sound.setBuffer(_sb);
 }
 
+Success::Success(const Success &success) : _text(success._text), _font(success._font), _event(success._event), _monkeyT(success._monkeyT), _bananaT(success._bananaT), _monkeyS(success._monkeyS), _bananaS(success._bananaS)
+{
+}
+
 /**
  * @brief Crée une fenêtre et affiche le succès "text", avec l'image "path", et joue le son "audio"
  * 
