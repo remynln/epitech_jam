@@ -7,7 +7,9 @@
 
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Types.h>
+#include <SFML/System/Clock.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/VideoMode.hpp>
@@ -115,8 +117,7 @@ static bool is_all_under_window(std::vector<CubeComming> cubes)
     return (true);
 }
 
-static int set_basic(sf::Texture *texture, sf::Sprite *sprite, sf::Font *font, sf::Text *text,
-    std::vector<CubeComming> cubes)
+static int set_basic(sf::Texture *texture, sf::Sprite *sprite, sf::Font *font, sf::Text *text)
 {
     if (!texture->loadFromFile("assets/images/beetsaber/beetsaber_bg.png")) {
         return (84);
@@ -125,29 +126,45 @@ static int set_basic(sf::Texture *texture, sf::Sprite *sprite, sf::Font *font, s
     if (!font->loadFromFile("assets/Roboto.ttf")) {
         return (84);
     }
-    text->setString("Appui sur les fleches quand les cubes arrivent");
     text->setFont(*font);
     text->setCharacterSize(20);
     return (0);
 }
 
-void beet_saber_game(sf::RenderWindow *window)
+static void start_beetsaber(sf::Text *text, sf::RenderWindow *window)
 {
-    int nb_cube = 0;
+    sf::Clock clock;
+    sf::Time time;
+
+    time = clock.getElapsedTime();
+    text->setString("Vous avez choisie de rencontrer Remy (champion du monde de BeatSaber) ! ...");
+    while (time.asSeconds() < 4.0) {
+        window->clear();
+        window->draw(*text);
+        window->display();
+        time = clock.getElapsedTime();
+    }
+    text->setString("Il vous propose de faire une partie...");
+    clock.restart();
+    time = clock.getElapsedTime();
+    while (time.asSeconds() < 4.0) {
+        window->clear();
+        window->draw(*text);
+        window->display();
+        time = clock.getElapsedTime();
+    }
+}
+
+static void loop_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow *window)
+{
     std::vector<CubeComming> cubes;
     sf::Clock clock;
     sf::Time time;
-    sf::Texture texture;
-    sf::Sprite sprite;
-    sf::Font font;
-    sf::Text text;
 
-    if (set_basic(&texture, &sprite, &font, &text, cubes) == 84) {
-        return;
-    }
     for (int i = 0; i < NB_CUBES; i++) {
         cubes.push_back(CubeComming());
     }
+    text->setString("Appui sur les fleches quand les cubes arrivent");
     while (!is_all_under_window(cubes)) {
         time = clock.restart();
         for (int i = 0; i < NB_CUBES; i++) {
@@ -155,20 +172,44 @@ void beet_saber_game(sf::RenderWindow *window)
             cubes.at(i).check_collision(window);
         }
         window->clear();
-        window->draw(sprite);
-        window->draw(text);
+        window->draw(*sprite);
+        window->draw(*text);
         for (int i = 0; i < NB_CUBES; i++) {
             cubes.at(i).draw(window);
         }
         window->display();
     }
-    time = clock.restart();
-    text.setString("Par felix le chat chanceux de la chance, tu gagnes");
-    while (time.asSeconds() < 3.0) {
+}
+
+static void end_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow *window)
+{
+    sf::Clock clock;
+    sf::Time time;
+
+    time = clock.getElapsedTime();
+    text->setString("\nPar felix le chat chanceux de la chance,\ntu gagnes!!"
+                    "\n\nAyant battu le champion du monde Remy, tu fais finalement carriere dans le gaming");
+    while (time.asSeconds() < 5.0) {
         window->clear();
-        window->draw(text);
+        window->draw(*sprite);
+        window->draw(*text);
         window->display();
         time = clock.getElapsedTime();
     }
+}
+
+void beet_saber_game(sf::RenderWindow *window)
+{
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::Font font;
+    sf::Text text;
+
+    if (set_basic(&texture, &sprite, &font, &text) == 84) {
+        return;
+    }
+    start_beetsaber(&text, window);
+    loop_beetsaber(&sprite, &text, window);
+    end_beetsaber(&sprite, &text, window);
     return;
 }
