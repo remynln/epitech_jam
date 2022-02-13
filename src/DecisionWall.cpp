@@ -32,9 +32,9 @@ void DecisionWall::renderDoors()
     }
 }
 
-DecisionWall::DecisionWall(float y, std::vector<Door *> doors, Game &game)
-    : _doors(doors), _game(game), _y(y)
+DecisionWall::DecisionWall(float y, std::vector<Door *> doors, Game &game) : _y(y), _game(game), _doors(doors)
 {
+    
 }
 
 Door::Door(float _x1, float _x2, std::string _imagefile, void (*_callback)()) 
@@ -52,7 +52,7 @@ Door::Door(float _x1, float _x2, std::string _imagefile, void (*_callback)())
     this->yOffset = (imageSize.y * ratio) / 2;
 }
 
-void Door::checkCollisions(sf::Vector2f const &pos) 
+void Door::checkCollisions(sf::Vector2f const &/*pos*/) 
 {
     if (this->sprite.getGlobalBounds().contains(sf::Vector2f(600, 400)))
         this->callback(); 

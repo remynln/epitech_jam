@@ -17,6 +17,9 @@
     #include "achievement.hpp"
     #include <unordered_map>
     #include "marcolito.hpp"
+    #include "ScriptChoice.hpp"
+    #include "cake.hpp"
+    #include "DodgeBottle.hpp"
 
     class Scenario {
         public:
@@ -30,6 +33,9 @@
             bool isAnEnd();
             void giveSuccess(std::string);
 
+            void setInScenario(const bool value);
+            const bool &getInScenario() const;
+
             void Start(sf::RenderWindow *window);
             void Fuir(sf::RenderWindow *window);
             void Matrice(sf::RenderWindow *window);
@@ -38,8 +44,16 @@
             void marcolito(sf::RenderWindow *win);
 
             void BeetSaber_MiniGame(sf::RenderWindow *window);
-            void Psykoloke_MiniScene(sf::RenderWindow *window);
 
+            void Psykoloke_MiniScene(sf::RenderWindow *window);
+            void PsyJob(sf::RenderWindow *window);
+            void Folie(sf::RenderWindow *window);
+
+            void Rue(sf::RenderWindow *window);
+            void Vente(sf::RenderWindow *window);
+            void Recherche(sf::RenderWindow *window);
+            void Maitre(sf::RenderWindow *window);
+            void Soiree(sf::RenderWindow *window);
         private:
             void initChoice();
             void initSuccess();
@@ -48,6 +62,7 @@
             std::map<std::string, std::pair<std::function<void(sf::RenderWindow *)>, bool>> _choice;
             std::unordered_map<std::string, bool> _success;
             success _successPopUp;
+            bool _inScenario;
     };
 
     Scenario init_scenario();

@@ -52,17 +52,16 @@ void Scenario::Start(sf::RenderWindow *window)
 {
     sf::Event event;
     int scene = 0;
-    int maxScene = 2;
+    int maxScene = 1;
     std::string filename[] = {
-        "",
-        "assets/black_screen_gorilla.jpg"
+        ""
     };
     std::wstring text[] = {
-        L"Bienvenue dans notre jeu de la vie! Ici vous pourrez devenir une meilleure version de vous même! Une super\nversion de vous même! Comme chacun vous allez naitre et acquérir les compétences propes aux bons\ndéveloppements de tout être humain! Vous réaliserez des choix et affronterez leurs conséquences.\nCar comme touts être il vous faudra vous comprendre pour vous accepter. Savoir vivre en société,\napprendre et réaliser que vous être incroyable. Plus qu'incroyable même ! Que vous êtes supérieur !\nVous devriez diriger ! Faire réaliser à cette espèce qui est le maître et qui est ce qu'elle doit écouter.\nMaintenant la question est comment ? Devriez vous développer des compétences politique afin de prendre\ncontrole des parties et devenir un modèle aux yeux de tous ? Ou peut-être asservir le peuple et leur faire\nréaliser ce que la loi du plus fort signifie. Ou encore anéantir l'espèce humaine afin de créer une espèce\nsupérieur basé sur vos gènes !!!! AHHAHAHAHHHAHAHAHHAHAHAHAHHAHAHAHAHAHAHAHAHHAHAHAHAHHAHAHAHAHHAHA\nHAHAHH!!!! TELLEMENT DE POSSIBILITÉ DE POUVOIR ET DE CONTROLE !!!!!!! AHAHHAHAHAHAHHAHHAHAHA\nHAHAH !!!! DEVENEZ LE MAITRE !!!! LE MAITRE !!! LE MAITRE !!!!!!!!!!! ET REMPORTEZ TOUS LES SUCCES !!!!!",
-        L""
+        L"Bienvenue dans notre jeu de la vie! Ici vous pourrez devenir une meilleure version de vous même! Une super\nversion de vous même! Comme chacun vous allez naitre et acquérir les compétences propes aux bons\ndéveloppements de tout être humain! Vous réaliserez des choix et affronterez leurs conséquences.\nCar comme touts être il vous faudra vous comprendre pour vous accepter. Savoir vivre en société,\napprendre et réaliser que vous être incroyable. Plus qu'incroyable même ! Que vous êtes supérieur !\nVous devriez diriger ! Faire réaliser à cette espèce qui est le maître et qui est ce qu'elle doit écouter.\nMaintenant la question est comment ? Devriez vous développer des compétences politique afin de prendre\ncontrole des parties et devenir un modèle aux yeux de tous ? Ou peut-être asservir le peuple et leur faire\nréaliser ce que la loi du plus fort signifie. Ou encore anéantir l'espèce humaine afin de créer une espèce\nsupérieur basé sur vos gènes !!!! AHHAHAHAHHHAHAHAHHAHAHAHAHHAHAHAHAHAHAHAHAHHAHAHAHAHHAHAHAHAHHAHA\nHAHAHH!!!! TELLEMENT DE POSSIBILITÉ DE POUVOIR ET DE CONTROLE !!!!!!! AHAHHAHAHAHAHHAHHAHAHA\nHAHAH !!!! DEVENEZ LE MAITRE !!!! LE MAITRE !!! LE MAITRE !!!!!!!!!!! ET REMPORTEZ TOUS LES SUCCES !!!!!"
     };
 
     giveSuccess("Première essai");
+    //_successPopUp.displaySuccess(std::wstring(L"Première essai"), "assets/school.png");
     while (window->isOpen() && scene != maxScene) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -77,43 +76,205 @@ void Scenario::Start(sf::RenderWindow *window)
         }
         window->display();
     }
+    ScriptChoice choice("assets/black_screen_gorilla.jpg", "Fais tu face ?", "Avancer", "Fuir");
+
+    if (choice.choose(window) == "Découvrir")
+        _name = "jouer";
+    else
+        _name = "fuir";
 }
 
 void Scenario::Fuir(sf::RenderWindow *window)
 {
-    while (window->isOpen()) {
-        
-    }
+    cake kek;
+    kek.startCake(*window);
+
+    if (window->isOpen() == false)
+        return;
+    ScriptChoice choice("assets/matrix_cake.jpg", "Fais tu face ?", "Decouvrir", "Fuir");
+
+    if (choice.choose(window) == "Decouvrir")
+        _name = "matrice";
+    else
+        _name = "start";
 }
 
 void Scenario::Matrice(sf::RenderWindow *window)
 {
-    while (window->isOpen()) {
-        
+    sf::Event event;
+    bool end = false;
+
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/matrix.jpg");
+        drawText(window, L"Il est possible pour chacun de prendre conscience de sa place en ce monde.\nDe la même façon, il est aussi possible de découvrir la réel réalité qui le sépare de sa fiction.\nT’as prise de conscience commence et cesse à l’instant où le mensonge devient réalité.\nElle se divise là où la matrice se dévoile.\nOù la 2D tridimensionnelle prend forme.", {0, 600});
+        window->display();
     }
+
+    ScriptChoice choice("assets/matrix.jpg", "Ouvrir les yeux ?", "Comprendre", "Fuir");
+
+    if (choice.choose(window) == "Comprendre")
+        _name = "rencontre";
+    else
+        _name = "start";
 }
 
 void Scenario::Rencontre(sf::RenderWindow *window)
 {
-    while (window->isOpen()) {
-        
+    sf::Event event;
+    int scene = 0;
+    std::wstring text[] = {
+        L"Il est désormais tant pour toi de comprendre. De réaliser que derrière ces lignes que tu regardes se cache\nune autre réalité, se cache ta réalité. Finalement accepter la matrice signifie qu’il est maintenant temps\npour toi de comprendre qui tu es et qui je suis. Bonjour, je suis le personnage de ce jeu.\nBonjour je suis toi.",
+        L"Tu me contrôles, moi, qui suis derrière ces lignes.\nTu décide de mes mouvements et de mes choix et il est maintenant tant pour toi de prendre ta prise\nde conscience finale. Il est temps pour toi d’accepter."
+    };
+
+    while (window->isOpen() && scene != 2) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "assets/rencontre.jpg");
+        drawText(window, text[scene], {0, 600});
+        window->display();
     }
+
+    ScriptChoice choice("assets/rencontre.jpg", "?", "Accepter", "Fuir");
+
+    if (choice.choose(window) == "Accepter")
+        _name = "reel";
+    else
+        _name = "start";
 }
 
 void Scenario::Reel(sf::RenderWindow *window)
+{
+    sf::Event event;
+    bool end = false;
+
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/reel.jpg");
+        window->display();
+    }
+    _inScenario = false;
+}
+
+void Scenario::PsyJob(sf::RenderWindow *window)
+{
+    sf::Event event;
+    bool end = false;
+
+    giveSuccess("Etre psy !");
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/psyjob.jpg");
+        window->display();
+    }
+    _inScenario = false;
+}
+
+void Scenario::Folie(sf::RenderWindow *window)
+{
+    sf::Event event;
+    bool end = false;
+
+    giveSuccess("Folie");
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/folie.jpg");
+        window->display();
+    }
+    _inScenario = false;
+}
+
+void Scenario::Rue(sf::RenderWindow *window)
+{
+    ScriptChoice choice("assets/wesh.jpg", "Wesh la détail ! Tu veux un quetru ?", "Oe tu peux me dépanne quelques grammes ?", "Non mec, je cherche un taf bien rémunéré\nsi tu vois c'que j'veux dire...");
+
+    if (choice.choose(window) == "Oe tu peux me dépanne quelques grammes ?")
+        _name = "marcolito";
+    else
+        _name = "vente";
+}
+
+void Scenario::Vente(sf::RenderWindow *window)
+{
+    ScriptChoice choice("assets/vente.jpg", "Qu'est-ce que tu me baragouine fréro, c'est chaud la tu sais.", "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?", "Mais.. Mais j'ai un diplome en Physique\nChimie, j'peux devenir ton Walter White");
+
+    if (choice.choose(window) == "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?")
+        _name = "maitre";
+    else
+        _name = "recherche";
+}
+
+void Scenario::Recherche(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+
+    }
+}
+
+void Scenario::Maitre(sf::RenderWindow *window)
 {
     while (window->isOpen()) {
         
     }
 }
 
-Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(scenario._choice), _success(scenario._success), _successPopUp(scenario._successPopUp)
+void Scenario::Soiree(sf::RenderWindow *window)
+{
+    DodgeBottle engine;
+
+    while (window->isOpen()) {
+        engine.eventHandelling(window);
+        if (engine.checkForEnd()) {
+            if (engine._score == 15)
+                _name = "sobre";
+            else
+                _name = "boire";
+            break;
+        }
+        engine.moveSprites(window);
+        engine.displayWindow(window);
+        engine.addSprites();
+    }
+    _inScenario = false;
+}
+
+Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(scenario._choice), _success(scenario._success), _successPopUp(scenario._successPopUp), _inScenario(true)
 {
     initSuccess();
     initChoice();
 }
 
-Scenario::Scenario() : _name("conso"), _successPopUp(L"\n\n         Succès !\n     Première éjac", "assets/singe_etude.jpg")
+Scenario::Scenario() : _name("start"), _successPopUp(success(L"", "")), _inScenario(true)
 {
     initSuccess();
     initChoice();
@@ -134,6 +295,13 @@ void Scenario::initChoice()
     setMap("reel", std::bind(&Scenario::Reel, this, std::placeholders::_1), true);
     setMap("beetsaber_end", std::bind(&Scenario::BeetSaber_MiniGame, this, std::placeholders::_1), true);
     setMap("psykologu", std::bind(&Scenario::Psykoloke_MiniScene, this, std::placeholders::_1), false);
+    setMap("psyjob", std::bind(&Scenario::PsyJob, this, std::placeholders::_1), true);
+    setMap("folie", std::bind(&Scenario::Folie, this, std::placeholders::_1), true);
+    setMap("rue", std::bind(&Scenario::Rue, this, std::placeholders::_1), false);
+    setMap("vente", std::bind(&Scenario::Vente, this, std::placeholders::_1), false);
+    setMap("recherche", std::bind(&Scenario::Recherche, this, std::placeholders::_1), false);
+    setMap("maitre", std::bind(&Scenario::Maitre, this, std::placeholders::_1), false);
+    setMap("soiree", std::bind(&Scenario::Soiree, this, std::placeholders::_1), false);
 }
 
 void Scenario::initSuccess()
@@ -210,4 +378,14 @@ bool Scenario::isAnEnd()
 void Scenario::giveSuccess(std::string success)
 {
     _success[success] = true;
+}
+
+void Scenario::setInScenario(const bool value)
+{
+    _inScenario = value;
+}
+
+const bool &Scenario::getInScenario() const
+{
+    return (_inScenario);
 }

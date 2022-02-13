@@ -11,7 +11,7 @@
 success::success(std::wstring text, std::string path, std::string audio)
 {
     if (!_font.loadFromFile("assets/Roboto.ttf"))
-        throw 84;
+        return;
 
     _text.setFont(_font);
     _text.setCharacterSize(18);
@@ -24,23 +24,23 @@ success::success(std::wstring text, std::string path, std::string audio)
     _rect.setOutlineThickness(5);
 
     if (!_crossT.loadFromFile("assets/croix.png"))
-        throw 84;
+        return;
     _crossS.setSize(sf::Vector2f(15, 15));
     _crossS.setTexture(&_crossT, true);
     _crossS.setOutlineColor(sf::Color(211, 211, 211));
     _crossS.setOutlineThickness(5);
 
     if (!_bananaT.loadFromFile("assets/banana.jpg"))
-        throw 84;
+        return;
     _bananaS.setTexture(_bananaT);
     _bananaS.setScale(150.0f/_bananaS.getLocalBounds().width, 150.0f/_bananaS.getLocalBounds().height);
 
     if (!_sb.loadFromFile(audio))
-        throw 84;
+        return;
     _sound.setBuffer(_sb);
         
     if (!_monkeyT.loadFromFile(path))
-        throw 84;
+        return;
     _monkeyS.setTexture(_monkeyT);
     _monkeyS.setScale(150.0f/_monkeyS.getLocalBounds().width, 150.0f/_monkeyS.getLocalBounds().height);
 }

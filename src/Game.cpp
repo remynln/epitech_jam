@@ -18,9 +18,7 @@ void larue()
     std::cout << "La rue, la vré" << std::endl;
 }
 
-BackgroundImages *createBg(std::string file,
-    sf::Vector2f pos,
-    sf::Vector2f size = sf::Vector2f(0, 0))
+BackgroundImages *createBg(std::string file, sf::Vector2f pos, sf::Vector2f /*size*/ = sf::Vector2f(0, 0))
 {
     BackgroundImages *res = new BackgroundImages();
     res->tex = sf::Texture();
@@ -41,7 +39,6 @@ Game::Game()
     })
     , win(sf::VideoMode(1200, 800), "Game"),
     scenario(Scenario()),
-    _inScenario(true),
     walls({
         new DecisionWall(-880, {
             new Door(-100, 200, "assets/school.png", lecole),
@@ -95,11 +92,12 @@ void Game::handleEvent()
 void Game::render()
 {
     handleEvent();
-    if (_inScenario) {
+    if (scenario.getInScenario()) {
         scenario.startScenario(&win);
-        if (scenario.isAnEnd())
+        if (scenario.isAnEnd() && scenario.getInScenario() == false)
             return (win.close());
-        _inScenario = false;
+        else if (scenario.getInScenario())
+            return;
     }
     bool isInWall = false;
     for (DecisionWall *wall : this->walls) {
