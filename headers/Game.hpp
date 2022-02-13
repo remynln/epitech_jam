@@ -15,12 +15,15 @@
     #include <SFML/Graphics.hpp>
     #include <SFML/System.hpp>
     #include <unordered_map>
+    #include "DecisionWall.hpp"
 
 struct BackgroundImages {
     sf::Texture tex;
     sf::Vector2f pos;
     sf::Sprite spt;
 };
+
+class DecisionWall;
 
 class Game {
     public:
@@ -35,6 +38,8 @@ class Game {
         sf::RenderWindow win;
         Player player;
         Scenario scenario;
+        std::vector<DecisionWall *> walls;
+        
     private:
         bool _inScenario;
 };
