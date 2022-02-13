@@ -59,6 +59,18 @@
             void displaySuccess(sf::RenderWindow *win);
             void checkSuccessDelete(sf::Event event, sf::RenderWindow *win);
 
+            void Bill(sf::RenderWindow *window);
+            void Marier(sf::RenderWindow *window);
+            void Entreprise(sf::RenderWindow *window);
+
+            void BAC(sf::RenderWindow *window);
+            void Medecine(sf::RenderWindow *window);
+            void Ens(sf::RenderWindow *window);
+            void Supaero(sf::RenderWindow *window);
+            void Epitech(sf::RenderWindow *window);
+
+            void Ecole(sf::RenderWindow *window);
+            void Travailler(sf::RenderWindow *window);
         private:
             void initChoice();
             void initSuccess();

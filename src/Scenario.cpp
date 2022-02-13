@@ -268,6 +268,151 @@ void Scenario::Soiree(sf::RenderWindow *window)
     _inScenario = false;
 }
 
+void Scenario::Bill(sf::RenderWindow *window)
+{
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Bill Gates: Wesh mon reuf, je commence à devenir vieux. Et j’ai envie de prendre des vacances..",
+        L"Toi: Ok frero. Fais ce que tu veux non ? c’est ton entreprise BG.",
+        L"Bill Gates: Le souci, c’est que j’ai deux gros blème en parallèle… Ma fille et l’entreprise. Comme tu l’as dis trkl\nc la mienne.",
+        L"Toi: ducoup y a quoi qui gène.",
+        L"Bill Gates: Si je prends des vacances, y aura ma fille qui va saouler. Et si ma fille saoule pas, c’est que je ne\nsuis pas en vacances.",
+        L"Toi: J’te propose un marché le bro. On fait tourner une pièce, si elle tombe sur face, jme marie avec ta fille\ncomme ça tu l’as plus dans les pates. si c’est pile, tu me donne don entreprise et tu seras libéré.",
+        L"Bill Gates: Deal."
+    };
+
+    while (window->isOpen() && scene != 7) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "");
+        drawText(window, text[scene], {0, 550});
+        window->display();
+    }
+
+    ScriptChoice choice("", "Pile ou Face ?", "Pile, je veux pecho sec moi", "Face, la moula la moula");
+
+    if (choice.choose(window) == "Pile, je veux pecho sec moi")
+        _name = "marier";
+    else
+        _name = "entreprise";
+}
+
+void Scenario::Marier(sf::RenderWindow *window)
+{
+    sf::Event event;
+    bool end = false;
+
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/marriage.jpg");
+        window->display();
+    }
+    _inScenario = false;
+}
+
+void Scenario::Entreprise(sf::RenderWindow *window)
+{
+    sf::Event event;
+    bool end = false;
+
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/microsoft.jpg");
+        window->display();
+    }
+    _inScenario = false;
+}
+
+void Scenario::BAC(sf::RenderWindow *window)
+{
+    sf::Event event;
+    bool end = false;
+
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "");
+        drawText(window, L"Felicitations ! vous avez le bac !\nQue vous ayez 10 au bac ou 22, vous possédez des contacts dans toutes les grandes écoles.\nVous savez donc que vous n’avez qu'à envoyer un “Skype” au directeur pour être pris.\nC’est à vous de décider votre futur…", {0, 550});
+        window->display();
+    }
+
+    ScriptChoice choice("", "Continuez vos etudes :", "Medecine", "ENS / Science po", "Sup Aero", "Epitech");
+
+    if (choice.choose(window) == "Medecine")
+        _name = "medecine";
+    else if (choice.choose(window) == "ENS / Science po")
+        _name = "ens";
+    else if (choice.choose(window) == "Sup Aero")
+        _name = "supaero";
+    else
+        _name = "epitech";
+}
+
+void Scenario::Medecine(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
+void Scenario::Ens(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
+void Scenario::Supaero(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
+void Scenario::Epitech(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
+void Scenario::Ecole(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
+void Scenario::Travailler(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
 Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(scenario._choice), _success(scenario._success), _successPopUp(scenario._successPopUp), _inScenario(true)
 {
     initSuccess();
@@ -302,6 +447,16 @@ void Scenario::initChoice()
     setMap("recherche", std::bind(&Scenario::Recherche, this, std::placeholders::_1), false);
     setMap("maitre", std::bind(&Scenario::Maitre, this, std::placeholders::_1), false);
     setMap("soiree", std::bind(&Scenario::Soiree, this, std::placeholders::_1), false);
+    setMap("bill", std::bind(&Scenario::Bill, this, std::placeholders::_1), false);
+    setMap("bac", std::bind(&Scenario::BAC, this, std::placeholders::_1), false);
+    setMap("ecole", std::bind(&Scenario::Ecole, this, std::placeholders::_1), false);
+    setMap("travailler", std::bind(&Scenario::Travailler, this, std::placeholders::_1), false);
+    setMap("marier", std::bind(&Scenario::Marier, this, std::placeholders::_1), true);
+    setMap("entreprise", std::bind(&Scenario::Entreprise, this, std::placeholders::_1), true);
+    setMap("medecine", std::bind(&Scenario::Medecine, this, std::placeholders::_1), false);
+    setMap("ens", std::bind(&Scenario::Ens, this, std::placeholders::_1), false);
+    setMap("supaero", std::bind(&Scenario::Supaero, this, std::placeholders::_1), false);
+    setMap("epitech", std::bind(&Scenario::Epitech, this, std::placeholders::_1), false);
 }
 
 void Scenario::initSuccess()
