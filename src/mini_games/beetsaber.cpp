@@ -52,7 +52,7 @@ static int set_basic(sf::Texture *texture, sf::Sprite *sprite, sf::Font *font, s
     return (0);
 }
 
-static void event_handle(sf::RenderWindow *window)
+static void event_handle(sf::RenderWindow *window, Scenario *scene)
 {
     sf::Event event;
 
@@ -60,10 +60,11 @@ static void event_handle(sf::RenderWindow *window)
         if (event.type == sf::Event::Closed) {
             window->close();
         }
+        scene->checkSuccessDelete(event, window);
     }
 }
 
-static void start_beetsaber(sf::Text *text, sf::RenderWindow *window)
+static void start_beetsaber(sf::Text *text, sf::RenderWindow *window, Scenario *scene)
 {
     sf::Clock clock;
     sf::Time time;
@@ -80,9 +81,10 @@ static void start_beetsaber(sf::Text *text, sf::RenderWindow *window)
         window->clear();
         window->draw(sprite);
         window->draw(*text);
+        scene->displaySuccess(window);
         window->display();
         time = clock.getElapsedTime();
-        event_handle(window);
+        event_handle(window, scene);
     }
     text->setString("Il vous propose de faire une partie...");
     clock.restart();
@@ -91,9 +93,10 @@ static void start_beetsaber(sf::Text *text, sf::RenderWindow *window)
         window->clear();
         window->draw(sprite);
         window->draw(*text);
+        scene->displaySuccess(window);
         window->display();
         time = clock.getElapsedTime();
-        event_handle(window);
+        event_handle(window, scene);
     }
 }
 
@@ -119,6 +122,7 @@ static void loop_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow 
             cubes.at(i).update(time.asSeconds());
             if (cubes.at(i).check_collision(&first_flech)) {
                 scene->giveSuccess("Premier Appui sur une Fleche");
+                scene->addSuccess(L"Bravo tu as \nappuyé pour la \npremière fois \nsur une touche \ndirectionnel", "assets/images/beetsaber/true_bas_blue.png");
             }
         }
         window->clear();
@@ -128,12 +132,13 @@ static void loop_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow 
             cubes.at(i).draw(window);
         }
         window->draw(rect);
+        scene->displaySuccess(window);
         window->display();
-        event_handle(window);
+        event_handle(window, scene);
     }
 }
 
-static void end_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow *window)
+static void end_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow *window, Scenario *scene)
 {
     sf::Clock clock;
     sf::Time time;
@@ -145,9 +150,10 @@ static void end_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow *
         window->clear();
         window->draw(*sprite);
         window->draw(*text);
+        scene->displaySuccess(window);
         window->display();
         time = clock.getElapsedTime();
-        event_handle(window);
+        event_handle(window, scene);
     }
 }
 
@@ -161,10 +167,13 @@ void Scenario::BeetSaber_MiniGame(sf::RenderWindow *window)
     if (set_basic(&texture, &sprite, &font, &text) == 84) {
         return;
     }
-    this->giveSuccess("Rencontre Avec Remy!");
-    start_beetsaber(&text, window);
+    this->giveSuccess("Rencontre Avec Remy");
+    this->addSuccess(L"GG tu as \nrencontré \nREMY.pnj", "assets/images/beetsaber/REMY.jpg");
+    start_beetsaber(&text, window, this);
     loop_beetsaber(&sprite, &text, window, this);
-    end_beetsaber(&sprite, &text, window);
+    end_beetsaber(&sprite, &text, window, this);
     this->giveSuccess("Joueur Pro de beat saber");
+    this->addSuccess(L"Tu es \ndevenu un \njoueur pro de \nbeatsaber", "assets/images/beetsaber/beetsaber_bg.png");
     _inScenario = false;
 }
+
