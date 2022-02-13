@@ -118,7 +118,8 @@ static void loop_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow 
         for (int i = 0; i < NB_CUBES; i++) {
             cubes.at(i).update(time.asSeconds());
             if (cubes.at(i).check_collision(&first_flech)) {
-                scene->giveSuccess("Premier Appui sur une Fleche");
+                scene->giveSuccess("Premier Appui BeetSaber");
+                scene->displaySuccess(std::wstring(L"Bravo tu as réussi à appuyer sur une fleche"), "assets/images/beetsaber/true_bas_blue.png");
             }
         }
         window->clear();
@@ -161,9 +162,11 @@ void Scenario::BeetSaber_MiniGame(sf::RenderWindow *window)
     if (set_basic(&texture, &sprite, &font, &text) == 84) {
         return;
     }
-    this->giveSuccess("Rencontre Avec Remy!");
+    this->giveSuccess("Rencontre Avec Remy");
+    this->displaySuccess(L"Bravo tu as rencontré remy!", "assets/images/beetsaber/REMY.jpg");
     start_beetsaber(&text, window);
     loop_beetsaber(&sprite, &text, window, this);
     end_beetsaber(&sprite, &text, window);
     this->giveSuccess("Joueur Pro de beat saber");
+    this->displaySuccess(L"Tu deviens Joueur Pro", "assets/images/beetsaber/beetsaber_bg.png");
 }
