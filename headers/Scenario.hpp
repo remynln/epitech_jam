@@ -43,6 +43,8 @@
             void Reel(sf::RenderWindow *window);
             void marcolito(sf::RenderWindow *win);
 
+            void FightTheRock(sf::RenderWindow *window);
+
             void BeetSaber_MiniGame(sf::RenderWindow *window);
 
             void Psykoloke_MiniScene(sf::RenderWindow *window);
@@ -58,6 +60,7 @@
             void addSuccess(std::wstring text, std::string path, std::string audio="assets/baptiste.ogg");
             void displaySuccess(sf::RenderWindow *win);
             void checkSuccessDelete(sf::Event event, sf::RenderWindow *win);
+
 
         private:
             void initChoice();
