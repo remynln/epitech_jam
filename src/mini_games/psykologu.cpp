@@ -8,6 +8,7 @@
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Types.h>
+#include <SFML/Window/Event.hpp>
 #include <SFML/Window/VideoMode.hpp>
 #include "../../headers/Scenario.hpp"
 
@@ -25,6 +26,17 @@ static int set_basic(sf::Texture *texture, sf::Sprite *sprite, sf::Font *font, s
     text->setCharacterSize(20);
     text->setFillColor(sf::Color::Black);
     return (0);
+}
+
+static void event_handle(sf::RenderWindow *window)
+{
+    sf::Event event;
+
+    while (window->pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            window->close();
+        }
+    }
 }
 
 void Scenario::Psykoloke_MiniScene(sf::RenderWindow *window)
@@ -55,12 +67,13 @@ void Scenario::Psykoloke_MiniScene(sf::RenderWindow *window)
         speak_mr = !speak_mr;
         clock.restart();
         time = clock.getElapsedTime();
-        while (time.asSeconds() < 5.0) {
+        while (window->isOpen() && time.asSeconds() < 5.0) {
             window->clear();
             window->draw(sprite);
             window->draw(text);
             window->display();
             time = clock.getElapsedTime();
+            event_handle(window);
         }
     }
 }
