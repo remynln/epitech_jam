@@ -39,6 +39,7 @@ class DodgeBottle {
         void addSprites();
         AlcoholState getRet();
         bool checkForEnd();
+        size_t _score;
 
     private:
         sf::Texture _bg_texture;
@@ -46,7 +47,6 @@ class DodgeBottle {
         sf::Texture _guy_texture;
         sf::Sprite _guy_sprite;
         std::list<Alcohol_Barier *> _bariers;
-        size_t _score;
         AlcoholState _ret;
         size_t _cooldown;
 };

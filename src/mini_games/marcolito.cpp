@@ -25,7 +25,7 @@ void Drug::hit(void)
     sf::Texture *text = new sf::Texture;
     sf::Sprite *sprite = new sf::Sprite;
 
-    text->loadFromFile("hits.png");
+    text->loadFromFile("assets/hits.png");
     sprite->setTexture(*text);
     sprite->setOrigin(sprite->getGlobalBounds().width / 2, sprite->getGlobalBounds().height / 2);
     sprite->setPosition(event.mouseButton.x, event.mouseButton.y);
@@ -45,6 +45,7 @@ void Drug::mouse_click_handle(sf::Event::MouseButtonEvent event)
         hit();
         fr = 0;
     } else {
+        life_in.setSize(sf::Vector2f(life_in.getSize().x - (300/5), life_in.getSize().y));
         buff->loadFromFile(aie[rand() % 3]);
         sound->setBuffer(*buff);
         sound->setVolume(100);
@@ -60,7 +61,7 @@ void Drug::mouse_move_handle(sf::Event::MouseMoveEvent event)
 void Drug::event_handler(void)
 {
     if (event.type == sf::Event::Closed) {
-        window.close();
+        window->close();
     }
     if (event.type == sf::Event::MouseButtonPressed) {
         mouse_click_handle(event.mouseButton);
@@ -72,8 +73,10 @@ void Drug::event_handler(void)
 }
 
 
-Drug::Drug():
-window(sf::VideoMode(1200, 800), "drug addict"),
+Drug::Drug(sf::RenderWindow *win):
+window(win),
+life_out(sf::Vector2f(300.f, 50.f)),
+life_in(sf::Vector2f(300.f, 50.f)),
 rec_out(sf::Vector2f(300.f, 50.f)),
 rec_in(sf::Vector2f(0.f, 50.f))
 {
@@ -86,10 +89,18 @@ rec_in(sf::Vector2f(0.f, 50.f))
     rec_out.setOutlineThickness(5.f);
     rec_out.setOutlineColor(sf::Color::Black);
     rec_in.setFillColor(sf::Color::Green);
+
+    life_out.setPosition(1200 - 350, 20);
+    life_in.setPosition(life_out.getPosition());
+    life_out.setFillColor(sf::Color::Transparent);
+    life_out.setOutlineThickness(5.f);
+    life_out.setOutlineColor(sf::Color::Black);
+    life_in.setFillColor(sf::Color::Red);
+
     music.openFromFile("assets/marcolito.ogg");
     music.setVolume(25);
 
-    window.setMouseCursorVisible(false);
+    window->setMouseCursorVisible(false);
     ser.loadFromFile("assets/seringe.png");
     arm.loadFromFile("assets/arm.png");
     s_arm.setTexture(arm);
@@ -100,41 +111,16 @@ rec_in(sf::Vector2f(0.f, 50.f))
 
 void Drug::display(void)
 {
-    window.clear(sf::Color::Black);
-    window.draw(s_arm);
-    window.draw(*circle);
-    window.draw(rec_in);
-    window.draw(rec_out);
+    window->clear(sf::Color::Black);
+    window->draw(s_arm);
+    window->draw(*circle);
+    window->draw(life_in);
+    window->draw(life_out);
+    window->draw(rec_in);
+    window->draw(rec_out);
     for (sf::Sprite *prout: hits) {
-        window.draw(*prout);
+        window->draw(*prout);
     }
-    window.draw(s_ser);
-    window.display();
-}
-
-int marcolito(void)
-{
-    Drug drug;
-    std::srand(time(0));
-
-    while (drug.window.isOpen()) {
-        while(drug.window.pollEvent(drug.event)) {
-            drug.event_handler();
-        }
-        if (drug.fr == 0 || !drug.circle) {
-            drug.fr = drug.gl;
-            drug.circle = create_circle();
-        } else {
-            drug.circle->setScale(drug.circle->getScale().x - (1.00/drug.gl), drug.circle->getScale().y - (1.00/drug.gl));
-        }
-        if (drug.fr != 0) {
-            drug.fr--;
-        } else {
-            delete drug.circle;
-        }
-        if (drug.rec_in.getSize().x == 300) {
-            drug.window.close();
-        }
-        drug.display();
-    }
+    window->draw(s_ser);
+    window->display();
 }

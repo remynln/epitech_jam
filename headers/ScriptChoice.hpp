@@ -30,6 +30,10 @@ class ScriptChoice {
         sf::Font _font;
         sf::Texture _bg_texture;
         sf::Sprite _bg_sprite;
+        sf::Texture _dialog_texture;
+        sf::Sprite _dialog_sprite;
+        sf::Texture _choice_texture;
+        sf::Sprite _choice_sprite;
         std::string _dialog;
         sf::Text _dialog_disp;
         std::list<std::string> _choice_text;

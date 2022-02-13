@@ -5,75 +5,97 @@
 ** achievement.cpp
 */
 
-#include "achievement.hpp"
+#include "../headers/achievement.hpp"
+#include <vector>
 
-Success::Success()
+success::success(std::wstring text, std::string path, std::string audio)
 {
     if (!_font.loadFromFile("assets/Roboto.ttf"))
-        throw 84;
+        return;
+
     _text.setFont(_font);
-    _text.setCharacterSize(24);
+    _text.setCharacterSize(18);
     _text.setFillColor(sf::Color::Blue);
-    _text.setPosition({300, 100});
     _text.setOutlineThickness(2);
-    if (!_bananaT.loadFromFile("assets/school.png"))
-        throw 84;
-    _bananaS.setTexture(_bananaT);
-    _bananaS.setScale(300.0f/_bananaS.getLocalBounds().width, 300.0f/_bananaS.getLocalBounds().height);
-    _bananaS.setPosition({300, 0});
-    //if (!_sb.loadFromFile("assets/baptiste.ogg"))
-    //    throw 84;
-    //_sound.setBuffer(_sb);
-}
-
-Success::Success(const Success &success) : _text(success._text), _font(success._font), _event(success._event), _monkeyT(success._monkeyT), _bananaT(success._bananaT), _monkeyS(success._monkeyS), _bananaS(success._bananaS)
-{
-}
-
-/**
- * @brief Crée une fenêtre et affiche le succès "text", avec l'image "path", et joue le son "audio"
- * 
- * @param text Le nom du succès, doit être formaté en dur, pcq je suis un schlag
- * @param path Le path de l'image du singe
- * @param audio Le path du son à jouer, (défaut = baptiste.ogg)
- */
-void Success::displaySuccess(std::wstring text, std::string path, std::string audio)
-{
     _text.setString(text);
+
+    _rect.setSize(sf::Vector2f(300, 150));
+    _rect.setOutlineColor(sf::Color(211, 211, 211));
+    _rect.setOutlineThickness(5);
+
+    if (!_crossT.loadFromFile("assets/croix.png"))
+        return;
+    _crossS.setSize(sf::Vector2f(15, 15));
+    _crossS.setTexture(&_crossT, true);
+    _crossS.setOutlineColor(sf::Color(211, 211, 211));
+    _crossS.setOutlineThickness(5);
+
+    if (!_bananaT.loadFromFile("assets/banana.jpg"))
+        return;
+    _bananaS.setTexture(_bananaT);
+    _bananaS.setScale(150.0f/_bananaS.getLocalBounds().width, 150.0f/_bananaS.getLocalBounds().height);
+
+    if (!_sb.loadFromFile(audio))
+        return;
+    _sound.setBuffer(_sb);
+        
     if (!_monkeyT.loadFromFile(path))
-        throw 84;
-    if (audio != "assets/baptiste.ogg") {
-        //if (!_sb.loadFromFile(audio))
-        //    throw 84;
-        //_sound.setBuffer(_sb);
-    }
+        return;
     _monkeyS.setTexture(_monkeyT);
-    _monkeyS.setScale(300.0f/_monkeyS.getLocalBounds().width, 300.0f/_monkeyS.getLocalBounds().height);
-    _win.create(sf::VideoMode(600, 300), text);
-    //_sound.play();
-    while (_win.isOpen()) {
-        while (_win.pollEvent(_event)) {
-            if (_event.type == sf::Event::Closed)
-                _win.close();
-        }
-        _win.clear(sf::Color::Black);
-        _win.draw(_bananaS);
-        _win.draw(_monkeyS);
-        _win.draw(_text);
-        _win.display();
-    }
+    _monkeyS.setScale(150.0f/_monkeyS.getLocalBounds().width, 150.0f/_monkeyS.getLocalBounds().height);
 }
 
+void success::displaySuccess(sf::RenderWindow &win, int i)
+{
+    if (_firstCall) {
+        _sound.play();
+        _firstCall = false;
+    }
+    _monkeyS.setPosition((sf::Vector2f(895, (800 - 155 * (i+1)))));
+    _bananaS.setPosition((sf::Vector2f(1045, (800 - 155 * (i+1)))));
+    _text.setPosition(sf::Vector2f(1045, (800 - 155 * (i+1))));
+    _rect.setPosition(sf::Vector2f(895, (800 - 155 * (i+1))));
+    _crossS.setPosition(sf::Vector2f(1180, (800 - 155 * (i+1))));
+    win.draw(_rect);
+    win.draw(_bananaS);
+    win.draw(_monkeyS);
+    win.draw(_text);
+    win.draw(_crossS);
+}
 
-Success::~Success()
+success::~success()
 {
 }
 
 // int main()
 // {
 //     try {
-//         success suc;
-//         suc.displaySuccess(L"     Succès déverouillé !\n         Première éjac", "assets/singe_etude.jpg");
+//         std::vector<success *> achievement;
+//         success *suc = new success(L"\n\n         Succès !\n     Première éjac", "ressources/singe_etude.jpg");
+//         success *truc = new success(L"\n\n         Succès !\n     Première éjac", "ressources/cake.jpg");
+//         achievement.push_back(suc);
+//         achievement.push_back(truc);
+//         sf::RenderWindow win(sf::VideoMode(1200, 800), "pouet");
+//         sf::Event event;
+//         while (win.isOpen()) {
+//             while (win.pollEvent(event)) {
+//                 if (event.type == sf::Event::Closed)
+//                     win.close();
+//                 for (int it = 0; it < achievement.size(); it++) {
+//                     if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left &&
+//                         achievement[it]->_crossS.getGlobalBounds().contains(win.mapPixelToCoords(sf::Mouse::getPosition(win)))) {
+//                             std::vector<success *>::iterator iterator = achievement.begin() + it;
+//                             delete achievement[it];
+//                             achievement.erase(iterator);
+//                     }
+//                 }
+//             }
+//             win.clear(sf::Color::Black);
+//             for (int it = 0; it < achievement.size(); it++) {
+//                 achievement[it]->displaySuccess(win, it);
+//             }
+//             win.display();
+//         }
 //     }
 //     catch (int i) {
 //         std::cerr << "Error loading file" << std::endl;
