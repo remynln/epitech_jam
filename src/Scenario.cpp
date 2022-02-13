@@ -312,9 +312,9 @@ void Scenario::Vente(sf::RenderWindow *window)
     ScriptChoice choice(this, "assets/vente.jpg", "Qu'est-ce que tu me baragouine fréro, c'est chaud la tu sais.", "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?", "Mais.. Mais j'ai un diplome en Physique\nChimie, j'peux devenir ton Walter White");
 
     if (choice.choose(window) == "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?")
-        _name = "maitre";
-    else
         _name = "recherche";
+    else
+        _name = "laruelavrai";
 }
 
 // TODO: ici
@@ -322,14 +322,6 @@ void Scenario::Recherche(sf::RenderWindow *window)
 {
     while (window->isOpen()) {
 
-    }
-}
-
-// TODO: ici
-void Scenario::Maitre(sf::RenderWindow *window)
-{
-    while (window->isOpen()) {
-        
     }
 }
 
@@ -667,6 +659,38 @@ void Scenario::Depression(sf::RenderWindow *window)
         _name = "suicide";
 }
 
+void Scenario::laruelavrai(sf::RenderWindow *window)
+{
+    sf::Event event;
+
+    LaRue game(window);
+    while (window->isOpen()) {
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            game.handle(event);
+        }
+        window->clear();
+        window->draw(game.s_background);
+        for (int it = 0; it < game.buttons.size(); it++) {
+            window->draw(game.buttons[it]->rect);
+            window->draw(game.buttons[it]->text);
+        }
+        window->draw(game.s_hands);
+        window->draw(game.es_hands);
+        window->draw(game.t_score);
+        window->draw(game.te_score);
+        if (game.score == 3 || game.e_score == 3) {
+            if (game.score == 3)
+                _name = "vente";
+            else
+                _name = "conso";
+            return;
+        }
+        game.window->display();
+    }
+}
+
 void Scenario::Entendre(sf::RenderWindow *window)
 {
     sf::Event event;
@@ -977,6 +1001,7 @@ void Scenario::initChoice()
     setMap("matrice", std::bind(&Scenario::Matrice, this, std::placeholders::_1), false);
     setMap("rencontre", std::bind(&Scenario::Rencontre, this, std::placeholders::_1), false);
     setMap("conso", std::bind(&Scenario::marcolito, this, std::placeholders::_1), false);
+    setMap("laruelavrai", std::bind(&Scenario::laruelavrai, this, std::placeholders::_1), false);
     setMap("reel", std::bind(&Scenario::Reel, this, std::placeholders::_1), true);
     setMap("beetsaber_end", std::bind(&Scenario::BeetSaber_MiniGame, this, std::placeholders::_1), true);
     setMap("psykologu", std::bind(&Scenario::Psykoloke_MiniScene, this, std::placeholders::_1), false);
@@ -985,7 +1010,6 @@ void Scenario::initChoice()
     setMap("rue", std::bind(&Scenario::Rue, this, std::placeholders::_1), false);
     setMap("vente", std::bind(&Scenario::Vente, this, std::placeholders::_1), false);
     setMap("recherche", std::bind(&Scenario::Recherche, this, std::placeholders::_1), false);
-    setMap("maitre", std::bind(&Scenario::Maitre, this, std::placeholders::_1), false);
     setMap("soiree", std::bind(&Scenario::Soiree, this, std::placeholders::_1), false);
     setMap("sobre", std::bind(&Scenario::Sobre, this, std::placeholders::_1), true);
     setMap("fight", std::bind(&Scenario::FightTheRock, this, std::placeholders::_1), true);

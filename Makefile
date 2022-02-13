@@ -15,6 +15,7 @@ SRC =	src/Game.cpp						\
 		src/mini_games/psykologu.cpp		\
 		src/mini_games/marcolito.cpp		\
 		src/mini_games/Horse.cpp 			\
+		src/mini_games/laruelavrai.cpp 			\
 		src/Scenario.cpp 					\
 		src/mini_games/julienlafarge.cpp 	\
 		src/DecisionWall.cpp				\
@@ -26,7 +27,7 @@ SRC =	src/Game.cpp						\
 
 OBJ =	$(SRC:.cpp=.o)
 
-CPPFLAGS	= -I./headers/ -std=c++2a -W -J4 -Wall -Wextra -Werror -Wpedantic
+CPPFLAGS	= -I./headers/ -std=c++2a -W -J4 -Wall -Wextra -Wpedantic
 
 CSFMLFLAGS	= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 

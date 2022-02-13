@@ -25,6 +25,7 @@
     #include "Horse.hpp"
     #include "DefeatKFC.hpp"
     #include "Space.hpp"
+    #include "laruelavrai.hpp"
 
     class Scenario {
         public:
@@ -49,6 +50,7 @@
             void Reel(sf::RenderWindow *window);
             void marcolito(sf::RenderWindow *win);
 
+            void laruelavrai(sf::RenderWindow *win);
             void JulienLaFarge(sf::RenderWindow *window);
             void FightTheRock(sf::RenderWindow *window);
 
