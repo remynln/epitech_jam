@@ -6,11 +6,9 @@
 ##
 
 SRC =	src/Game.cpp						\
-		src/mini_games/schoolPriorities.cpp	\
 		src/mini_games/SchoolPriorities.cpp \
 		src/mini_games/defeatKFC.cpp \
 		src/mini_games/DefeatKFC.cpp \
-		src/mini_games/dodgeBottle.cpp	\
 		src/mini_games/DodgeBottle.cpp	\
 		src/mini_games/beetsaber.cpp 		\
 		src/mini_games/CubeComming.cpp		\
@@ -21,6 +19,7 @@ SRC =	src/Game.cpp						\
 		src/DecisionWall.cpp				\
 		src/mini_games/cake.cpp				\
 		src/achievement.cpp 				\
+		src/mini_games/space.cpp 			\
 		src/ScriptChoice.cpp				\
 		main.cpp
 

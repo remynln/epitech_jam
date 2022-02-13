@@ -13,7 +13,7 @@ SchoolPriorities::SchoolPriorities()
     _bg_sprite.setTexture(_bg_texture);
     _school_score = 0;
     _street_score = 0;
-    _ret = Priorities::ERROR;
+    _ret = Priorities::ERROR_;
 }
 
 SchoolPriorities::~SchoolPriorities()
@@ -84,7 +84,7 @@ bool SchoolPriorities::checkForEnd()
         this->_ret = Priorities::SCHOOL;
     if (this->_street_score >= 10)
         this->_ret = Priorities::STREET;
-    if (this->_ret != Priorities::ERROR)
+    if (this->_ret != Priorities::ERROR_)
         return (true);
     return (false);
 }
