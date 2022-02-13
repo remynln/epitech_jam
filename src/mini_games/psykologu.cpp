@@ -44,7 +44,8 @@ void Scenario::Psykoloke_MiniScene(sf::RenderWindow *window)
         L"Pourquoi vivre ?\nPourquoi la vie ?\nPourquoi la non mort ?",
         L"Pensez à ce que vous avez bien fait,\nque pouvez vous dire de ce que vous avez bien fait."
     };
-    for (int i = 0; i < str->length(); i++) {
+
+    for (int i = 0; i < 2; i++) {
         text.setString(str[i]);
         if (speak_mr) {
             text.setPosition(0, 0);

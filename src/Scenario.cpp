@@ -91,7 +91,7 @@ Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(sc
     initChoice();
 }
 
-Scenario::Scenario() : _name("start"), _successPopUp(Success())
+Scenario::Scenario() : _name("psykologu"), _successPopUp(Success())
 {
     initSuccess();
     initChoice();
