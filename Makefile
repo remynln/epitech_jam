@@ -17,8 +17,10 @@ SRC =	src/Game.cpp						\
 		src/mini_games/psykologu.cpp		\
 		src/mini_games/marcolito.cpp		\
 		src/Scenario.cpp					\
-		src/achievement.cpp 				\
 		src/DecisionWall.cpp				\
+		src/mini_games/cake.cpp				\
+		src/achievement.cpp 				\
+		src/ScriptChoice.cpp				\
 		main.cpp
 
 OBJ =	$(SRC:.cpp=.o)
