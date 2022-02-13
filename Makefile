@@ -15,15 +15,17 @@ SRC =	src/Game.cpp						\
 		src/mini_games/beetsaber.cpp 		\
 		src/mini_games/CubeComming.cpp		\
 		src/mini_games/psykologu.cpp		\
-		src/mini_games/cake.cpp				\
+		src/mini_games/marcolito.cpp		\
 		src/Scenario.cpp					\
+		src/DecisionWall.cpp				\
+		src/mini_games/cake.cpp				\
 		src/achievement.cpp 				\
 		src/ScriptChoice.cpp				\
 		main.cpp
 
 OBJ =	$(SRC:.cpp=.o)
 
-CPPFLAGS	= -I./headers/ -std=c++2a -W -J4 -Wall -Werror -Wextra
+CPPFLAGS	= -I./headers/ -std=c++2a -W -J4 -Wall -Wextra -Wpedantic
 
 CSFMLFLAGS	= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 

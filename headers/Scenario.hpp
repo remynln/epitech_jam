@@ -16,6 +16,7 @@
     #include <functional>
     #include "achievement.hpp"
     #include <unordered_map>
+    #include "marcolito.hpp"
     #include "ScriptChoice.hpp"
     #include "cake.hpp"
     #include "DodgeBottle.hpp"
@@ -40,6 +41,7 @@
             void Matrice(sf::RenderWindow *window);
             void Rencontre(sf::RenderWindow *window);
             void Reel(sf::RenderWindow *window);
+            void marcolito(sf::RenderWindow *win);
 
             void BeetSaber_MiniGame(sf::RenderWindow *window);
 
@@ -59,7 +61,7 @@
             std::string _name;
             std::map<std::string, std::pair<std::function<void(sf::RenderWindow *)>, bool>> _choice;
             std::unordered_map<std::string, bool> _success;
-            Success _successPopUp;
+            success _successPopUp;
             bool _inScenario;
     };
 

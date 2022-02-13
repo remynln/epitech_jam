@@ -291,6 +291,7 @@ void Scenario::initChoice()
     setMap("fuir", std::bind(&Scenario::Fuir, this, std::placeholders::_1), false);
     setMap("matrice", std::bind(&Scenario::Matrice, this, std::placeholders::_1), false);
     setMap("rencontre", std::bind(&Scenario::Rencontre, this, std::placeholders::_1), false);
+    setMap("conso", std::bind(&Scenario::marcolito, this, std::placeholders::_1), false);
     setMap("reel", std::bind(&Scenario::Reel, this, std::placeholders::_1), true);
     setMap("beetsaber_end", std::bind(&Scenario::BeetSaber_MiniGame, this, std::placeholders::_1), true);
     setMap("psykologu", std::bind(&Scenario::Psykoloke_MiniScene, this, std::placeholders::_1), false);
@@ -314,6 +315,33 @@ void Scenario::initSuccess()
         file.close();
     } else
         exit(84);
+}
+
+void Scenario::marcolito(sf::RenderWindow *win)
+{
+    Drug drug(win);
+    std::srand(time(0));
+
+    while (drug.window->isOpen()) {
+        while(drug.window->pollEvent(drug.event)) {
+            drug.event_handler();
+        }
+        if (drug.fr == 0 || !drug.circle) {
+            drug.fr = drug.gl;
+            drug.circle = create_circle();
+        } else {
+            drug.circle->setScale(drug.circle->getScale().x - (1.00/drug.gl), drug.circle->getScale().y - (1.00/drug.gl));
+        }
+        if (drug.fr != 0) {
+            drug.fr--;
+        } else {
+            delete drug.circle;
+        }
+        if (drug.rec_in.getSize().x == 300 || drug.life_in.getSize().x == 0) {
+            return;
+        }
+        drug.display();
+    }
 }
 
 void Scenario::setSuccess()
