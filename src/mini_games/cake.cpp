@@ -1,4 +1,4 @@
-#include "cake.hpp"
+#include "../../headers/cake.hpp"
 
 cake::cake()
 {
@@ -74,15 +74,15 @@ void cake::startCake(sf::RenderWindow &win)
     }
 }
 
-int main()
-{
-    srand(time(0));
-    try {
-    cake kek;
-    sf::RenderWindow win(sf::VideoMode(1200, 800), "pouet");
-    kek.startCake(win);
-    }
-    catch (int a) {
-        std::cerr << "pouet" << std::endl;
-    }
-}
+// int main()
+// {
+//     srand(time(0));
+//     try {
+//     cake kek;
+//     sf::RenderWindow win(sf::VideoMode(1200, 800), "pouet");
+//     kek.startCake(win);
+//     }
+//     catch (int a) {
+//         std::cerr << "pouet" << std::endl;
+//     }
+// }
