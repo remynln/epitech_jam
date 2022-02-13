@@ -104,7 +104,7 @@ static void loop_beetsaber(sf::Sprite *sprite, sf::Text *text, sf::RenderWindow 
         time = clock.restart();
         for (int i = 0; i < NB_CUBES; i++) {
             cubes.at(i).update(time.asSeconds());
-            if (cubes.at(i).check_collision(window, &first_flech)) {
+            if (cubes.at(i).check_collision(&first_flech)) {
                 scene->giveSuccess("Premier Appui sur une Fleche");
             }
         }

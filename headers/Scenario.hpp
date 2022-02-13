@@ -30,7 +30,11 @@
             void giveSuccess(std::string);
 
             void Start(sf::RenderWindow *window);
+            void Fuir(sf::RenderWindow *window);
+            void Matrice(sf::RenderWindow *window);
             void Rencontre(sf::RenderWindow *window);
+            void Reel(sf::RenderWindow *window);
+
             void BeetSaber_MiniGame(sf::RenderWindow *window);
             void Psykoloke_MiniScene(sf::RenderWindow *window);
 

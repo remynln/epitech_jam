@@ -74,7 +74,7 @@ void CubeComming::update(float delatime)
     }
 }
 
-bool CubeComming::check_collision(sf::RenderWindow *window, bool *first_flech)
+bool CubeComming::check_collision(bool *first_flech)
 {
     bool ret_value = false;
     sf::FloatRect boundssprite;

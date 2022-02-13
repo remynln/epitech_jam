@@ -48,11 +48,6 @@ void drawText(sf::RenderWindow *window, std::wstring text, sf::Vector2f textPos)
     window->draw(text_obj);
 }
 
-void Scenario::Rencontre(sf::RenderWindow *window)
-{
-
-}
-
 void Scenario::Start(sf::RenderWindow *window)
 {
     sf::Event event;
@@ -85,13 +80,41 @@ void Scenario::Start(sf::RenderWindow *window)
     }
 }
 
+void Scenario::Fuir(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
+void Scenario::Matrice(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
+void Scenario::Rencontre(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
+void Scenario::Reel(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
 Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(scenario._choice), _success(scenario._success), _successPopUp(scenario._successPopUp)
 {
     initSuccess();
     initChoice();
 }
 
-Scenario::Scenario() : _name("psykologu"), _successPopUp(Success())
+Scenario::Scenario() : _name("start"), _successPopUp(Success())
 {
     initSuccess();
     initChoice();
@@ -105,7 +128,10 @@ Scenario::~Scenario()
 void Scenario::initChoice()
 {
     setMap("start", std::bind(&Scenario::Start, this, std::placeholders::_1), false);
+    setMap("fuir", std::bind(&Scenario::Fuir, this, std::placeholders::_1), false);
+    setMap("matrice", std::bind(&Scenario::Matrice, this, std::placeholders::_1), false);
     setMap("rencontre", std::bind(&Scenario::Rencontre, this, std::placeholders::_1), false);
+    setMap("reel", std::bind(&Scenario::Reel, this, std::placeholders::_1), true);
     setMap("beetsaber_end", std::bind(&Scenario::BeetSaber_MiniGame, this, std::placeholders::_1), true);
     setMap("psykologu", std::bind(&Scenario::Psykoloke_MiniScene, this, std::placeholders::_1), false);
 }
