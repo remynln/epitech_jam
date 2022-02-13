@@ -55,6 +55,10 @@
             void Maitre(sf::RenderWindow *window);
             void Soiree(sf::RenderWindow *window);
 
+            void addSuccess(std::wstring text, std::string path, std::string audio="assets/baptiste.ogg");
+            void displaySuccess(sf::RenderWindow *win);
+            void checkSuccessDelete(sf::Event event, sf::RenderWindow *win);
+
             void Bill(sf::RenderWindow *window);
             void Marier(sf::RenderWindow *window);
             void Entreprise(sf::RenderWindow *window);
@@ -74,7 +78,7 @@
             std::string _name;
             std::map<std::string, std::pair<std::function<void(sf::RenderWindow *)>, bool>> _choice;
             std::unordered_map<std::string, bool> _success;
-            success _successPopUp;
+            std::vector<success *> _successPopUp;
             bool _inScenario;
     };
 
