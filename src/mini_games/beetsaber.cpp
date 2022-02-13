@@ -76,12 +76,13 @@ static void start_beetsaber(sf::Text *text, sf::RenderWindow *window)
     clock.restart();
     time = clock.getElapsedTime();
     text->setString("Vous avez choisie de rencontrer Remy (champion du monde de BeatSaber) ! ...");
-    while (time.asSeconds() < 4.0) {
+    while (window->isOpen() && time.asSeconds() < 4.0) {
         window->clear();
         window->draw(sprite);
         window->draw(*text);
         window->display();
         time = clock.getElapsedTime();
+        event_handle(window);
     }
     text->setString("Il vous propose de faire une partie...");
     clock.restart();
