@@ -214,13 +214,67 @@ void Scenario::Folie(sf::RenderWindow *window)
     _inScenario = false;
 }
 
+void Scenario::Rue(sf::RenderWindow *window)
+{
+    ScriptChoice choice("assets/wesh.jpg", "Wesh la détail ! Tu veux un quetru ?", "Oe tu peux me dépanne quelques grammes ?", "Non mec, je cherche un taf bien rémunéré\nsi tu vois c'que j'veux dire...");
+
+    if (choice.choose(window) == "Oe tu peux me dépanne quelques grammes ?")
+        _name = "marcolito";
+    else
+        _name = "vente";
+}
+
+void Scenario::Vente(sf::RenderWindow *window)
+{
+    ScriptChoice choice("assets/vente.jpg", "Qu'est-ce que tu me baragouine fréro, c'est chaud la tu sais.", "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?", "Mais.. Mais j'ai un diplome en Physique\nChimie, j'peux devenir ton Walter White");
+
+    if (choice.choose(window) == "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?")
+        _name = "maitre";
+    else
+        _name = "recherche";
+}
+
+void Scenario::Recherche(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+
+    }
+}
+
+void Scenario::Maitre(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
+void Scenario::Soiree(sf::RenderWindow *window)
+{
+    DodgeBottle engine;
+
+    while (window->isOpen()) {
+        engine.eventHandelling(window);
+        if (engine.checkForEnd()) {
+            if (engine._score == 15)
+                _name = "sobre";
+            else
+                _name = "boire";
+            break;
+        }
+        engine.moveSprites(window);
+        engine.displayWindow(window);
+        engine.addSprites();
+    }
+    _inScenario = false;
+}
+
 Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(scenario._choice), _success(scenario._success), _successPopUp(scenario._successPopUp), _inScenario(true)
 {
     initSuccess();
     initChoice();
 }
 
-Scenario::Scenario() : _name("start"), _successPopUp(Success()), _inScenario(true)
+Scenario::Scenario() : _name("rue"), _successPopUp(Success()), _inScenario(true)
 {
     initSuccess();
     initChoice();
@@ -242,6 +296,11 @@ void Scenario::initChoice()
     setMap("psykologu", std::bind(&Scenario::Psykoloke_MiniScene, this, std::placeholders::_1), false);
     setMap("psyjob", std::bind(&Scenario::PsyJob, this, std::placeholders::_1), true);
     setMap("folie", std::bind(&Scenario::Folie, this, std::placeholders::_1), true);
+    setMap("rue", std::bind(&Scenario::Rue, this, std::placeholders::_1), false);
+    setMap("vente", std::bind(&Scenario::Vente, this, std::placeholders::_1), false);
+    setMap("recherche", std::bind(&Scenario::Recherche, this, std::placeholders::_1), false);
+    setMap("maitre", std::bind(&Scenario::Maitre, this, std::placeholders::_1), false);
+    setMap("soiree", std::bind(&Scenario::Soiree, this, std::placeholders::_1), false);
 }
 
 void Scenario::initSuccess()

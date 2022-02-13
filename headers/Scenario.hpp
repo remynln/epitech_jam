@@ -18,6 +18,7 @@
     #include <unordered_map>
     #include "ScriptChoice.hpp"
     #include "cake.hpp"
+    #include "DodgeBottle.hpp"
 
     class Scenario {
         public:
@@ -46,6 +47,11 @@
             void PsyJob(sf::RenderWindow *window);
             void Folie(sf::RenderWindow *window);
 
+            void Rue(sf::RenderWindow *window);
+            void Vente(sf::RenderWindow *window);
+            void Recherche(sf::RenderWindow *window);
+            void Maitre(sf::RenderWindow *window);
+            void Soiree(sf::RenderWindow *window);
         private:
             void initChoice();
             void initSuccess();
