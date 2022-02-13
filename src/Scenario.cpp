@@ -63,7 +63,6 @@ void Scenario::Start(sf::RenderWindow *window)
     };
 
     giveSuccess("Première essai");
-    _successPopUp.displaySuccess(std::wstring(L"Première essai"), "assets/school.png");
     while (window->isOpen() && scene != maxScene) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -114,7 +113,7 @@ Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(sc
     initChoice();
 }
 
-Scenario::Scenario() : _name("start"), _successPopUp(Success())
+Scenario::Scenario() : _name("conso"), _successPopUp(L"\n\n         Succès !\n     Première éjac", "assets/singe_etude.jpg")
 {
     initSuccess();
     initChoice();
@@ -170,7 +169,7 @@ void Scenario::marcolito(sf::RenderWindow *win)
         } else {
             delete drug.circle;
         }
-        if (drug.rec_in.getSize().x == 300) {
+        if (drug.rec_in.getSize().x == 300 || drug.life_in.getSize().x == 0) {
             return;
         }
         drug.display();

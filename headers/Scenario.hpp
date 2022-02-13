@@ -47,7 +47,7 @@
             std::string _name;
             std::map<std::string, std::pair<std::function<void(sf::RenderWindow *)>, bool>> _choice;
             std::unordered_map<std::string, bool> _success;
-            Success _successPopUp;
+            success _successPopUp;
     };
 
     Scenario init_scenario();

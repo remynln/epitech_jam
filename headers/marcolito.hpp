@@ -32,6 +32,8 @@
             sf::Sprite s_arm;
             sf::Texture ser;
             sf::Sprite s_ser;
+            sf::RectangleShape life_out;
+            sf::RectangleShape life_in;
             sf::RectangleShape rec_out;
             sf::RectangleShape rec_in;
             std::vector<sf::Sprite *> hits;

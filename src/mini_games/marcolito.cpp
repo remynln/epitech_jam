@@ -45,6 +45,7 @@ void Drug::mouse_click_handle(sf::Event::MouseButtonEvent event)
         hit();
         fr = 0;
     } else {
+        life_in.setSize(sf::Vector2f(life_in.getSize().x - (300/5), life_in.getSize().y));
         buff->loadFromFile(aie[rand() % 3]);
         sound->setBuffer(*buff);
         sound->setVolume(100);
@@ -75,7 +76,9 @@ void Drug::event_handler(void)
 Drug::Drug(sf::RenderWindow *win):
 window(win),
 rec_out(sf::Vector2f(300.f, 50.f)),
-rec_in(sf::Vector2f(0.f, 50.f))
+rec_in(sf::Vector2f(0.f, 50.f)),
+life_out(sf::Vector2f(300.f, 50.f)),
+life_in(sf::Vector2f(300.f, 50.f))
 {
     gl = 3000;
     fr = 0;
@@ -86,6 +89,14 @@ rec_in(sf::Vector2f(0.f, 50.f))
     rec_out.setOutlineThickness(5.f);
     rec_out.setOutlineColor(sf::Color::Black);
     rec_in.setFillColor(sf::Color::Green);
+
+    life_out.setPosition(1200 - 350, 20);
+    life_in.setPosition(life_out.getPosition());
+    life_out.setFillColor(sf::Color::Transparent);
+    life_out.setOutlineThickness(5.f);
+    life_out.setOutlineColor(sf::Color::Black);
+    life_in.setFillColor(sf::Color::Red);
+
     music.openFromFile("assets/marcolito.ogg");
     music.setVolume(25);
 
@@ -103,6 +114,8 @@ void Drug::display(void)
     window->clear(sf::Color::Black);
     window->draw(s_arm);
     window->draw(*circle);
+    window->draw(life_in);
+    window->draw(life_out);
     window->draw(rec_in);
     window->draw(rec_out);
     for (sf::Sprite *prout: hits) {
