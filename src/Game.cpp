@@ -13,7 +13,7 @@ BackgroundImages *createBg(std::string file, sf::Vector2f pos)
     BackgroundImages *res = new BackgroundImages();
     res->tex = sf::Texture();
     res->spt = sf::Sprite();
-    std::cout << res->tex.loadFromFile(file) << std::endl;
+    res->tex.loadFromFile(file);
     res->spt.setTexture(res->tex);
     res->pos = pos;
     return (res);
@@ -24,8 +24,7 @@ Game::Game()
          { createBg("assets/background.jpg", sf::Vector2f(0, 0)) }
     ), 
     win(sf::VideoMode(1200, 800), "Game"),
-    scenario(Scenario()),
-    _inScenario(true)
+    scenario(Scenario())
 {
 }
 
@@ -66,11 +65,10 @@ void Game::handleEvent()
 void Game::render()
 {
     handleEvent();
-    if (_inScenario) {
+    if (scenario.getInScenario()) {
         scenario.startScenario(&win);
-        if (scenario.isAnEnd())
+        if (scenario.isAnEnd() && scenario.getInScenario() == false)
             return (win.close());
-        _inScenario = false;
     }
     this->player.pos += this->player.speed;
     for (BackgroundImages *bg : backgrondImages) {

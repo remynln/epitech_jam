@@ -17,7 +17,6 @@ static int set_basic(sf::Texture *texture, sf::Sprite *sprite, sf::Font *font, s
         return (84);
     }
     sprite->setTexture(*texture);
-    sprite->setScale(1.4, 1.4);
     if (!font->loadFromFile("assets/Roboto.ttf")) {
         return (84);
     }
@@ -63,6 +62,12 @@ void Scenario::Psykoloke_MiniScene(sf::RenderWindow *window)
             time = clock.getElapsedTime();
         }
     }
+    ScriptChoice choice("assets/images/pshykoloke/psy.jpg", "Hummm.. Qu'est ce que je dis ?", "Je suis meilleur, laisse moi ta place", "Je suis le christ cosmique !");
+
+    if (choice.choose(window) == "Je suis meilleur, laisse moi ta place")
+        _name = "psyjob";
+    else
+        _name = "folie";
 }
 
 //int main()

@@ -35,8 +35,6 @@ class Game {
         sf::RenderWindow win;
         Player player;
         Scenario scenario;
-    private:
-        bool _inScenario;
 };
 
 #endif /* !GAME_HPP_ */

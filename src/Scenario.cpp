@@ -108,13 +108,53 @@ void Scenario::Reel(sf::RenderWindow *window)
     }
 }
 
-Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(scenario._choice), _success(scenario._success), _successPopUp(scenario._successPopUp)
+void Scenario::PsyJob(sf::RenderWindow *window)
+{
+    sf::Event event;
+    bool end = false;
+
+    giveSuccess("Etre psy !");
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/psyjob.jpg");
+        window->display();
+    }
+    _inScenario = false;
+}
+
+void Scenario::Folie(sf::RenderWindow *window)
+{
+    sf::Event event;
+    bool end = false;
+
+    giveSuccess("Folie");
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/folie.jpg");
+        window->display();
+    }
+    _inScenario = false;
+}
+
+Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(scenario._choice), _success(scenario._success), _successPopUp(scenario._successPopUp), _inScenario(true)
 {
     initSuccess();
     initChoice();
 }
 
-Scenario::Scenario() : _name("start"), _successPopUp(Success())
+Scenario::Scenario() : _name("start"), _successPopUp(Success()), _inScenario(true)
 {
     initSuccess();
     initChoice();
@@ -134,6 +174,8 @@ void Scenario::initChoice()
     setMap("reel", std::bind(&Scenario::Reel, this, std::placeholders::_1), true);
     setMap("beetsaber_end", std::bind(&Scenario::BeetSaber_MiniGame, this, std::placeholders::_1), true);
     setMap("psykologu", std::bind(&Scenario::Psykoloke_MiniScene, this, std::placeholders::_1), false);
+    setMap("psyjob", std::bind(&Scenario::PsyJob, this, std::placeholders::_1), true);
+    setMap("folie", std::bind(&Scenario::Folie, this, std::placeholders::_1), true);
 }
 
 void Scenario::initSuccess()
@@ -183,4 +225,14 @@ bool Scenario::isAnEnd()
 void Scenario::giveSuccess(std::string success)
 {
     _success[success] = true;
+}
+
+void Scenario::setInScenario(const bool value)
+{
+    _inScenario = value;
+}
+
+const bool &Scenario::getInScenario() const
+{
+    return (_inScenario);
 }

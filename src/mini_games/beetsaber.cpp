@@ -151,4 +151,5 @@ void Scenario::BeetSaber_MiniGame(sf::RenderWindow *window)
     loop_beetsaber(&sprite, &text, window, this);
     end_beetsaber(&sprite, &text, window);
     this->giveSuccess("Joueur Pro de beat saber");
+    _inScenario = false;
 }
