@@ -8,7 +8,8 @@
 #ifndef SCENARIO
     #define SCENARIO
 
-    #include <string>
+    #include <SFML/Graphics/RenderWindow.hpp>
+#include <string>
     #include <map>
     #include <vector>
     #include <SFML/Graphics.hpp>
@@ -43,6 +44,7 @@
             void Reel(sf::RenderWindow *window);
             void marcolito(sf::RenderWindow *win);
 
+            void JulienLaFarge(sf::RenderWindow *window);
             void BeetSaber_MiniGame(sf::RenderWindow *window);
 
             void Psykoloke_MiniScene(sf::RenderWindow *window);
