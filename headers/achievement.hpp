@@ -13,23 +13,22 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 
-class Success
+class success
 {
-    public:
-        Success();
-        Success(const Success &success);
-        ~Success();
-
-        void displaySuccess(std::wstring text, std::string path, std::string audio = "assets/baptiste.ogg");
-    private:
-        sf::RenderWindow _win;
-        sf::Text _text;
-        sf::Font _font;
-        sf::Event _event;
-        sf::Texture _monkeyT;
-        sf::Texture _bananaT;
-        sf::Sprite _monkeyS;
-        sf::Sprite _bananaS;
-        //sf::SoundBuffer _sb;
-        //sf::Sound _sound;
+public:
+    success(std::wstring text, std::string path, std::string audio="assets/baptiste.ogg");
+    ~success();
+    void displaySuccess(sf::RenderWindow &win, int i);
+    bool _firstCall = true;
+    sf::Text _text;
+    sf::Font _font;
+    sf::RectangleShape _rect;
+    sf::Texture _monkeyT;
+    sf::Texture _bananaT;
+    sf::Texture _crossT;
+    sf::RectangleShape _crossS;
+    sf::Sprite _monkeyS;
+    sf::Sprite _bananaS;
+    sf::SoundBuffer _sb;
+    sf::Sound _sound;
 };
