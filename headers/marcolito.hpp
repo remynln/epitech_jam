@@ -16,7 +16,7 @@
 
     class Drug {
         public:
-            Drug();
+            Drug(sf::RenderWindow *win);
             void mouse_move_handle(sf::Event::MouseMoveEvent event);
             void mouse_click_handle(sf::Event::MouseButtonEvent event);
             void event_handler(void);
@@ -25,7 +25,7 @@
             void display(void);
 
 
-            sf::RenderWindow window;
+            sf::RenderWindow *window;
             sf::Event event;
             sf::CircleShape *circle;
             sf::Texture arm;
@@ -40,5 +40,6 @@
             int fr;
     };
 
+    sf::CircleShape *create_circle(void);
 
 #endif /* !MARCOLITO_HPP_ */

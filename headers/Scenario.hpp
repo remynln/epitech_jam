@@ -16,6 +16,7 @@
     #include <functional>
     #include "achievement.hpp"
     #include <unordered_map>
+    #include "marcolito.hpp"
 
     class Scenario {
         public:
@@ -34,6 +35,7 @@
             void Matrice(sf::RenderWindow *window);
             void Rencontre(sf::RenderWindow *window);
             void Reel(sf::RenderWindow *window);
+            void marcolito(sf::RenderWindow *win);
 
             void BeetSaber_MiniGame(sf::RenderWindow *window);
             void Psykoloke_MiniScene(sf::RenderWindow *window);
