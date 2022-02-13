@@ -5,7 +5,7 @@
 ** Scenario
 */
 
-#include "Scenario.hpp"
+#include "../headers/Scenario.hpp"
 #include <fstream>
 #include <iostream>
 
@@ -183,4 +183,9 @@ bool Scenario::isAnEnd()
 void Scenario::giveSuccess(std::string success)
 {
     _success[success] = true;
+}
+
+void Scenario::displaySuccess(std::wstring text, std::string path_img, std::string path_audio)
+{
+    _successPopUp.displaySuccess(text, path_img, path_audio);
 }

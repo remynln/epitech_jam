@@ -28,6 +28,7 @@
             void setScenario(std::string name);
             bool isAnEnd();
             void giveSuccess(std::string);
+            void displaySuccess(std::wstring text, std::string path, std::string audio = "assets/baptiste.ogg");
 
             void Start(sf::RenderWindow *window);
             void Fuir(sf::RenderWindow *window);
