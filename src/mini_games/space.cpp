@@ -5,7 +5,7 @@
 ** main
 */
 
-#include "headers/Game.hpp"
+#include "../../headers/Game.hpp"
 #include <iostream>
 #include <vector>
 #include <list>
@@ -335,4 +335,20 @@ void poubelle::draw()
         window->draw(_hearts[i].heartSprite);
     window->draw(spaceShipSprite);
     window->display();
+}
+
+int space(void)
+{
+    poubelle oui;
+    srand(time(0));
+    int ret = 0;
+    while (oui.window->isOpen()) {
+        ret = oui.loop();
+        oui.draw();
+        if (ret)
+            return 1;
+        if (ret == -1)
+            return 0;
+    }
+    return 0;
 }
