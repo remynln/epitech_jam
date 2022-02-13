@@ -21,6 +21,8 @@
     #include "cake.hpp"
     #include "DodgeBottle.hpp"
     #include "SchoolPriorities.hpp"
+    #include "Horse.hpp"
+    #include "DefeatKFC.hpp"
 
     class Scenario {
         public:
@@ -61,6 +63,9 @@
             void Maitre(sf::RenderWindow *window);
             void Soiree(sf::RenderWindow *window);
 
+            void Sobre(sf::RenderWindow *window);
+            void Boire(sf::RenderWindow *window);
+
             void addSuccess(std::wstring text, std::string path, std::string audio="assets/baptiste.ogg");
             void displaySuccess(sf::RenderWindow *win);
             void checkSuccessDelete(sf::Event event, sf::RenderWindow *win);
@@ -76,7 +81,25 @@
             void Epitech(sf::RenderWindow *window);
 
             void Ecole(sf::RenderWindow *window);
+            void Rien(sf::RenderWindow *window);
             void Travailler(sf::RenderWindow *window);
+            void Depression(sf::RenderWindow *window);
+
+            void Entendre(sf::RenderWindow *window);
+            void Suicide(sf::RenderWindow *window);
+            void Puissant(sf::RenderWindow *window);
+            void Johannisme(sf::RenderWindow *window);
+
+            void Equitation(sf::RenderWindow *window);
+            void EquitationGates(sf::RenderWindow *window);
+            void Repartie(sf::RenderWindow *window);
+            void Normale(sf::RenderWindow *window);
+            void Chute(sf::RenderWindow *window);
+
+            void Kfc(sf::RenderWindow *window);
+            void Gaming(sf::RenderWindow *window);
+            void Julien(sf::RenderWindow *window);
+            void Remy(sf::RenderWindow *window);
         private:
             void initChoice();
             void initSuccess();

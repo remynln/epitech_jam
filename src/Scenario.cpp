@@ -335,6 +335,20 @@ void Scenario::Soiree(sf::RenderWindow *window)
     _inScenario = false;
 }
 
+void Scenario::Sobre(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+
+    }
+}
+
+void Scenario::Boire(sf::RenderWindow *window)
+{
+    while (window->isOpen()) {
+        
+    }
+}
+
 void Scenario::Bill(sf::RenderWindow *window)
 {
     sf::Event event;
@@ -468,16 +482,391 @@ void Scenario::Epitech(sf::RenderWindow *window)
 
 void Scenario::Ecole(sf::RenderWindow *window)
 {
-    while (window->isOpen()) {
-        
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Random 0: l’école c’est le sang",
+        L"Random 1: ceux qui travaillage pas zy vont po zavoir le ZBAC de frenssé",
+        L"Random 2: étudier ça sert à devenir pas zinzin de l’espace",
+        L"Random 3: les soirées tous les jours c’est cool",
+        L"Random 4: capter le 06 de la prof de français",
+        L"Toi: ..."
+    };
+
+    while (window->isOpen() && scene != 6) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "");
+        drawText(window, text[scene], {0, 550});
+        window->display();
     }
+
+    ScriptChoice choice("", "Bosser ?", "Je tryhard moi", "La flemme");
+
+    if (choice.choose(window) == "Je tryhard moi")
+        _name = "travailler";
+    else
+        _name = "rien";
 }
 
 void Scenario::Travailler(sf::RenderWindow *window)
 {
-    while (window->isOpen()) {
-        
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Ton Prof de Chinois: Quand le vent du changement se lève, les uns construisent des murs,\nles autres des moulins à vent. Conclusion : travail.",
+        L"Ta Mère: Fils, arrête de te prendre des 10, si tu veux tu peux.",
+        L"Ton Oncle pas drôle: HAHAHAH à force de travailler tu finiras dans la rue.",
+        L"Ton Prof de Yoga: Celui qui marche sur le pas d’un autre ne laisse jamais de trace.",
+        L"Le Psy random que tu connais pas: Faut que tu profites de ta vie au lieu de travailler.",
+        L"Toi: *bosse*",
+    };
+
+    while (window->isOpen() && scene != 6) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "");
+        drawText(window, text[scene], {0, 550});
+        window->display();
     }
+
+    ScriptChoice choice("", "Tu tiens ?", "ca va ouais", "Non la j'en peux plus");
+
+    if (choice.choose(window) == "ca va ouais")
+        _name = "bac";
+    else
+        _name = "depression";
+}
+
+void Scenario::Rien(sf::RenderWindow *window)
+{
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Grand Manitou qui pop et depop : L’école buissonnière est une éducation abrupte qui donne\nle diamant brut de la vie."
+    };
+
+    while (window->isOpen() && scene != 1) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "");
+        drawText(window, text[scene], {0, 550});
+        window->display();
+    }
+
+    ScriptChoice choice("", "Moi: Ok gros, en français ?", "ah bah non, il est plus là.", "si je fais rien je fous quoi ?");
+
+    if (choice.choose(window) == "ah bah non, il est plus là.")
+        _name = "kfc";
+    else
+        _name = "gaming";
+}
+
+void Scenario::Depression(sf::RenderWindow *window)
+{
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Moi : Ô mon dieu ! Je fais un burn-out, je pête les plombs… Je suis si triste, froid,\nplus aucune chaleur ne vit en moi, je commence à penser que les seules flammes éternelles sont celles\nde l’enfer…",
+        L"Voix mystérieuse : Que baragouine-tu ?",
+    };
+
+    while (window->isOpen() && scene != 2) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "assets/depression.png");
+        drawText(window, text[scene], {0, 550});
+        window->display();
+    }
+
+    ScriptChoice choice("assets/depression.png", "Tu réagis comment ?", "Je... Je... T'es qui ?", "Ta gueule !");
+
+    if (choice.choose(window) == "Je... Je... T'es qui ?")
+        _name = "entendre";
+    else
+        _name = "suicide";
+}
+
+void Scenario::Entendre(sf::RenderWindow *window)
+{
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Voix mystérieuse : Je suis le grand bâtisseur de cet espace 2D tridimensionnel",
+        L"Je suis le grand…",
+        L"L'immense…",
+        L"L’unique…",
+        L"Le magnifique…",
+        L"Johann.",
+        L"En d’autre termes, je peux peut-être t’aider."
+    };
+
+    while (window->isOpen() && scene != 7) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "assets/johannisme.png");
+        drawText(window, text[scene], {0, 550});
+        window->display();
+    }
+
+    ScriptChoice choice("assets/johannisme.png", "Se faire aider ?", "Oui c est ca vas y cause toujours !!", "Au mon dieu, je suis Jeanne d’arc Bis !");
+
+    if (choice.choose(window) == "Oui c est ca vas y cause toujours !!")
+        _name = "puissant";
+    else
+        _name = "johannisme";
+}
+
+void Scenario::Suicide(sf::RenderWindow *window)
+{
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Moi : C’est bon ça m'a soulé je ragequit into le suicide !",
+        L"Moi : Si je vais au 11ème étage d’un immeuble et que je saute, je suis plus proche du ciel ou de la terre ?\nJe serai plus proche du paradis ou des enfers ?"
+        L"Moi : On va faire cette petite expérience tout de suite !"
+    };
+
+    while (window->isOpen() && scene != 3) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "assets/chute.png");
+        drawText(window, text[scene], {0, 550});
+        window->display();
+    }
+    _name = "chute";
+}
+
+void Scenario::Chute(sf::RenderWindow *window)
+{
+    sf::Event event;
+    bool end = false;
+
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/chute.png");
+        window->display();
+    }
+    _inScenario = false;
+}
+
+void Scenario::Puissant(sf::RenderWindow *window)
+{
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Moi : Le seul être puissant que je connais c’est Booba, et dernièrement il a tweeté\n“L’autre il revient gonflé au Xanax sur TF1 il nous parle de sa dépression\nmais frérot, le monde entier est en train de couler,\non s’en bat les c*uilles de ta vie, tu nous sers à quoi,\non t’a pas attendu pour déprimer....” snif…",
+        L"Moi : Bon faut vraiment que je fasse quelque chose de ma vie moi, parce que\nlà ça va plus je deviens complètement zinzolinax."
+    };
+
+    while (window->isOpen() && scene != 2) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "assets/chute.png");
+        drawText(window, text[scene], {0, 550});
+        window->display();
+    }
+
+    ScriptChoice choice("", "S'aider ?", "Je vais me prendre en main, j’appelle un Psy.", "Il faut que je trouve quelque chose de trop génial à faire pour me détendre et m’épanouir…");
+
+    if (choice.choose(window) == "Je vais me prendre en main, j’appelle un Psy.")
+        _name = "psykologu";
+    else
+        _name = "equitation";
+}
+
+void Scenario::Johannisme(sf::RenderWindow *window)
+{
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Moi : Je dis Merci à la vie ! je dis Merci à Johann !",
+        L"Johann (voix mystèrieuse) : Ce n’est pas seulement Johann !\nTu vas devoir apprendre l’intégralité de mes Adjectifs Qualificatifs\npar coeur si tu veux être un de mes fidèles.",
+        L"Moi : C’est noté, entendu, on s’organisera une p’tite réu.\n"
+    };
+
+    while (window->isOpen() && scene != 2) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "assets/johannisme.png");
+        drawText(window, text[scene], {0, 550});
+        window->display();
+    }
+    _inScenario = false;
+}
+
+void Scenario::Equitation(sf::RenderWindow *window)
+{
+    Horse horse;
+    sf::Clock clock;
+
+    while (window->isOpen() && clock.getElapsedTime().asSeconds() < 10)
+        horse.renderHorse(window);
+    _name = "equitation_gates";
+}
+
+void Scenario::EquitationGates(sf::RenderWindow *window)
+{
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Jennifer Gates : Impressionnant, tu manies ton cheval comme personne tu le monte extrêmement bien…",
+    };
+
+    while (window->isOpen() && scene != 1) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "assets/equitation_gates.png");
+        drawText(window, text[scene], {0, 550});
+        window->display();
+    }
+
+    ScriptChoice choice("assets/equitation_gates.png", "Qu'en dis tu ?", "C’est vrai que j’ai un excellent niveau sur cet univers 2D tridimensionnel", "Venant de toi je suis flatté, tu es une championne, une légende de l'équitation.");
+
+    if (choice.choose(window) == "C’est vrai que j’ai un excellent niveau sur cet univers 2D tridimensionnel")
+        _name = "repartie";
+    else
+        _name = "normale";
+}
+
+void Scenario::Repartie(sf::RenderWindow *window)
+{
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Jennifer Gates : Quoi ?",
+        L"Moi : Feur",
+        L"Jennifer Gates : Quelle répartie haha, je t’épouse"
+    };
+
+    while (window->isOpen() && scene != 3) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "assets/equitation_gates.png");
+        drawText(window, text[scene], {0, 550});
+        window->display();
+    }
+    _name = "marier";
+}
+
+void Scenario::Normale(sf::RenderWindow *window)
+{
+    sf::Event event;
+    size_t scene = 0;
+    std::wstring text[] = {
+        L"Jennifer Gates : Oh il ne faut rien exagérer, tu sais je suis loin d’être une légende,\nje suis une femme normale, célibataire, fille de milirdaire, avec une vie morose, ennuyante.",
+        L"Moi : Je suis venu faire de l’équitation pour me remonter le moral, alors commence pas à me parler de tes\nsoucis de gosse pourrie gâtée. Je viens d’une famille modeste, j’ai été au bord du suicide,\nJ’ai du faire des choix entre l’école ou la rue pour m’en sortir, je viens de loin.",
+        L"Jennifer Gates : Ouah ! Tu as l'air d’avoir une vie passionnante… Raconte moi un peu plus",
+        L"Moi : Blablablablablablabla…",
+        L"Jennifer Gates : Blablablablablabla !",
+        L"Moi : Blablablablablabla – Blablablablablablabla"
+    };
+
+    while (window->isOpen() && scene != 6) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+        }
+        drawSprite(window, "assets/equitation_gates.png");
+        drawText(window, text[scene], {0, 550});
+        window->display();
+    }
+    _name = "marier";
+}
+
+void Scenario::Kfc(sf::RenderWindow *window)
+{
+    DefeatKFC engine;
+    sf::Event event;
+    bool end = false;
+
+    engine.clock.restart();
+    while (window->isOpen()) {
+        engine.eventHandelling(window);
+        if (!window->isOpen())
+            break;
+        if (engine.checkWon())
+            break;
+        engine.moveSprites();
+        engine.displayWindow(window);
+    }
+    while (window->isOpen() && end == false) {
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+            drawSprite(window, "assets/KFC.png");
+        }
+    }
+    _inScenario = false;
+}
+
+void Scenario::Gaming(sf::RenderWindow *window)
+{
+    ScriptChoice choice("", "Plutot Vidéo ou 1v1 ?", "La video putaclick bien sur !", "Je suis imbattable en 1v1");
+
+    if (choice.choose(window) == "La video putaclick bien sur !")
+        _name = "julien";
+    else
+        _name = "beetsaber_end";
 }
 
 Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(scenario._choice), _success(scenario._success), _successPopUp(scenario._successPopUp), _inScenario(true)
@@ -515,16 +904,32 @@ void Scenario::initChoice()
     setMap("recherche", std::bind(&Scenario::Recherche, this, std::placeholders::_1), false);
     setMap("maitre", std::bind(&Scenario::Maitre, this, std::placeholders::_1), false);
     setMap("soiree", std::bind(&Scenario::Soiree, this, std::placeholders::_1), false);
+    setMap("sobre", std::bind(&Scenario::Sobre, this, std::placeholders::_1), false);
+    setMap("boire", std::bind(&Scenario::Boire, this, std::placeholders::_1), false);
     setMap("bill", std::bind(&Scenario::Bill, this, std::placeholders::_1), false);
     setMap("bac", std::bind(&Scenario::BAC, this, std::placeholders::_1), false);
     setMap("ecole", std::bind(&Scenario::Ecole, this, std::placeholders::_1), false);
     setMap("travailler", std::bind(&Scenario::Travailler, this, std::placeholders::_1), false);
+    setMap("depression", std::bind(&Scenario::Depression, this, std::placeholders::_1), false);
     setMap("marier", std::bind(&Scenario::Marier, this, std::placeholders::_1), true);
     setMap("entreprise", std::bind(&Scenario::Entreprise, this, std::placeholders::_1), true);
     setMap("medecine", std::bind(&Scenario::Medecine, this, std::placeholders::_1), false);
     setMap("ens", std::bind(&Scenario::Ens, this, std::placeholders::_1), false);
     setMap("supaero", std::bind(&Scenario::Supaero, this, std::placeholders::_1), false);
     setMap("epitech", std::bind(&Scenario::Epitech, this, std::placeholders::_1), false);
+    setMap("entendre", std::bind(&Scenario::Entendre, this, std::placeholders::_1), false);
+    setMap("suicide", std::bind(&Scenario::Suicide, this, std::placeholders::_1), false);
+    setMap("puissant", std::bind(&Scenario::Puissant, this, std::placeholders::_1), false);
+    setMap("equitation_gates", std::bind(&Scenario::EquitationGates, this, std::placeholders::_1), false);
+    setMap("equitation", std::bind(&Scenario::Equitation, this, std::placeholders::_1), false);
+    setMap("johannisme", std::bind(&Scenario::Johannisme, this, std::placeholders::_1), true);
+    setMap("chute", std::bind(&Scenario::Chute, this, std::placeholders::_1), true);
+    setMap("repartie", std::bind(&Scenario::Repartie, this, std::placeholders::_1), false);
+    setMap("normale", std::bind(&Scenario::Normale, this, std::placeholders::_1), false);
+    setMap("rien", std::bind(&Scenario::Rien, this, std::placeholders::_1), false);
+    setMap("kfc", std::bind(&Scenario::Kfc, this, std::placeholders::_1), true);
+    setMap("gaming", std::bind(&Scenario::Gaming, this, std::placeholders::_1), false);
+    setMap("julien", std::bind(&Scenario::Julien, this, std::placeholders::_1), true);
 }
 
 void Scenario::initSuccess()

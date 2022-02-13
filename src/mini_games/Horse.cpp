@@ -65,7 +65,15 @@ Horse::Horse()
         new Barrier(2000),
         new Barrier(3000),
         new Barrier(4000),
-        new Barrier(5000)
+        new Barrier(5000),
+        new Barrier(6000),
+        new Barrier(7000),
+        new Barrier(8000),
+        new Barrier(9000),
+        new Barrier(10000),
+        new Barrier(11000),
+        new Barrier(12000),
+        new Barrier(13000)
     })
 {
     for (size_t i = 0; i < 12; i++) {
