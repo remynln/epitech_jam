@@ -74,7 +74,7 @@ void Scenario::Psykoloke_MiniScene(sf::RenderWindow *window)
             event_handle(window);
         }
     }
-    ScriptChoice choice("assets/images/pshykoloke/psy.jpg", "Hummm.. Qu'est ce que je dis ?", "Je suis meilleur, laisse moi ta place", "Je suis le christ cosmique !");
+    ScriptChoice choice(this, "assets/images/pshykoloke/psy.jpg", "Hummm.. Qu'est ce que je dis ?", "Je suis meilleur, laisse moi ta place", "Je suis le christ cosmique !");
 
     if (choice.choose(window) == "Je suis meilleur, laisse moi ta place")
         _name = "psyjob";

@@ -6,8 +6,10 @@
 */
 
 #include "../headers/ScriptChoice.hpp"
+#include "../headers/Scenario.hpp"
 
-ScriptChoice::ScriptChoice(std::string filename, std::string dialog) {
+ScriptChoice::ScriptChoice(void *scene, std::string filename, std::string dialog) {
+    _scene = scene;
     _font.loadFromFile("assets/Roboto.ttf");
     _bg_texture.loadFromFile(filename);
     _bg_sprite.setTexture(_bg_texture);
@@ -24,7 +26,8 @@ ScriptChoice::ScriptChoice(std::string filename, std::string dialog) {
     _ret = "";
 }
 
-ScriptChoice::ScriptChoice(std::string filename, std::string dialog, std::string a) {
+ScriptChoice::ScriptChoice(void *scene, std::string filename, std::string dialog, std::string a) {
+    _scene = scene;
     _font.loadFromFile("assets/Roboto.ttf");
     _bg_texture.loadFromFile(filename);
     _bg_sprite.setTexture(_bg_texture);
@@ -48,7 +51,8 @@ ScriptChoice::ScriptChoice(std::string filename, std::string dialog, std::string
     _ret = "";
 }
 
-ScriptChoice::ScriptChoice(std::string filename, std::string dialog, std::string a, std::string b) {
+ScriptChoice::ScriptChoice(void *scene, std::string filename, std::string dialog, std::string a, std::string b) {
+    _scene = scene;
     _font.loadFromFile("assets/Roboto.ttf");
     _bg_texture.loadFromFile(filename);
     _bg_sprite.setTexture(_bg_texture);
@@ -74,7 +78,8 @@ ScriptChoice::ScriptChoice(std::string filename, std::string dialog, std::string
     _ret = "";
 }
 
-ScriptChoice::ScriptChoice(std::string filename, std::string dialog, std::string a, std::string b, std::string c) {
+ScriptChoice::ScriptChoice(void *scene, std::string filename, std::string dialog, std::string a, std::string b, std::string c) {
+    _scene = scene;
     _font.loadFromFile("assets/Roboto.ttf");
     _bg_texture.loadFromFile(filename);
     _bg_sprite.setTexture(_bg_texture);
@@ -102,7 +107,8 @@ ScriptChoice::ScriptChoice(std::string filename, std::string dialog, std::string
     _ret = "";
 }
 
-ScriptChoice::ScriptChoice(std::string filename, std::string dialog, std::string a, std::string b, std::string c, std::string d) {
+ScriptChoice::ScriptChoice(void *scene, std::string filename, std::string dialog, std::string a, std::string b, std::string c, std::string d) {
+    _scene = scene;
     _font.loadFromFile("assets/Roboto.ttf");
     _bg_texture.loadFromFile(filename);
     _bg_sprite.setTexture(_bg_texture);
@@ -132,7 +138,8 @@ ScriptChoice::ScriptChoice(std::string filename, std::string dialog, std::string
     _ret = "";
 }
 
-ScriptChoice::ScriptChoice(std::string filename, std::string dialog, std::string a, std::string b, std::string c, std::string d, std::string e) {
+ScriptChoice::ScriptChoice(void *scene, std::string filename, std::string dialog, std::string a, std::string b, std::string c, std::string d, std::string e) {
+    _scene = scene;
     _font.loadFromFile("assets/Roboto.ttf");
     _bg_texture.loadFromFile(filename);
     _bg_sprite.setTexture(_bg_texture);
@@ -199,6 +206,7 @@ void ScriptChoice::eventHandelling(sf::RenderWindow *window)
                 c++;
             }
         }
+        ((Scenario *) this->_scene)->checkSuccessDelete(event, window);
     }
 }
 
@@ -210,6 +218,7 @@ void ScriptChoice::displayWindow(sf::RenderWindow *window)
     window->draw(this->_bg_sprite);
     window->draw(this->_dialog_sprite);
     window->draw(this->_dialog_disp);
+    ((Scenario *) this->_scene)->displaySuccess(window);
     for (sf::Text *curr : _choice_text_disp) {
         _choice_sprite.setPosition(100 + (600 * (c % 2)), 140 + (100 * (c / 2)));
         window->draw(_choice_sprite);

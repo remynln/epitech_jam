@@ -14,12 +14,12 @@
 
 class ScriptChoice {
     public:
-        ScriptChoice(std::string filename, std::string dialog);
-        ScriptChoice(std::string filename, std::string dialog, std::string a);
-        ScriptChoice(std::string filename, std::string dialog, std::string a, std::string b);
-        ScriptChoice(std::string filename, std::string dialog, std::string a, std::string b, std::string c);
-        ScriptChoice(std::string filename, std::string dialog, std::string a, std::string b, std::string c, std::string d);
-        ScriptChoice(std::string filename, std::string dialog, std::string a, std::string b, std::string c, std::string d, std::string e);
+        ScriptChoice(void *scene, std::string filename, std::string dialog);
+        ScriptChoice(void *scene, std::string filename, std::string dialog, std::string a);
+        ScriptChoice(void *scene, std::string filename, std::string dialog, std::string a, std::string b);
+        ScriptChoice(void *scene, std::string filename, std::string dialog, std::string a, std::string b, std::string c);
+        ScriptChoice(void *scene, std::string filename, std::string dialog, std::string a, std::string b, std::string c, std::string d);
+        ScriptChoice(void *scene, std::string filename, std::string dialog, std::string a, std::string b, std::string c, std::string d, std::string e);
         ~ScriptChoice();
         std::string choose(sf::RenderWindow *window);
         void eventHandelling(sf::RenderWindow *window);
@@ -27,6 +27,7 @@ class ScriptChoice {
         bool checkEnd();
 
     private:
+        void *_scene;
         sf::Font _font;
         sf::Texture _bg_texture;
         sf::Sprite _bg_sprite;

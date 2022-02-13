@@ -5,7 +5,7 @@
 ** Scenario
 */
 
-#include "Scenario.hpp"
+#include "../headers/Scenario.hpp"
 #include <fstream>
 #include <iostream>
 
@@ -78,7 +78,7 @@ void Scenario::Start(sf::RenderWindow *window)
         displaySuccess(window);
         window->display();
     }
-    ScriptChoice choice("assets/black_screen_gorilla.jpg", "Fais tu face ?", "Avancer", "Fuir");
+    ScriptChoice choice(this, "assets/black_screen_gorilla.jpg", "Fais tu face ?", "Avancer", "Fuir");
 
     if (choice.choose(window) == "Avancer")
         _name = "jouer";
@@ -112,7 +112,7 @@ void Scenario::Fuir(sf::RenderWindow *window)
 
     if (window->isOpen() == false)
         return;
-    ScriptChoice choice("assets/matrix_cake.jpg", "Fais tu face ?", "Decouvrir", "Fuir");
+    ScriptChoice choice(this, "assets/matrix_cake.jpg", "Fais tu face ?", "Decouvrir", "Fuir");
 
     if (choice.choose(window) == "Decouvrir")
         _name = "matrice";
@@ -184,7 +184,7 @@ void Scenario::Matrice(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("assets/matrix.jpg", "Ouvrir les yeux ?", "Comprendre", "Fuir");
+    ScriptChoice choice(this, "assets/matrix.jpg", "Ouvrir les yeux ?", "Comprendre", "Fuir");
 
     if (choice.choose(window) == "Comprendre")
         _name = "rencontre";
@@ -214,7 +214,7 @@ void Scenario::Rencontre(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("assets/rencontre.jpg", "?", "Accepter", "Fuir");
+    ScriptChoice choice(this, "assets/rencontre.jpg", "?", "Accepter", "Fuir");
 
     if (choice.choose(window) == "Accepter")
         _name = "reel";
@@ -283,7 +283,7 @@ void Scenario::Folie(sf::RenderWindow *window)
 
 void Scenario::Rue(sf::RenderWindow *window)
 {
-    ScriptChoice choice("assets/wesh.jpg", "Wesh la détail ! Tu veux un quetru ?", "Oe tu peux me dépanne quelques grammes ?", "Non mec, je cherche un taf bien rémunéré\nsi tu vois c'que j'veux dire...");
+    ScriptChoice choice(this, "assets/wesh.jpg", "Wesh la détail ! Tu veux un quetru ?", "Oe tu peux me dépanne quelques grammes ?", "Non mec, je cherche un taf bien rémunéré\nsi tu vois c'que j'veux dire...");
 
     if (choice.choose(window) == "Oe tu peux me dépanne quelques grammes ?")
         _name = "conso";
@@ -293,7 +293,7 @@ void Scenario::Rue(sf::RenderWindow *window)
 
 void Scenario::Vente(sf::RenderWindow *window)
 {
-    ScriptChoice choice("assets/vente.jpg", "Qu'est-ce que tu me baragouine fréro, c'est chaud la tu sais.", "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?", "Mais.. Mais j'ai un diplome en Physique\nChimie, j'peux devenir ton Walter White");
+    ScriptChoice choice(this, "assets/vente.jpg", "Qu'est-ce que tu me baragouine fréro, c'est chaud la tu sais.", "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?", "Mais.. Mais j'ai un diplome en Physique\nChimie, j'peux devenir ton Walter White");
 
     if (choice.choose(window) == "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?")
         _name = "maitre";
@@ -388,7 +388,7 @@ void Scenario::Bill(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("", "Pile ou Face ?", "Pile, je veux pecho sec moi", "Face, la moula la moula");
+    ScriptChoice choice(this, "", "Pile ou Face ?", "Pile, je veux pecho sec moi", "Face, la moula la moula");
 
     if (choice.choose(window) == "Pile, je veux pecho sec moi")
         _name = "marier";
@@ -452,7 +452,7 @@ void Scenario::BAC(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("", "Continuez vos etudes :", "Medecine", "ENS / Science po", "Sup Aero", "Epitech");
+    ScriptChoice choice(this, "", "Continuez vos etudes :", "Medecine", "ENS / Science po", "Sup Aero", "Epitech");
 
     if (choice.choose(window) == "Medecine")
         _name = "medecine";
@@ -526,7 +526,7 @@ void Scenario::Ecole(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("assets/ecole.png", "Bosser ?", "Je tryhard moi", "La flemme");
+    ScriptChoice choice(this, "assets/ecole.png", "Bosser ?", "Je tryhard moi", "La flemme");
 
     if (choice.choose(window) == "Je tryhard moi")
         _name = "travailler";
@@ -560,7 +560,7 @@ void Scenario::Travailler(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("assets/travail.jpg", "Tu tiens ?", "ca va ouais", "Non la j'en peux plus");
+    ScriptChoice choice(this, "assets/travail.jpg", "Tu tiens ?", "ca va ouais", "Non la j'en peux plus");
 
     if (choice.choose(window) == "ca va ouais")
         _name = "bac";
@@ -589,7 +589,7 @@ void Scenario::Rien(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("", "Moi: Ok gros, en français ?", "ah bah non, il est plus la.", "si je fais rien je fous quoi ?");
+    ScriptChoice choice(this, "", "Moi: Ok gros, en français ?", "ah bah non, il est plus la.", "si je fais rien je fous quoi ?");
 
     if (choice.choose(window) == "ah bah non, il est plus la.")
         _name = "kfc";
@@ -619,7 +619,7 @@ void Scenario::Depression(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("assets/depression.png", "Tu réagis comment ?", "Je... Je... T'es qui ?", "Ta gueule !");
+    ScriptChoice choice(this, "assets/depression.png", "Tu réagis comment ?", "Je... Je... T'es qui ?", "Ta gueule !");
 
     if (choice.choose(window) == "Je... Je... T'es qui ?")
         _name = "entendre";
@@ -654,7 +654,7 @@ void Scenario::Entendre(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("assets/johannisme.png", "Se faire aider ?", "Oui c est ca vas y cause toujours !!", "Au mon dieu, je suis Jeanne d’arc Bis !");
+    ScriptChoice choice(this, "assets/johannisme.png", "Se faire aider ?", "Oui c est ca vas y cause toujours !!", "Au mon dieu, je suis Jeanne d’arc Bis !");
 
     if (choice.choose(window) == "Oui c est ca vas y cause toujours !!")
         _name = "puissant";
@@ -728,7 +728,7 @@ void Scenario::Puissant(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("", "S'aider ?", "Je vais me prendre en main, j’appelle un Psy.", "Il faut que je trouve quelque chose de trop génial à faire pour me détendre et m’épanouir…");
+    ScriptChoice choice(this, "", "S'aider ?", "Je vais me prendre en main, j’appelle un Psy.", "Il faut que je trouve quelque chose de trop génial à faire pour me détendre et m’épanouir…");
 
     if (choice.choose(window) == "Je vais me prendre en main, j’appelle un Psy.")
         _name = "psykologu";
@@ -792,7 +792,7 @@ void Scenario::EquitationGates(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice("assets/equitation_gates.png", "Qu'en dis tu ?", "C’est vrai que j’ai un excellent niveau sur cet univers 2D tridimensionnel", "Venant de toi je suis flatté, tu es une championne, une légende de l'équitation.");
+    ScriptChoice choice(this, "assets/equitation_gates.png", "Qu'en dis tu ?", "C’est vrai que j’ai un excellent niveau sur cet univers 2D tridimensionnel", "Venant de toi je suis flatté, tu es une championne, une légende de l'équitation.");
 
     if (choice.choose(window) == "C’est vrai que j’ai un excellent niveau sur cet univers 2D tridimensionnel")
         _name = "repartie";
@@ -883,7 +883,7 @@ void Scenario::Kfc(sf::RenderWindow *window)
 
 void Scenario::Gaming(sf::RenderWindow *window)
 {
-    ScriptChoice choice("", "Plutot Vidéo ou 1v1 ?", "La video putaclick bien sur !", "Je suis imbattable en 1v1");
+    ScriptChoice choice(this, "", "Plutot Vidéo ou 1v1 ?", "La video putaclick bien sur !", "Je suis imbattable en 1v1");
 
     if (choice.choose(window) == "La video putaclick bien sur !")
         _name = "julienlafarge";
