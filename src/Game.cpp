@@ -36,8 +36,8 @@ Game::Game()
         createBg("assets/tree.png", sf::Vector2f(400, -800), sf::Vector2f(0.8, 0.8))
         //createBg("assets/school.png", sf::Vector2f(-100, -800), sf::Vector2f(1.2, 1.2)),
         //createBg("assets/street.jpg", sf::Vector2f(1200, -800), sf::Vector2f(0.4, 0.4))
-    })
-    , win(sf::VideoMode(1200, 800), "Game"),
+    }),
+    win(sf::VideoMode(1200, 800), "Game"),
     scenario(Scenario()),
     walls({
         new DecisionWall(-880, {

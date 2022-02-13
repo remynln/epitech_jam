@@ -16,6 +16,7 @@ SRC =	src/Game.cpp						\
 		src/mini_games/marcolito.cpp		\
 		src/mini_games/Horse.cpp 			\
 		src/Scenario.cpp 					\
+		src/mini_games/julienlafarge.cpp 	\
 		src/DecisionWall.cpp				\
 		src/mini_games/cake.cpp				\
 		src/achievement.cpp 				\

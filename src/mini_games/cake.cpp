@@ -45,7 +45,7 @@ int cake::checkClic(sf::RenderWindow &win)
 {
     if (_cakeS.getGlobalBounds().contains(win.mapPixelToCoords(sf::Mouse::getPosition(win)))) {
         _cakeS.setScale(_cakeS.getScale().x * 0.9, _cakeS.getScale().y * 0.9);
-        _text.setString(_lies[rand()%11]);
+        _text.setString(_lies[rand()%20]);
     }
     if (_return.getGlobalBounds().contains(win.mapPixelToCoords(sf::Mouse::getPosition(win)))) {
         return 1;
@@ -73,16 +73,3 @@ void cake::startCake(sf::RenderWindow &win)
         win.display();
     }
 }
-
-// int main()
-// {
-//     srand(time(0));
-//     try {
-//     cake kek;
-//     sf::RenderWindow win(sf::VideoMode(1200, 800), "pouet");
-//     kek.startCake(win);
-//     }
-//     catch (int a) {
-//         std::cerr << "pouet" << std::endl;
-//     }
-// }

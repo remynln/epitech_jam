@@ -8,6 +8,7 @@
 #ifndef SCENARIO
     #define SCENARIO
 
+    #include <SFML/Graphics/RenderWindow.hpp>
     #include <string>
     #include <map>
     #include <vector>
@@ -23,6 +24,7 @@
     #include "SchoolPriorities.hpp"
     #include "Horse.hpp"
     #include "DefeatKFC.hpp"
+    #include "Space.hpp"
 
     class Scenario {
         public:
@@ -47,6 +49,7 @@
             void Reel(sf::RenderWindow *window);
             void marcolito(sf::RenderWindow *win);
 
+            void JulienLaFarge(sf::RenderWindow *window);
             void FightTheRock(sf::RenderWindow *window);
 
             void BeetSaber_MiniGame(sf::RenderWindow *window);
@@ -64,7 +67,6 @@
             void Soiree(sf::RenderWindow *window);
 
             void Sobre(sf::RenderWindow *window);
-            void Boire(sf::RenderWindow *window);
 
             void addSuccess(std::wstring text, std::string path, std::string audio="assets/baptiste.ogg");
             void displaySuccess(sf::RenderWindow *win);

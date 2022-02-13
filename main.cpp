@@ -11,6 +11,7 @@ int main()
 {
     Game game;
 
+    srand(time(0));
     while (game.win.isOpen()) {
         game.render();
     }
