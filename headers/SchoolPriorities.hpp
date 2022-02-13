@@ -14,7 +14,7 @@
 enum Priorities {
     SCHOOL,
     STREET,
-    ERROR
+    ERROR_
 };
 
 class Priority
