@@ -61,7 +61,7 @@ void Scenario::Start(sf::RenderWindow *window)
     };
 
     giveSuccess("Première essai");
-    //_successPopUp.displaySuccess(std::wstring(L"Première essai"), "assets/school.png");
+    addSuccess(L"Bravo tu a lancer\nle jeu", "assets/singe1.png");
     while (window->isOpen() && scene != maxScene) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -69,19 +69,40 @@ void Scenario::Start(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene += 1;
+            checkSuccessDelete(event, window);
         }
         if (scene != maxScene) {
             drawSprite(window, filename[scene]);
             drawText(window, text[scene], {0, 420});
         }
+        displaySuccess(window);
         window->display();
     }
     ScriptChoice choice("assets/black_screen_gorilla.jpg", "Fais tu face ?", "Avancer", "Fuir");
 
-    if (choice.choose(window) == "Découvrir")
+    if (choice.choose(window) == "Avancer")
         _name = "jouer";
     else
         _name = "fuir";
+}
+
+void Scenario::Jouer(sf::RenderWindow *window)
+{
+    SchoolPriorities engine;
+
+    while (window->isOpen()) {
+        engine.eventHandelling(window);
+        if (engine.checkForEnd()) {
+            break;
+        }
+        engine.moveSprites();
+        engine.displayWindow(window);
+        engine.addSprites();
+    }
+    if (engine.getRet() == SCHOOL)
+        _name = "ecole";
+    else
+        _name = "rue";
 }
 
 void Scenario::Fuir(sf::RenderWindow *window)
@@ -433,6 +454,7 @@ Scenario::~Scenario()
 void Scenario::initChoice()
 {
     setMap("start", std::bind(&Scenario::Start, this, std::placeholders::_1), false);
+    setMap("jouer", std::bind(&Scenario::Jouer, this, std::placeholders::_1), false);
     setMap("fuir", std::bind(&Scenario::Fuir, this, std::placeholders::_1), false);
     setMap("matrice", std::bind(&Scenario::Matrice, this, std::placeholders::_1), false);
     setMap("rencontre", std::bind(&Scenario::Rencontre, this, std::placeholders::_1), false);

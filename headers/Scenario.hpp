@@ -20,6 +20,7 @@
     #include "ScriptChoice.hpp"
     #include "cake.hpp"
     #include "DodgeBottle.hpp"
+    #include "SchoolPriorities.hpp"
 
     class Scenario {
         public:
@@ -37,6 +38,7 @@
             const bool &getInScenario() const;
 
             void Start(sf::RenderWindow *window);
+
             void Fuir(sf::RenderWindow *window);
             void Matrice(sf::RenderWindow *window);
             void Rencontre(sf::RenderWindow *window);
@@ -48,6 +50,8 @@
             void Psykoloke_MiniScene(sf::RenderWindow *window);
             void PsyJob(sf::RenderWindow *window);
             void Folie(sf::RenderWindow *window);
+
+            void Jouer(sf::RenderWindow *window);
 
             void Rue(sf::RenderWindow *window);
             void Vente(sf::RenderWindow *window);
