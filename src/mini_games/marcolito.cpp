@@ -75,10 +75,10 @@ void Drug::event_handler(void)
 
 Drug::Drug(sf::RenderWindow *win):
 window(win),
-rec_out(sf::Vector2f(300.f, 50.f)),
-rec_in(sf::Vector2f(0.f, 50.f)),
 life_out(sf::Vector2f(300.f, 50.f)),
-life_in(sf::Vector2f(300.f, 50.f))
+life_in(sf::Vector2f(300.f, 50.f)),
+rec_out(sf::Vector2f(300.f, 50.f)),
+rec_in(sf::Vector2f(0.f, 50.f))
 {
     gl = 3000;
     fr = 0;

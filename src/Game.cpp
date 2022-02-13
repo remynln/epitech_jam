@@ -18,9 +18,7 @@ void larue()
     std::cout << "La rue, la vré" << std::endl;
 }
 
-BackgroundImages *createBg(std::string file,
-    sf::Vector2f pos,
-    sf::Vector2f size = sf::Vector2f(0, 0))
+BackgroundImages *createBg(std::string file, sf::Vector2f pos, sf::Vector2f /*size*/ = sf::Vector2f(0, 0))
 {
     BackgroundImages *res = new BackgroundImages();
     res->tex = sf::Texture();

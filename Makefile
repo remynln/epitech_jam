@@ -25,7 +25,7 @@ SRC =	src/Game.cpp						\
 
 OBJ =	$(SRC:.cpp=.o)
 
-CPPFLAGS	= -I./headers/ -std=c++2a -W -J4 -Wall -Wextra -Wpedantic
+CPPFLAGS	= -I./headers/ -std=c++2a -W -J4 -Wall -Wextra -Werror -Wpedantic
 
 CSFMLFLAGS	= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
