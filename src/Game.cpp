@@ -69,6 +69,8 @@ void Game::render()
         scenario.startScenario(&win);
         if (scenario.isAnEnd() && scenario.getInScenario() == false)
             return (win.close());
+        else if (scenario.getInScenario())
+            return;
     }
     this->player.pos += this->player.speed;
     for (BackgroundImages *bg : backgrondImages) {

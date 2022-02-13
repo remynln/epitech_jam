@@ -17,6 +17,7 @@
     #include "achievement.hpp"
     #include <unordered_map>
     #include "ScriptChoice.hpp"
+    #include "cake.hpp"
 
     class Scenario {
         public:
