@@ -21,7 +21,7 @@ Success::Success()
     _bananaS.setTexture(_bananaT);
     _bananaS.setScale(300.0f/_bananaS.getLocalBounds().width, 300.0f/_bananaS.getLocalBounds().height);
     _bananaS.setPosition({300, 0});
-    //if (!_sb.loadFromFile("ressources/baptiste.ogg"))
+    //if (!_sb.loadFromFile("assets/baptiste.ogg"))
     //    throw 84;
     //_sound.setBuffer(_sb);
 }
@@ -42,7 +42,7 @@ void Success::displaySuccess(std::wstring text, std::string path, std::string au
     _text.setString(text);
     if (!_monkeyT.loadFromFile(path))
         throw 84;
-    if (audio != "ressources/baptiste.ogg") {
+    if (audio != "assets/baptiste.ogg") {
         //if (!_sb.loadFromFile(audio))
         //    throw 84;
         //_sound.setBuffer(_sb);
@@ -73,7 +73,7 @@ Success::~Success()
 // {
 //     try {
 //         success suc;
-//         suc.displaySuccess(L"     Succès déverouillé !\n         Première éjac", "ressources/singe_etude.jpg");
+//         suc.displaySuccess(L"     Succès déverouillé !\n         Première éjac", "assets/singe_etude.jpg");
 //     }
 //     catch (int i) {
 //         std::cerr << "Error loading file" << std::endl;

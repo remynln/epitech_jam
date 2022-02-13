@@ -37,7 +37,7 @@ void Drug::mouse_click_handle(sf::Event::MouseButtonEvent event)
     sf::Rect<float> rect = circle->getGlobalBounds();
     sf::SoundBuffer *buff = new sf::SoundBuffer;
     sf::Sound *sound = new sf::Sound;
-    std::string aie[3] = {"ressources/aie1.ogg", "ressources/aie2.ogg", "ressources/aie3.ogg"};
+    std::string aie[3] = {"assets/aie1.ogg", "assets/aie2.ogg", "assets/aie3.ogg"};
 
 
     if (rect.contains(event.x, event.y)) {
@@ -86,12 +86,12 @@ rec_in(sf::Vector2f(0.f, 50.f))
     rec_out.setOutlineThickness(5.f);
     rec_out.setOutlineColor(sf::Color::Black);
     rec_in.setFillColor(sf::Color::Green);
-    music.openFromFile("ressources/marcolito.ogg");
+    music.openFromFile("assets/marcolito.ogg");
     music.setVolume(25);
 
     window.setMouseCursorVisible(false);
-    ser.loadFromFile("ressources/seringe.png");
-    arm.loadFromFile("ressources/arm.png");
+    ser.loadFromFile("assets/seringe.png");
+    arm.loadFromFile("assets/arm.png");
     s_arm.setTexture(arm);
     s_ser.setTexture(ser);
     s_ser.setOrigin(15 , 175);

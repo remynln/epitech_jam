@@ -20,7 +20,7 @@ class Success
         Success(const Success &success);
         ~Success();
 
-        void displaySuccess(std::wstring text, std::string path, std::string audio = "ressources/baptiste.ogg");
+        void displaySuccess(std::wstring text, std::string path, std::string audio = "assets/baptiste.ogg");
     private:
         sf::RenderWindow _win;
         sf::Text _text;
