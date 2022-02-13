@@ -906,6 +906,9 @@ Scenario::Scenario() : _name("start"), _inScenario(true)
 Scenario::~Scenario()
 {
     setSuccess();
+    for (size_t i = 0; i < _successPopUp.size(); i++) {
+        delete _successPopUp[i];
+    }
 }
 
 void Scenario::initChoice()
