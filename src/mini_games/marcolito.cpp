@@ -5,6 +5,7 @@
 ** marcolito
 */
 
+#include "../../headers/Scenario.hpp"
 #include "marcolito.hpp"
 
 sf::CircleShape *create_circle(void)
@@ -109,7 +110,7 @@ rec_in(sf::Vector2f(0.f, 50.f))
     music.play();
 }
 
-void Drug::display(void)
+void Drug::display(void *scene)
 {
     window->clear(sf::Color::Black);
     window->draw(s_arm);
@@ -122,5 +123,6 @@ void Drug::display(void)
         window->draw(*prout);
     }
     window->draw(s_ser);
+    ((Scenario *) scene)->displaySuccess(window);
     window->display();
 }

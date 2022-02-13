@@ -22,7 +22,7 @@
             void event_handler(void);
             void hit(void);
             void create_circle(void);
-            void display(void);
+            void display(void *scene);
 
 
             sf::RenderWindow *window;

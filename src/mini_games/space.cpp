@@ -6,16 +6,18 @@
 */
 
 #include "../../headers/Game.hpp"
-#include "Space.hpp"
+#include "../../headers/Space.hpp"
 #include <iostream>
 #include <vector>
 #include <list>
 
-int poubelle::loop()
+int poubelle::loop(void *scene)
 {
-    while (window->pollEvent(event))
+    while (window->pollEvent(event)) {
         if (event.type == sf::Event::Closed)
             window->close();
+        ((Scenario *) scene)->checkSuccessDelete(event, window);
+    }
     if (phase == 0 && ennemyDelay <= 0) {
         ennemies.push_back(ennemy(rand() % 1200 - 100 , 0));
         ennemyDelay = 1;
@@ -156,7 +158,7 @@ int poubelle::loop()
     return 0;
 }
 
-void poubelle::draw()
+void poubelle::draw(void *scene)
 {
     window->clear();
     window->draw(backgroundSprite);
@@ -174,5 +176,6 @@ void poubelle::draw()
     for (int i = 0; i < _hp; i++)
         window->draw(_hearts[i].heartSprite);
     window->draw(spaceShipSprite);
+    ((Scenario *) scene)->displaySuccess(this->window);
     window->display();
 }

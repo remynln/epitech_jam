@@ -169,8 +169,8 @@
             spaceShipSprite.setPosition(1280 / 2 - spaceShipSprite.getGlobalBounds().width, 600);
         }
         ~poubelle() = default;
-        int loop();
-        void draw();
+        int loop(void *scene);
+        void draw(void *scene);
     };
 
 #endif /* !SPACE */
