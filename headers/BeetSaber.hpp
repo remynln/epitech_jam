@@ -25,7 +25,7 @@ class CubeComming {
         ~CubeComming();
 
         void update(float delatime);
-        bool check_collision(sf::RenderWindow *window, bool *first_flech);
+        bool check_collision(bool *first_flech);
         void draw(sf::RenderWindow *window);
 
         sf::Texture *texture;

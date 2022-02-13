@@ -8,9 +8,7 @@
 #include <iostream>
 #include "Game.hpp"
 
-BackgroundImages *createBg(std::string file,
-    sf::Vector2f pos,
-    sf::Vector2f size = sf::Vector2f(0, 0))
+BackgroundImages *createBg(std::string file, sf::Vector2f pos)
 {
     BackgroundImages *res = new BackgroundImages();
     res->tex = sf::Texture();
