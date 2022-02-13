@@ -54,6 +54,19 @@
             void Recherche(sf::RenderWindow *window);
             void Maitre(sf::RenderWindow *window);
             void Soiree(sf::RenderWindow *window);
+
+            void Bill(sf::RenderWindow *window);
+            void Marier(sf::RenderWindow *window);
+            void Entreprise(sf::RenderWindow *window);
+
+            void BAC(sf::RenderWindow *window);
+            void Medecine(sf::RenderWindow *window);
+            void Ens(sf::RenderWindow *window);
+            void Supaero(sf::RenderWindow *window);
+            void Epitech(sf::RenderWindow *window);
+
+            void Ecole(sf::RenderWindow *window);
+            void Travailler(sf::RenderWindow *window);
         private:
             void initChoice();
             void initSuccess();
@@ -64,7 +77,5 @@
             success _successPopUp;
             bool _inScenario;
     };
-
-    Scenario init_scenario();
 
 #endif /* !SCENARIO */
