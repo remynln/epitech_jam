@@ -132,9 +132,11 @@ void Scenario::FightTheRock(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/images/drunk.png");
         drawText(window, L"Tu as trop bu!", {0, 600});
+        displaySuccess(window);
         window->display();
     }
     end = false;
@@ -145,9 +147,11 @@ void Scenario::FightTheRock(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/images/rock_punch.png");
         drawText(window, L"Oh non! Tu as cherché la baston avec le Rock.", {0, 600});
+        displaySuccess(window);
         window->display();
     }
     end = false;
@@ -158,9 +162,11 @@ void Scenario::FightTheRock(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/images/dojo.png");
         drawText(window, L"Après avoir gagné le combat contre le Rock, tu deviens reconu comme le plus grand expert d'arts martiaux\net tu ouvres ton propre dojo.", {0, 600});
+        displaySuccess(window);
         window->display();
     }
     _inScenario = false;
@@ -178,9 +184,11 @@ void Scenario::Matrice(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/matrix.jpg");
         drawText(window, L"Il est possible pour chacun de prendre conscience de sa place en ce monde.\nDe la même façon, il est aussi possible de découvrir la réel réalité qui le sépare de sa fiction.\nT’as prise de conscience commence et cesse à l’instant où le mensonge devient réalité.\nElle se divise là où la matrice se dévoile.\nOù la 2D tridimensionnelle prend forme.", {0, 600});
+        displaySuccess(window);
         window->display();
     }
 
@@ -208,9 +216,11 @@ void Scenario::Rencontre(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/rencontre.jpg");
         drawText(window, text[scene], {0, 600});
+        displaySuccess(window);
         window->display();
     }
 
@@ -234,8 +244,10 @@ void Scenario::Reel(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/reel.jpg");
+        displaySuccess(window);
         window->display();
     }
     _inScenario = false;
@@ -254,8 +266,10 @@ void Scenario::PsyJob(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/psyjob.jpg");
+        displaySuccess(window);
         window->display();
     }
     _inScenario = false;
@@ -274,8 +288,10 @@ void Scenario::Folie(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/folie.jpg");
+        displaySuccess(window);
         window->display();
     }
     _inScenario = false;
@@ -301,6 +317,7 @@ void Scenario::Vente(sf::RenderWindow *window)
         _name = "recherche";
 }
 
+// TODO: ici
 void Scenario::Recherche(sf::RenderWindow *window)
 {
     while (window->isOpen()) {
@@ -308,6 +325,7 @@ void Scenario::Recherche(sf::RenderWindow *window)
     }
 }
 
+// TODO: ici
 void Scenario::Maitre(sf::RenderWindow *window)
 {
     while (window->isOpen()) {
@@ -330,6 +348,7 @@ void Scenario::Soiree(sf::RenderWindow *window)
         }
         engine.moveSprites(window);
         engine.displayWindow(window);
+        displaySuccess(window);
         engine.addSprites();
     }
     _inScenario = false;
@@ -353,9 +372,11 @@ void Scenario::Sobre(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/Moine.png");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
     _inScenario = false;
@@ -382,9 +403,11 @@ void Scenario::Bill(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
 
@@ -408,8 +431,10 @@ void Scenario::Marier(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/marriage.jpg");
+        displaySuccess(window);
         window->display();
     }
     _inScenario = false;
@@ -427,8 +452,10 @@ void Scenario::Entreprise(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/microsoft.jpg");
+        displaySuccess(window);
         window->display();
     }
     _inScenario = false;
@@ -446,9 +473,11 @@ void Scenario::BAC(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "");
         drawText(window, L"Felicitations ! vous avez le bac !\nQue vous ayez 10 au bac ou 22, vous possédez des contacts dans toutes les grandes écoles.\nVous savez donc que vous n’avez qu'à envoyer un “Skype” au directeur pour être pris.\nC’est à vous de décider votre futur…", {0, 550});
+        displaySuccess(window);
         window->display();
     }
 
@@ -464,6 +493,7 @@ void Scenario::BAC(sf::RenderWindow *window)
         _name = "epitech";
 }
 
+//TODO: ici
 void Scenario::Medecine(sf::RenderWindow *window)
 {
     while (window->isOpen()) {
@@ -471,6 +501,7 @@ void Scenario::Medecine(sf::RenderWindow *window)
     }
 }
 
+//TODO: ici
 void Scenario::Ens(sf::RenderWindow *window)
 {
     while (window->isOpen()) {
@@ -483,8 +514,8 @@ void Scenario::Supaero(sf::RenderWindow *window)
     poubelle oui(window);
     int ret = 0;
     while (oui.window->isOpen()) {
-        ret = oui.loop();
-        oui.draw();
+        ret = oui.loop(this);
+        oui.draw(this);
         if (ret)
             return;
         if (ret == -1)
@@ -493,6 +524,7 @@ void Scenario::Supaero(sf::RenderWindow *window)
     _inScenario = false;
 }
 
+// TODO: ici
 void Scenario::Epitech(sf::RenderWindow *window)
 {
     while (window->isOpen()) {
@@ -520,9 +552,11 @@ void Scenario::Ecole(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/ecole.png");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
 
@@ -554,9 +588,11 @@ void Scenario::Travailler(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/travail.jpg");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
 
@@ -583,9 +619,11 @@ void Scenario::Rien(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
 
@@ -613,9 +651,11 @@ void Scenario::Depression(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/depression.png");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
 
@@ -648,9 +688,11 @@ void Scenario::Entendre(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/johannisme.png");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
 
@@ -679,9 +721,11 @@ void Scenario::Suicide(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/chute.png");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
     _name = "chute";
@@ -699,8 +743,10 @@ void Scenario::Chute(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/chute.png");
+        displaySuccess(window);
         window->display();
     }
     _inScenario = false;
@@ -722,9 +768,11 @@ void Scenario::Puissant(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/chute.png");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
 
@@ -753,9 +801,11 @@ void Scenario::Johannisme(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/johannisme.png");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
     _inScenario = false;
@@ -786,9 +836,11 @@ void Scenario::EquitationGates(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/equitation_gates.png");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
 
@@ -817,9 +869,11 @@ void Scenario::Repartie(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/equitation_gates.png");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
     _name = "marier";
@@ -845,9 +899,11 @@ void Scenario::Normale(sf::RenderWindow *window)
                 window->close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 scene++;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/equitation_gates.png");
         drawText(window, text[scene], {0, 550});
+        displaySuccess(window);
         window->display();
     }
     _name = "marier";
@@ -874,8 +930,10 @@ void Scenario::Kfc(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
+            checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/KFC.png");
+        displaySuccess(window);
         window->display();
     }
     _inScenario = false;
@@ -978,6 +1036,7 @@ void Scenario::marcolito(sf::RenderWindow *win)
     while (drug.window->isOpen()) {
         while(drug.window->pollEvent(drug.event)) {
             drug.event_handler();
+            checkSuccessDelete(drug.event, win);
         }
         if (drug.fr == 0 || !drug.circle) {
             drug.fr = drug.gl;
@@ -993,7 +1052,7 @@ void Scenario::marcolito(sf::RenderWindow *win)
         if (drug.rec_in.getSize().x == 300 || drug.life_in.getSize().x == 0) {
             return;
         }
-        drug.display();
+        drug.display(this);
     }
     _name = "soiree";
 }
