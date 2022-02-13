@@ -120,6 +120,52 @@ void Scenario::Fuir(sf::RenderWindow *window)
         _name = "start";
 }
 
+void Scenario::FightTheRock(sf::RenderWindow *window)
+{
+    sf::Event event;
+    bool end = false;
+
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/images/drunk.png");
+        drawText(window, L"Tu as trop bu!", {0, 600});
+        window->display();
+    }
+    end = false;
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/images/rock_punch.png");
+        drawText(window, L"Oh non! Tu as cherché la baston avec le Rock.", {0, 600});
+        window->display();
+    }
+    end = false;
+    while (window->isOpen() && end == false) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+        }
+        drawSprite(window, "assets/images/dojo.png");
+        drawText(window, L"Après avoir gagné le combat contre le Rock, tu deviens reconu comme le plus grand expert d'arts martiaux\net tu ouvres ton propre dojo.", {0, 600});
+        window->display();
+    }
+    _inScenario = false;
+}
+
 void Scenario::Matrice(sf::RenderWindow *window)
 {
     sf::Event event;

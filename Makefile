@@ -20,6 +20,7 @@ SRC =	src/Game.cpp						\
 		src/DecisionWall.cpp				\
 		src/mini_games/cake.cpp				\
 		src/achievement.cpp 				\
+		src/mini_games/space.cpp 			\
 		src/ScriptChoice.cpp				\
 		main.cpp
 
