@@ -13,7 +13,6 @@ DecisionWall::~DecisionWall()
 
 bool DecisionWall::isInWall(sf::Vector2f vect) 
 {
-    std::cout << vect.y << " " << this->_y << std::endl;
     return (vect.y < this->_y);
 }
 

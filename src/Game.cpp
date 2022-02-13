@@ -6,7 +6,7 @@
 */
 
 #include <iostream>
-#include "Game.hpp"
+#include "../headers/Game.hpp"
 
 void lecole()
 {
@@ -25,7 +25,7 @@ BackgroundImages *createBg(std::string file,
     BackgroundImages *res = new BackgroundImages();
     res->tex = sf::Texture();
     res->spt = sf::Sprite();
-    std::cout << res->tex.loadFromFile(file) << std::endl;
+    res->tex.loadFromFile(file);
     res->spt.setTexture(res->tex);
     res->pos = pos;
     return (res);
@@ -49,6 +49,13 @@ Game::Game()
         }, *this)
     })
 {
+    this->_texture_perso = new sf::Texture();
+
+    this->_texture_perso->loadFromFile("assets/guy_guy.png");
+    this->_sprite.setTexture(*this->_texture_perso);
+    sf::FloatRect rect = this->_sprite.getGlobalBounds();
+    this->_sprite.setOrigin(rect.width / 2, rect.height / 2);
+    this->_sprite.setPosition((int) (1200 / 2), (int) (800 / 2));
 }
 
 Game::~Game()
@@ -115,5 +122,6 @@ void Game::render()
     for (DecisionWall *wall : this->walls) {
         wall->renderDoors();
     }
+    win.draw(this->_sprite);
     win.display();
 }

@@ -42,6 +42,8 @@ class Game {
         
     private:
         bool _inScenario;
+        sf::Texture *_texture_perso;
+        sf::Sprite _sprite;
 };
 
 #endif /* !GAME_HPP_ */
