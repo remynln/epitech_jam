@@ -302,6 +302,7 @@ void Scenario::initChoice()
     setMap("recherche", std::bind(&Scenario::Recherche, this, std::placeholders::_1), false);
     setMap("maitre", std::bind(&Scenario::Maitre, this, std::placeholders::_1), false);
     setMap("soiree", std::bind(&Scenario::Soiree, this, std::placeholders::_1), false);
+    setMap("julienlafarge", std::bind(&Scenario::JulienLaFarge, this, std::placeholders::_1), true);
 }
 
 void Scenario::initSuccess()
