@@ -274,7 +274,7 @@ Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(sc
     initChoice();
 }
 
-Scenario::Scenario() : _name("start"), _successPopUp(success(L"", "")), _inScenario(true)
+Scenario::Scenario() : _name("start"), _inScenario(true)
 {
     initSuccess();
     initChoice();
@@ -388,4 +388,29 @@ void Scenario::setInScenario(const bool value)
 const bool &Scenario::getInScenario() const
 {
     return (_inScenario);
+}
+
+void Scenario::addSuccess(std::wstring text, std::string path, std::string audio)
+{
+    success *suc = new success(text, path, audio);
+    _successPopUp.push_back(suc);
+}
+
+void Scenario::displaySuccess(sf::RenderWindow *win)
+{
+    for (size_t it = 0; it < _successPopUp.size(); it++) {
+        _successPopUp[it]->displaySuccess(*win, it);
+    }
+}
+
+void Scenario::checkSuccessDelete(sf::Event event, sf::RenderWindow *win)
+{
+    for (size_t it = 0; it < _successPopUp.size(); it++) {
+        if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left &&
+            _successPopUp[it]->_crossS.getGlobalBounds().contains(win->mapPixelToCoords(sf::Mouse::getPosition(*win)))) {
+                std::vector<success *>::iterator iterator = _successPopUp.begin() + it;
+                delete _successPopUp[it];
+                _successPopUp.erase(iterator);
+        }
+    }
 }
