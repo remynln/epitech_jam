@@ -307,7 +307,6 @@ void Scenario::Rue(sf::RenderWindow *window)
 {
     ScriptChoice choice(this, "assets/wesh.jpg", "Wesh la detail ! Tu veux un quetru ?", "Oe tu peux me depanne quelques grammes ?", "Non mec, je cherche un taf bien remunere\nsi tu vois c'que j'veux dire...");
 
-    std::cout << choice.choose(window) << std::endl;
     if (choice.choose(window) == "Oe tu peux me depanne quelques grammes ?")
         _name = "conso";
     else
@@ -585,7 +584,9 @@ void Scenario::Epitech(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/Epitech.png");
-        drawText(window, text[scene], {0, 600});
+        if (scene < 3) {
+            drawText(window, text[scene], {0, 600});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -1051,7 +1052,7 @@ Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(sc
     initChoice();
 }
 
-Scenario::Scenario() : _name("start"), _inScenario(true)
+Scenario::Scenario() : _name("epitech"), _inScenario(true)
 {
     initSuccess();
     initChoice();
