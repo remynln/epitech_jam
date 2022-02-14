@@ -223,7 +223,9 @@ void Scenario::Rencontre(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/rencontre.jpg");
-        drawText(window, text[scene], {0, 600});
+        if (scene < 2) {
+            drawText(window, text[scene], {0, 600});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -323,7 +325,6 @@ void Scenario::Vente(sf::RenderWindow *window)
         _name = "recherche";
 }
 
-// TODO: ici
 void Scenario::Recherche(sf::RenderWindow *window)
 {
     sf::Event event;
@@ -343,7 +344,9 @@ void Scenario::Recherche(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/rencontre.jpg");
-        drawText(window, text[scene], {0, 600});
+        if (scene < 2) {
+            drawText(window, text[scene], {0, 600});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -392,7 +395,9 @@ void Scenario::Sobre(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/Moine.png");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 4) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -423,7 +428,9 @@ void Scenario::Bill(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/background.jpg");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 7) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -520,7 +527,7 @@ void Scenario::Medecine(sf::RenderWindow *window)
     std::wstring text[] = {
         L"Tu travail, travail... TRAVAIL",
         L"Mais, tient voilà quelq'un, petit saint ALI maître meme.",
-        L"Ali: Bonjour, je suis Ali, je suis le maître de la medecine. Je suis le seul à mîtrisé le MEME.",
+        L"Ali: Bonjour, je suis Ali, je suis le maître de la medecine. Je suis le seul à mîtrisé le MEME."
     };
 
     while (window->isOpen() && scene != 3) {
@@ -533,19 +540,42 @@ void Scenario::Medecine(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/background.jpg");
-        drawText(window, text[scene], {0, 600});
+        if (scene < 3) {
+            drawText(window, text[scene], {0, 600});
+        }
         displaySuccess(window);
         window->display();
     }
     _inScenario = false;
 }
 
-//TODO: ici
 void Scenario::Ens(sf::RenderWindow *window)
 {
-    while (window->isOpen()) {
-        
+    sf::Event event;
+    int scene = 0;
+    std::wstring text[] = {
+        L"De la politique, ça kel plèsir",
+        L"Le petit zizir d'avoir un poste pour impacter le plus de monde",
+        L"Rendre l'école obligatoire jusqu'à 4ans uniquement par exemple"
+    };
+
+    while (window->isOpen() && scene != 3) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+            checkSuccessDelete(event, window);
+        }
+        drawSprite(window, "");
+        if (scene < 3) {
+            drawText(window, text[scene], {0, 600});
+        }
+        displaySuccess(window);
+        window->display();
     }
+    _inScenario = false;
 }
 
 void Scenario::Supaero(sf::RenderWindow *window)
@@ -563,7 +593,6 @@ void Scenario::Supaero(sf::RenderWindow *window)
     _inScenario = false;
 }
 
-// TODO: ici
 void Scenario::Epitech(sf::RenderWindow *window)
 {
     sf::Event event;
@@ -616,7 +645,9 @@ void Scenario::Ecole(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/ecole.png");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 6) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -652,7 +683,9 @@ void Scenario::Travailler(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/travail.jpg");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 6) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -683,7 +716,9 @@ void Scenario::Rien(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 1) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -715,7 +750,9 @@ void Scenario::Depression(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/depression.png");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 2) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -784,7 +821,9 @@ void Scenario::Entendre(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/johannisme.png");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 7) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -817,7 +856,9 @@ void Scenario::Suicide(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/chute.png");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 3) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -865,7 +906,9 @@ void Scenario::Puissant(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/chute.png");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 2) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -898,7 +941,9 @@ void Scenario::Johannisme(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/johannisme.png");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 2) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -933,7 +978,9 @@ void Scenario::EquitationGates(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/equitation_gates.png");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 1) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -966,7 +1013,9 @@ void Scenario::Repartie(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/equitation_gates.png");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 3) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -996,7 +1045,9 @@ void Scenario::Normale(sf::RenderWindow *window)
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/equitation_gates.png");
-        drawText(window, text[scene], {0, 550});
+        if (scene < 6) {
+            drawText(window, text[scene], {0, 550});
+        }
         displaySuccess(window);
         window->display();
     }
@@ -1052,7 +1103,7 @@ Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(sc
     initChoice();
 }
 
-Scenario::Scenario() : _name("epitech"), _inScenario(true)
+Scenario::Scenario() : _name("start"), _inScenario(true)
 {
     initSuccess();
     initChoice();
@@ -1095,7 +1146,7 @@ void Scenario::initChoice()
     setMap("marier", std::bind(&Scenario::Marier, this, std::placeholders::_1), true);
     setMap("entreprise", std::bind(&Scenario::Entreprise, this, std::placeholders::_1), true);
     setMap("medecine", std::bind(&Scenario::Medecine, this, std::placeholders::_1), true);
-    setMap("ens", std::bind(&Scenario::Ens, this, std::placeholders::_1), false);
+    setMap("ens", std::bind(&Scenario::Ens, this, std::placeholders::_1), true);
     setMap("supaero", std::bind(&Scenario::Supaero, this, std::placeholders::_1), true);
     setMap("epitech", std::bind(&Scenario::Epitech, this, std::placeholders::_1), false);
     setMap("entendre", std::bind(&Scenario::Entendre, this, std::placeholders::_1), false);
