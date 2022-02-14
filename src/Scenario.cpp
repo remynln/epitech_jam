@@ -423,7 +423,7 @@ void Scenario::Bill(sf::RenderWindow *window)
                 scene++;
             checkSuccessDelete(event, window);
         }
-        drawSprite(window, "");
+        drawSprite(window, "assets/background.jpg");
         drawText(window, text[scene], {0, 550});
         displaySuccess(window);
         window->display();
@@ -584,7 +584,7 @@ void Scenario::Epitech(sf::RenderWindow *window)
                 scene++;
             checkSuccessDelete(event, window);
         }
-        drawSprite(window, "assets/Epitech.jpg");
+        drawSprite(window, "assets/Epitech.png");
         drawText(window, text[scene], {0, 600});
         displaySuccess(window);
         window->display();
