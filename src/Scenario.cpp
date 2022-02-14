@@ -1051,7 +1051,7 @@ Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(sc
     initChoice();
 }
 
-Scenario::Scenario() : _name("bac"), _inScenario(true)
+Scenario::Scenario() : _name("start"), _inScenario(true)
 {
     initSuccess();
     initChoice();
