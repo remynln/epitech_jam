@@ -1021,8 +1021,10 @@ void Scenario::Kfc(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                 window->close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
+            else if (event.type == sf::Event::Closed)
+                window->close();
             else
                 checkSuccessDelete(event, window);
         }
