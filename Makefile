@@ -31,7 +31,7 @@ CPPFLAGS	= -I./headers/ -std=c++2a -W -J4 -Wall -Wextra -Wpedantic
 
 CSFMLFLAGS	= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
-NAME	=	weNeedToFindAName
+NAME	=	guys_life
 
 all: $(NAME)
 
