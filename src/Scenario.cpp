@@ -1224,6 +1224,7 @@ void Scenario::marcolito(sf::RenderWindow *win)
             delete drug.circle;
         }
         if (drug.rec_in.getSize().x == 300 || drug.life_in.getSize().x == 0) {
+            _name = "soiree";
             return;
         }
         drug.display(this);
