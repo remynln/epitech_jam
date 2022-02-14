@@ -128,10 +128,10 @@ void Scenario::FightTheRock(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window->close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
             else if (event.type == sf::Event::Closed)
-                 window->close();
+                window->close();
             else
                 checkSuccessDelete(event, window);
         }
@@ -144,10 +144,10 @@ void Scenario::FightTheRock(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window->close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
             else if (event.type == sf::Event::Closed)
-                 window->close();
+                window->close();
             else
                 checkSuccessDelete(event, window);
         }
@@ -183,10 +183,10 @@ void Scenario::Matrice(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window->close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
             else if (event.type == sf::Event::Closed)
-                 window->close();
+                window->close();
             else
                 checkSuccessDelete(event, window);
         }
@@ -244,8 +244,8 @@ void Scenario::Reel(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window->close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
             else if (event.type == sf::Event::Closed)
                  window->close();
             else
@@ -267,10 +267,10 @@ void Scenario::PsyJob(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window->close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
             else if (event.type == sf::Event::Closed)
-                 window->close();
+                window->close();
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/psyjob.jpg");
@@ -289,10 +289,10 @@ void Scenario::Folie(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window->close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
             else if (event.type == sf::Event::Closed)
-                 window->close();
+                window->close();
             else
                 checkSuccessDelete(event, window);
         }
@@ -445,8 +445,8 @@ void Scenario::Marier(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window->close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
             else if (event.type == sf::Event::Closed)
                  window->close();
             else
@@ -467,10 +467,10 @@ void Scenario::Entreprise(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window->close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
             else if (event.type == sf::Event::Closed)
-                 window->close();
+                window->close();
             else
                 checkSuccessDelete(event, window);
         }
@@ -489,10 +489,10 @@ void Scenario::BAC(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window->close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                end = true;
             else if (event.type == sf::Event::Closed)
-                 window->close();
+                window->close();
             else
                 checkSuccessDelete(event, window);
         }
@@ -1051,7 +1051,7 @@ Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(sc
     initChoice();
 }
 
-Scenario::Scenario() : _name("rue"), _inScenario(true)
+Scenario::Scenario() : _name("bac"), _inScenario(true)
 {
     initSuccess();
     initChoice();
