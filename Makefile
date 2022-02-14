@@ -38,6 +38,9 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	g++ -o $(NAME) $(OBJ) $(CSFMLFLAGS)
 
+debug: CPPFLAGS += -g3
+debug: fclean all
+
 clean:
 	rm -rf $(OBJ)
 
