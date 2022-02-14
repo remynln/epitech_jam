@@ -954,7 +954,10 @@ void Scenario::Kfc(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/KFC.png");
         displaySuccess(window);
