@@ -57,10 +57,10 @@ void Scenario::Start(sf::RenderWindow *window)
         ""
     };
     std::wstring text[] = {
-        L"Bienvenue dans notre jeu de la vie! Ici vous pourrez devenir une meilleure version de vous même! Une super\nversion de vous même! Comme chacun vous allez naitre et acquérir les compétences propes aux bons\ndéveloppements de tout être humain! Vous réaliserez des choix et affronterez leurs conséquences.\nCar comme touts être il vous faudra vous comprendre pour vous accepter. Savoir vivre en société,\napprendre et réaliser que vous être incroyable. Plus qu'incroyable même ! Que vous êtes supérieur !\nVous devriez diriger ! Faire réaliser à cette espèce qui est le maître et qui est ce qu'elle doit écouter.\nMaintenant la question est comment ? Devriez vous développer des compétences politique afin de prendre\ncontrole des parties et devenir un modèle aux yeux de tous ? Ou peut-être asservir le peuple et leur faire\nréaliser ce que la loi du plus fort signifie. Ou encore anéantir l'espèce humaine afin de créer une espèce\nsupérieur basé sur vos gènes !!!! AHHAHAHAHHHAHAHAHHAHAHAHAHHAHAHAHAHAHAHAHAHHAHAHAHAHHAHAHAHAHHAHA\nHAHAHH!!!! TELLEMENT DE POSSIBILITÉ DE POUVOIR ET DE CONTROLE !!!!!!! AHAHHAHAHAHAHHAHHAHAHA\nHAHAH !!!! DEVENEZ LE MAITRE !!!! LE MAITRE !!! LE MAITRE !!!!!!!!!!! ET REMPORTEZ TOUS LES SUCCES !!!!!"
+        L"Bienvenue dans notre jeu de la vie! Ici vous pourrez devenir une meilleure version de vous même! Une super\nversion de vous même! Comme chacun vous allez naitre et acquerir les competences propes aux bons\ndeveloppements de tout être humain! Vous realiserez des choix et affronterez leurs consequences.\nCar comme touts être il vous faudra vous comprendre pour vous accepter. Savoir vivre en societe,\napprendre et realiser que vous être incroyable. Plus qu'incroyable même ! Que vous êtes superieur !\nVous devriez diriger ! Faire realiser a cette espece qui est le maître et qui est ce qu'elle doit ecouter.\nMaintenant la question est comment ? Devriez vous developper des competences politique afin de prendre\ncontrole des parties et devenir un modele aux yeux de tous ? Ou peut-être asservir le peuple et leur faire\nrealiser ce que la loi du plus fort signifie. Ou encore aneantir l'espece humaine afin de creer une espece\nsuperieur base sur vos genes !!!! AHHAHAHAHHHAHAHAHHAHAHAHAHHAHAHAHAHAHAHAHAHHAHAHAHAHHAHAHAHAHHAHA\nHAHAHH!!!! TELLEMENT DE POSSIBILITe DE POUVOIR ET DE CONTROLE !!!!!!! AHAHHAHAHAHAHHAHHAHAHA\nHAHAH !!!! DEVENEZ LE MAITRE !!!! LE MAITRE !!! LE MAITRE !!!!!!!!!!! ET REMPORTEZ TOUS LES SUCCES !!!!!"
     };
 
-    giveSuccess("Première essai");
+    giveSuccess("Premiere essai");
     addSuccess(L"Bravo tu a lancer\nle jeu", "assets/singe1.png");
     while (window->isOpen() && scene != maxScene) {
         window->clear();
@@ -130,9 +130,10 @@ void Scenario::FightTheRock(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/images/drunk.png");
         drawText(window, L"Tu as trop bu!", {0, 600});
@@ -145,12 +146,13 @@ void Scenario::FightTheRock(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/images/rock_punch.png");
-        drawText(window, L"Oh non! Tu as cherché la baston avec le Rock.", {0, 600});
+        drawText(window, L"Oh non! Tu as cherche la baston avec le Rock.", {0, 600});
         displaySuccess(window);
         window->display();
     }
@@ -160,12 +162,13 @@ void Scenario::FightTheRock(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/images/dojo.png");
-        drawText(window, L"Après avoir gagné le combat contre le Rock, tu deviens reconu comme le plus grand expert d'arts martiaux\net tu ouvres ton propre dojo.", {0, 600});
+        drawText(window, L"Apres avoir gagne le combat contre le Rock, tu deviens reconu comme le plus grand expert d'arts martiaux\net tu ouvres ton propre dojo.", {0, 600});
         displaySuccess(window);
         window->display();
     }
@@ -182,12 +185,13 @@ void Scenario::Matrice(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/matrix.jpg");
-        drawText(window, L"Il est possible pour chacun de prendre conscience de sa place en ce monde.\nDe la même façon, il est aussi possible de découvrir la réel réalité qui le sépare de sa fiction.\nT’as prise de conscience commence et cesse à l’instant où le mensonge devient réalité.\nElle se divise là où la matrice se dévoile.\nOù la 2D tridimensionnelle prend forme.", {0, 600});
+        drawText(window, L"Il est possible pour chacun de prendre conscience de sa place en ce monde.\nDe la même facon, il est aussi possible de decouvrir la reel realite qui le separe de sa fiction.\nT'as prise de conscience commence et cesse a l'instant où le mensonge devient realite.\nElle se divise la où la matrice se devoile.\nOù la 2D tridimensionnelle prend forme.", {0, 600});
         displaySuccess(window);
         window->display();
     }
@@ -205,8 +209,8 @@ void Scenario::Rencontre(sf::RenderWindow *window)
     sf::Event event;
     int scene = 0;
     std::wstring text[] = {
-        L"Il est désormais tant pour toi de comprendre. De réaliser que derrière ces lignes que tu regardes se cache\nune autre réalité, se cache ta réalité. Finalement accepter la matrice signifie qu’il est maintenant temps\npour toi de comprendre qui tu es et qui je suis. Bonjour, je suis le personnage de ce jeu.\nBonjour je suis toi.",
-        L"Tu me contrôles, moi, qui suis derrière ces lignes.\nTu décide de mes mouvements et de mes choix et il est maintenant tant pour toi de prendre ta prise\nde conscience finale. Il est temps pour toi d’accepter."
+        L"Il est desormais tant pour toi de comprendre. De realiser que derriere ces lignes que tu regardes se cache\nune autre realite, se cache ta realite. Finalement accepter la matrice signifie qu'il est maintenant temps\npour toi de comprendre qui tu es et qui je suis. Bonjour, je suis le personnage de ce jeu.\nBonjour je suis toi.",
+        L"Tu me contrôles, moi, qui suis derriere ces lignes.\nTu decide de mes mouvements et de mes choix et il est maintenant tant pour toi de prendre ta prise\nde conscience finale. Il est temps pour toi d'accepter."
     };
 
     while (window->isOpen() && scene != 2) {
@@ -242,9 +246,10 @@ void Scenario::Reel(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/reel.jpg");
         displaySuccess(window);
@@ -264,8 +269,8 @@ void Scenario::PsyJob(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
+            else if (event.type == sf::Event::Closed)
+                 window->close();
             checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/psyjob.jpg");
@@ -286,9 +291,10 @@ void Scenario::Folie(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/folie.jpg");
         displaySuccess(window);
@@ -299,9 +305,10 @@ void Scenario::Folie(sf::RenderWindow *window)
 
 void Scenario::Rue(sf::RenderWindow *window)
 {
-    ScriptChoice choice(this, "assets/wesh.jpg", "Wesh la détail ! Tu veux un quetru ?", "Oe tu peux me dépanne quelques grammes ?", "Non mec, je cherche un taf bien rémunéré\nsi tu vois c'que j'veux dire...");
+    ScriptChoice choice(this, "assets/wesh.jpg", "Wesh la detail ! Tu veux un quetru ?", "Oe tu peux me depanne quelques grammes ?", "Non mec, je cherche un taf bien remunere\nsi tu vois c'que j'veux dire...");
 
-    if (choice.choose(window) == "Oe tu peux me dépanne quelques grammes ?")
+    std::cout << choice.choose(window) << std::endl;
+    if (choice.choose(window) == "Oe tu peux me depanne quelques grammes ?")
         _name = "conso";
     else
         _name = "vente";
@@ -309,20 +316,39 @@ void Scenario::Rue(sf::RenderWindow *window)
 
 void Scenario::Vente(sf::RenderWindow *window)
 {
-    ScriptChoice choice(this, "assets/vente.jpg", "Qu'est-ce que tu me baragouine fréro, c'est chaud la tu sais.", "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?", "Mais.. Mais j'ai un diplome en Physique\nChimie, j'peux devenir ton Walter White");
+    ScriptChoice choice(this, "assets/vente.jpg", "Qu'est-ce que tu me baragouine frero, c'est chaud la tu sais.", "Vzy mec, me parle pas comme ca la, tu veux qu'on se tappe ?", "Mais.. Mais j'ai un diplome en Physique Chimie, j'peux devenir ton Walter White");
 
-    if (choice.choose(window) == "Vzy mec, me parle pas comme ça là, tu veux qu'on se tappe ?")
-        _name = "recherche";
-    else
+    if (choice.choose(window) == "Vzy mec, me parle pas comme ca la, tu veux qu'on se tappe ?")
         _name = "laruelavrai";
+    else
+        _name = "recherche";
 }
 
 // TODO: ici
 void Scenario::Recherche(sf::RenderWindow *window)
 {
-    while (window->isOpen()) {
+    sf::Event event;
+    int scene = 0;
+    std::wstring text[] = {
+        L"Recherche..",
+        L"..."
+    };
 
+    while (window->isOpen() && scene != 2) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+            checkSuccessDelete(event, window);
+        }
+        drawSprite(window, "assets/rencontre.jpg");
+        drawText(window, text[scene], {0, 600});
+        displaySuccess(window);
+        window->display();
     }
+    _name = "recherche";
 }
 
 void Scenario::Soiree(sf::RenderWindow *window)
@@ -351,10 +377,10 @@ void Scenario::Sobre(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Au fil de la soirée, tu ne bois pas.\nPas une goutte.\nAu milieu de ces toxico.",
-        L"un inconnu tout de blanc vétu se rapproche de toi\nMaître Sobriété Xavier: Tu as loupé ta vocation. Il faut que tu rejoignes la voix d’aide envers alcoolique",
-        L"Maître Sobriété Xavier: Par les pouvoirs du Johann le Johannisme, ta capacité de choix se voit retirer.\nTu deviendras un Guide spirituelle d’un groupe d’alcoolique.",
-        L"Toi: Mais noooooooooo, pourquoi grand Johann me fais tu ça!\nMille million de mille sabords de tonnerre de brest c’est honteux."
+        L"Au fil de la soiree, tu ne bois pas.\nPas une goutte.\nAu milieu de ces toxico.",
+        L"un inconnu tout de blanc vetu se rapproche de toi\nMaître Sobriete Xavier: Tu as loupe ta vocation. Il faut que tu rejoignes la voix d'aide envers alcoolique",
+        L"Maître Sobriete Xavier: Par les pouvoirs du Johann le Johannisme, ta capacite de choix se voit retirer.\nTu deviendras un Guide spirituelle d'un groupe d'alcoolique.",
+        L"Toi: Mais noooooooooo, pourquoi grand Johann me fais tu ca!\nMille million de mille sabords de tonnerre de brest c'est honteux."
     };
 
     while (window->isOpen() && scene != 4) {
@@ -379,12 +405,12 @@ void Scenario::Bill(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Bill Gates: Wesh mon reuf, je commence à devenir vieux. Et j’ai envie de prendre des vacances..",
-        L"Toi: Ok frero. Fais ce que tu veux non ? c’est ton entreprise BG.",
-        L"Bill Gates: Le souci, c’est que j’ai deux gros blème en parallèle… Ma fille et l’entreprise. Comme tu l’as dis trkl\nc la mienne.",
-        L"Toi: ducoup y a quoi qui gène.",
-        L"Bill Gates: Si je prends des vacances, y aura ma fille qui va saouler. Et si ma fille saoule pas, c’est que je ne\nsuis pas en vacances.",
-        L"Toi: J’te propose un marché le bro. On fait tourner une pièce, si elle tombe sur face, jme marie avec ta fille\ncomme ça tu l’as plus dans les pates. si c’est pile, tu me donne don entreprise et tu seras libéré.",
+        L"Bill Gates: Wesh mon reuf, je commence a devenir vieux. Et j'ai envie de prendre des vacances..",
+        L"Toi: Ok frero. Fais ce que tu veux non ? c'est ton entreprise BG.",
+        L"Bill Gates: Le souci, c'est que j'ai deux gros bleme en parallele… Ma fille et l'entreprise. Comme tu l'as dis trkl\nc la mienne.",
+        L"Toi: ducoup y a quoi qui gene.",
+        L"Bill Gates: Si je prends des vacances, y aura ma fille qui va saouler. Et si ma fille saoule pas, c'est que je ne\nsuis pas en vacances.",
+        L"Toi: J'te propose un marche le bro. On fait tourner une piece, si elle tombe sur face, jme marie avec ta fille\ncomme ca tu l'as plus dans les pates. si c'est pile, tu me donne don entreprise et tu seras libere.",
         L"Bill Gates: Deal."
     };
 
@@ -421,9 +447,10 @@ void Scenario::Marier(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/marriage.jpg");
         displaySuccess(window);
@@ -442,9 +469,10 @@ void Scenario::Entreprise(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/microsoft.jpg");
         displaySuccess(window);
@@ -463,12 +491,13 @@ void Scenario::BAC(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "");
-        drawText(window, L"Felicitations ! vous avez le bac !\nQue vous ayez 10 au bac ou 22, vous possédez des contacts dans toutes les grandes écoles.\nVous savez donc que vous n’avez qu'à envoyer un “Skype” au directeur pour être pris.\nC’est à vous de décider votre futur…", {0, 550});
+        drawText(window, L"Felicitations ! vous avez le bac !\nQue vous ayez 10 au bac ou 22, vous possedez des contacts dans toutes les grandes ecoles.\nVous savez donc que vous n'avez qu'a envoyer un “Skype” au directeur pour être pris.\nC'est a vous de decider votre futur…", {0, 550});
         displaySuccess(window);
         window->display();
     }
@@ -485,12 +514,31 @@ void Scenario::BAC(sf::RenderWindow *window)
         _name = "epitech";
 }
 
-//TODO: ici
 void Scenario::Medecine(sf::RenderWindow *window)
 {
-    while (window->isOpen()) {
-        
+    sf::Event event;
+    int scene = 0;
+    std::wstring text[] = {
+        L"Tu travail, travail... TRAVAIL",
+        L"Mais, tient voilà quelq'un, petit saint ALI maître meme.",
+        L"Ali: Bonjour, je suis Ali, je suis le maître de la medecine. Je suis le seul à mîtrisé le MEME.",
+    };
+
+    while (window->isOpen() && scene != 3) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+            checkSuccessDelete(event, window);
+        }
+        drawSprite(window, "assets/background.jpg");
+        drawText(window, text[scene], {0, 600});
+        displaySuccess(window);
+        window->display();
     }
+    _inScenario = false;
 }
 
 //TODO: ici
@@ -519,9 +567,29 @@ void Scenario::Supaero(sf::RenderWindow *window)
 // TODO: ici
 void Scenario::Epitech(sf::RenderWindow *window)
 {
-    while (window->isOpen()) {
-        
+    sf::Event event;
+    int scene = 0;
+    std::wstring text[] = {
+        L"Tu as bien fait!",
+        L"Epitech, c'est la passion de..l'informatique",
+        L"La meilleur école enfait"
+    };
+
+    while (window->isOpen() && scene != 3) {
+        window->clear();
+        while (window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window->close();
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+                scene++;
+            checkSuccessDelete(event, window);
+        }
+        drawSprite(window, "assets/Epitech.jpg");
+        drawText(window, text[scene], {0, 600});
+        displaySuccess(window);
+        window->display();
     }
+    _name = "bill";
 }
 
 void Scenario::Ecole(sf::RenderWindow *window)
@@ -529,11 +597,11 @@ void Scenario::Ecole(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Random 0: l’école c’est le sang",
-        L"Random 1: ceux qui travaillage pas zy vont po zavoir le ZBAC de frenssé",
-        L"Random 2: étudier ça sert à devenir pas zinzin de l’espace",
-        L"Random 3: les soirées tous les jours c’est cool",
-        L"Random 4: capter le 06 de la prof de français",
+        L"Random 0: l'ecole c'est le sang",
+        L"Random 1: ceux qui travaillage pas zy vont po zavoir le ZBAC de frensse",
+        L"Random 2: etudier ca sert a devenir pas zinzin de l'espace",
+        L"Random 3: les soirees tous les jours c'est cool",
+        L"Random 4: capter le 06 de la prof de francais",
         L"Toi: ..."
     };
 
@@ -565,10 +633,10 @@ void Scenario::Travailler(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Ton Prof de Chinois: Quand le vent du changement se lève, les uns construisent des murs,\nles autres des moulins à vent. Conclusion : travail.",
-        L"Ta Mère: Fils, arrête de te prendre des 10, si tu veux tu peux.",
-        L"Ton Oncle pas drôle: HAHAHAH à force de travailler tu finiras dans la rue.",
-        L"Ton Prof de Yoga: Celui qui marche sur le pas d’un autre ne laisse jamais de trace.",
+        L"Ton Prof de Chinois: Quand le vent du changement se leve, les uns construisent des murs,\nles autres des moulins a vent. Conclusion : travail.",
+        L"Ta Mere: Fils, arrête de te prendre des 10, si tu veux tu peux.",
+        L"Ton Oncle pas drôle: HAHAHAH a force de travailler tu finiras dans la rue.",
+        L"Ton Prof de Yoga: Celui qui marche sur le pas d'un autre ne laisse jamais de trace.",
         L"Le Psy random que tu connais pas: Faut que tu profites de ta vie au lieu de travailler.",
         L"Toi: *bosse*",
     };
@@ -601,7 +669,7 @@ void Scenario::Rien(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Grand Manitou qui pop et depop : L’école buissonnière est une éducation abrupte qui donne\nle diamant brut de la vie."
+        L"Grand Manitou qui pop et depop : L'ecole buissonniere est une education abrupte qui donne\nle diamant brut de la vie."
     };
 
     while (window->isOpen() && scene != 1) {
@@ -619,7 +687,7 @@ void Scenario::Rien(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice(this, "", "Moi: Ok gros, en français ?", "ah bah non, il est plus la.", "si je fais rien je fous quoi ?");
+    ScriptChoice choice(this, "", "Moi: Ok gros, en francais ?", "ah bah non, il est plus la.", "si je fais rien je fous quoi ?");
 
     if (choice.choose(window) == "ah bah non, il est plus la.")
         _name = "kfc";
@@ -632,8 +700,8 @@ void Scenario::Depression(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Moi : Ô mon dieu ! Je fais un burn-out, je pête les plombs… Je suis si triste, froid,\nplus aucune chaleur ne vit en moi, je commence à penser que les seules flammes éternelles sont celles\nde l’enfer…",
-        L"Voix mystérieuse : Que baragouine-tu ?",
+        L"Moi : Ô mon dieu ! Je fais un burn-out, je pête les plombs… Je suis si triste, froid,\nplus aucune chaleur ne vit en moi, je commence a penser que les seules flammes eternelles sont celles\nde l'enfer…",
+        L"Voix mysterieuse : Que baragouine-tu ?",
     };
 
     while (window->isOpen() && scene != 2) {
@@ -651,7 +719,7 @@ void Scenario::Depression(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice(this, "assets/depression.png", "Tu réagis comment ?", "Je... Je... T'es qui ?", "Ta gueule !");
+    ScriptChoice choice(this, "assets/depression.png", "Tu reagis comment ?", "Je... Je... T'es qui ?", "Ta gueule !");
 
     if (choice.choose(window) == "Je... Je... T'es qui ?")
         _name = "entendre";
@@ -696,13 +764,13 @@ void Scenario::Entendre(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Voix mystérieuse : Je suis le grand bâtisseur de cet espace 2D tridimensionnel",
+        L"Voix mysterieuse : Je suis le grand bâtisseur de cet espace 2D tridimensionnel",
         L"Je suis le grand…",
         L"L'immense…",
-        L"L’unique…",
+        L"L'unique…",
         L"Le magnifique…",
         L"Johann.",
-        L"En d’autre termes, je peux peut-être t’aider."
+        L"En d'autre termes, je peux peut-être t'aider."
     };
 
     while (window->isOpen() && scene != 7) {
@@ -720,7 +788,7 @@ void Scenario::Entendre(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice(this, "assets/johannisme.png", "Se faire aider ?", "Oui c est ca vas y cause toujours !!", "Au mon dieu, je suis Jeanne d’arc Bis !");
+    ScriptChoice choice(this, "assets/johannisme.png", "Se faire aider ?", "Oui c est ca vas y cause toujours !!", "Au mon dieu, je suis Jeanne d'arc Bis !");
 
     if (choice.choose(window) == "Oui c est ca vas y cause toujours !!")
         _name = "puissant";
@@ -733,9 +801,9 @@ void Scenario::Suicide(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Moi : C’est bon ça m'a soulé je ragequit into le suicide !",
-        L"Moi : Si je vais au 11ème étage d’un immeuble et que je saute, je suis plus proche du ciel ou de la terre ?\nJe serai plus proche du paradis ou des enfers ?"
-        L"Moi : On va faire cette petite expérience tout de suite !"
+        L"Moi : C'est bon ca m'a soule je ragequit into le suicide !",
+        L"Moi : Si je vais au 11eme etage d'un immeuble et que je saute, je suis plus proche du ciel ou de la terre ?\nJe serai plus proche du paradis ou des enfers ?"
+        L"Moi : On va faire cette petite experience tout de suite !"
     };
 
     while (window->isOpen() && scene != 3) {
@@ -765,9 +833,10 @@ void Scenario::Chute(sf::RenderWindow *window)
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            else if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/chute.png");
         displaySuccess(window);
@@ -781,8 +850,8 @@ void Scenario::Puissant(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Moi : Le seul être puissant que je connais c’est Booba, et dernièrement il a tweeté\n“L’autre il revient gonflé au Xanax sur TF1 il nous parle de sa dépression\nmais frérot, le monde entier est en train de couler,\non s’en bat les c*uilles de ta vie, tu nous sers à quoi,\non t’a pas attendu pour déprimer....” snif…",
-        L"Moi : Bon faut vraiment que je fasse quelque chose de ma vie moi, parce que\nlà ça va plus je deviens complètement zinzolinax."
+        L"Moi : Le seul être puissant que je connais c'est Booba, et dernierement il a tweete\n“L'autre il revient gonfle au Xanax sur TF1 il nous parle de sa depression\nmais frerot, le monde entier est en train de couler,\non s'en bat les c*uilles de ta vie, tu nous sers a quoi,\non t'a pas attendu pour deprimer....” snif…",
+        L"Moi : Bon faut vraiment que je fasse quelque chose de ma vie moi, parce que\nla ca va plus je deviens completement zinzolinax."
     };
 
     while (window->isOpen() && scene != 2) {
@@ -800,9 +869,9 @@ void Scenario::Puissant(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice(this, "", "S'aider ?", "Je vais me prendre en main, j’appelle un Psy.", "Il faut que je trouve quelque chose de trop génial à faire pour me détendre et m’épanouir…");
+    ScriptChoice choice(this, "", "S'aider ?", "Je vais me prendre en main, j'appelle un Psy.", "Il faut que je trouve quelque chose de trop genial a faire pour me detendre et m'epanouir…");
 
-    if (choice.choose(window) == "Je vais me prendre en main, j’appelle un Psy.")
+    if (choice.choose(window) == "Je vais me prendre en main, j'appelle un Psy.")
         _name = "psykologu";
     else
         _name = "equitation";
@@ -813,9 +882,9 @@ void Scenario::Johannisme(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Moi : Je dis Merci à la vie ! je dis Merci à Johann !",
-        L"Johann (voix mystèrieuse) : Ce n’est pas seulement Johann !\nTu vas devoir apprendre l’intégralité de mes Adjectifs Qualificatifs\npar coeur si tu veux être un de mes fidèles.",
-        L"Moi : C’est noté, entendu, on s’organisera une p’tite réu.\n"
+        L"Moi : Je dis Merci a la vie ! je dis Merci a Johann !",
+        L"Johann (voix mysterieuse) : Ce n'est pas seulement Johann !\nTu vas devoir apprendre l'integralite de mes Adjectifs Qualificatifs\npar coeur si tu veux être un de mes fideles.",
+        L"Moi : C'est note, entendu, on s'organisera une p'tite reu.\n"
     };
 
     while (window->isOpen() && scene != 2) {
@@ -868,9 +937,9 @@ void Scenario::EquitationGates(sf::RenderWindow *window)
         window->display();
     }
 
-    ScriptChoice choice(this, "assets/equitation_gates.png", "Qu'en dis tu ?", "C’est vrai que j’ai un excellent niveau sur cet univers 2D tridimensionnel", "Venant de toi je suis flatté, tu es une championne, une légende de l'équitation.");
+    ScriptChoice choice(this, "assets/equitation_gates.png", "Qu'en dis tu ?", "C'est vrai que j'ai un excellent niveau sur cet univers 2D tridimensionnel", "Venant de toi je suis flatte, tu es une championne, une legende de l'equitation.");
 
-    if (choice.choose(window) == "C’est vrai que j’ai un excellent niveau sur cet univers 2D tridimensionnel")
+    if (choice.choose(window) == "C'est vrai que j'ai un excellent niveau sur cet univers 2D tridimensionnel")
         _name = "repartie";
     else
         _name = "normale";
@@ -883,7 +952,7 @@ void Scenario::Repartie(sf::RenderWindow *window)
     std::wstring text[] = {
         L"Jennifer Gates : Quoi ?",
         L"Moi : Feur",
-        L"Jennifer Gates : Quelle répartie haha, je t’épouse"
+        L"Jennifer Gates : Quelle repartie haha, je t'epouse"
     };
 
     while (window->isOpen() && scene != 3) {
@@ -908,9 +977,9 @@ void Scenario::Normale(sf::RenderWindow *window)
     sf::Event event;
     size_t scene = 0;
     std::wstring text[] = {
-        L"Jennifer Gates : Oh il ne faut rien exagérer, tu sais je suis loin d’être une légende,\nje suis une femme normale, célibataire, fille de milirdaire, avec une vie morose, ennuyante.",
-        L"Moi : Je suis venu faire de l’équitation pour me remonter le moral, alors commence pas à me parler de tes\nsoucis de gosse pourrie gâtée. Je viens d’une famille modeste, j’ai été au bord du suicide,\nJ’ai du faire des choix entre l’école ou la rue pour m’en sortir, je viens de loin.",
-        L"Jennifer Gates : Ouah ! Tu as l'air d’avoir une vie passionnante… Raconte moi un peu plus",
+        L"Jennifer Gates : Oh il ne faut rien exagerer, tu sais je suis loin d'être une legende,\nje suis une femme normale, celibataire, fille de milirdaire, avec une vie morose, ennuyante.",
+        L"Moi : Je suis venu faire de l'equitation pour me remonter le moral, alors commence pas a me parler de tes\nsoucis de gosse pourrie gâtee. Je viens d'une famille modeste, j'ai ete au bord du suicide,\nJ'ai du faire des choix entre l'ecole ou la rue pour m'en sortir, je viens de loin.",
+        L"Jennifer Gates : Ouah ! Tu as l'air d'avoir une vie passionnante… Raconte moi un peu plus",
         L"Moi : Blablablablablablabla…",
         L"Jennifer Gates : Blablablablablabla !",
         L"Moi : Blablablablablabla – Blablablablablablabla"
@@ -952,9 +1021,10 @@ void Scenario::Kfc(sf::RenderWindow *window)
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
-                end = true;
-            checkSuccessDelete(event, window);
+            if (event.type == sf::Event::Closed)
+                 window->close();
+            else
+                checkSuccessDelete(event, window);
         }
         drawSprite(window, "assets/KFC.png");
         displaySuccess(window);
@@ -965,7 +1035,7 @@ void Scenario::Kfc(sf::RenderWindow *window)
 
 void Scenario::Gaming(sf::RenderWindow *window)
 {
-    ScriptChoice choice(this, "", "Plutot Vidéo ou 1v1 ?", "La video putaclick bien sur !", "Je suis imbattable en 1v1");
+    ScriptChoice choice(this, "", "Plutot Video ou 1v1 ?", "La video putaclick bien sur !", "Je suis imbattable en 1v1");
 
     if (choice.choose(window) == "La video putaclick bien sur !")
         _name = "julienlafarge";
@@ -979,7 +1049,7 @@ Scenario::Scenario(const Scenario &scenario) : _name(scenario._name), _choice(sc
     initChoice();
 }
 
-Scenario::Scenario() : _name("start"), _inScenario(true)
+Scenario::Scenario() : _name("rue"), _inScenario(true)
 {
     initSuccess();
     initChoice();
@@ -1021,7 +1091,7 @@ void Scenario::initChoice()
     setMap("depression", std::bind(&Scenario::Depression, this, std::placeholders::_1), false);
     setMap("marier", std::bind(&Scenario::Marier, this, std::placeholders::_1), true);
     setMap("entreprise", std::bind(&Scenario::Entreprise, this, std::placeholders::_1), true);
-    setMap("medecine", std::bind(&Scenario::Medecine, this, std::placeholders::_1), false);
+    setMap("medecine", std::bind(&Scenario::Medecine, this, std::placeholders::_1), true);
     setMap("ens", std::bind(&Scenario::Ens, this, std::placeholders::_1), false);
     setMap("supaero", std::bind(&Scenario::Supaero, this, std::placeholders::_1), true);
     setMap("epitech", std::bind(&Scenario::Epitech, this, std::placeholders::_1), false);
