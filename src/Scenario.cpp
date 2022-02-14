@@ -112,6 +112,7 @@ void Scenario::Fuir(sf::RenderWindow *window)
 
     if (window->isOpen() == false)
         return;
+    addSuccess(L"tu as choisis \nl'instinct de survie, \nbravo", "assets/banana.jpg");
     ScriptChoice choice(this, "assets/matrix_cake.jpg", "Fais tu face ?", "Decouvrir", "Fuir");
 
     if (choice.choose(window) == "Decouvrir")
@@ -172,6 +173,7 @@ void Scenario::FightTheRock(sf::RenderWindow *window)
         displaySuccess(window);
         window->display();
     }
+    addSuccess(L"GG le pro \nArt Martio", "assets/black_screen_gorilla.jpg");
     _inScenario = false;
 }
 
@@ -195,7 +197,7 @@ void Scenario::Matrice(sf::RenderWindow *window)
         displaySuccess(window);
         window->display();
     }
-
+    addSuccess(L"Decouverte de la Matrice!", "assets/matrix.jpg");
     ScriptChoice choice(this, "assets/matrix.jpg", "Ouvrir les yeux ?", "Comprendre", "Fuir");
 
     if (choice.choose(window) == "Comprendre")
@@ -243,6 +245,7 @@ void Scenario::Reel(sf::RenderWindow *window)
     sf::Event event;
     bool end = false;
 
+    addSuccess(L"Decouverte du REELLLL", "assets/matrix.jpg");
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -266,6 +269,7 @@ void Scenario::PsyJob(sf::RenderWindow *window)
     bool end = false;
 
     giveSuccess("Etre psy !");
+    addSuccess(L"Etre psy", "assets/psyjob.jpg");
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -288,6 +292,7 @@ void Scenario::Folie(sf::RenderWindow *window)
     bool end = false;
 
     giveSuccess("Folie");
+    addSuccess(L"Il n'a pas \nd'home d'un génie \nsupèrieur qui n'ai \nquelque grain de \nfolie", "assets/folie.jpg");
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -309,6 +314,7 @@ void Scenario::Rue(sf::RenderWindow *window)
 {
     ScriptChoice choice(this, "assets/wesh.jpg", "Wesh la detail ! Tu veux un quetru ?", "Oe tu peux me depanne quelques grammes ?", "Non mec, je cherche un taf bien remunere\nsi tu vois c'que j'veux dire...");
 
+    addSuccess(L"La rue, c'est \nle diamant des \njeunes talents", "assets/wesh.jpg");
     if (choice.choose(window) == "Oe tu peux me depanne quelques grammes ?")
         _name = "conso";
     else
@@ -319,6 +325,7 @@ void Scenario::Vente(sf::RenderWindow *window)
 {
     ScriptChoice choice(this, "assets/vente.jpg", "Qu'est-ce que tu me baragouine frero, c'est chaud la tu sais.", "Vzy mec, me parle pas comme ca la, tu veux qu'on se tappe ?", "Mais.. Mais j'ai un diplome en Physique Chimie, j'peux devenir ton Walter White");
 
+    addSuccess(L"être dans le \ncommerce c'est \ns'assurer un bon revenu ...", "assets/vente.jpg");
     if (choice.choose(window) == "Vzy mec, me parle pas comme ca la, tu veux qu'on se tappe ?")
         _name = "laruelavrai";
     else
@@ -357,6 +364,7 @@ void Scenario::Soiree(sf::RenderWindow *window)
 {
     DodgeBottle engine;
 
+    addSuccess(L"c'est la joie de \ns'ammuser", "assets/background.jpg");
     while (window->isOpen()) {
         engine.eventHandelling(window);
         if (engine.checkForEnd()) {
@@ -385,6 +393,7 @@ void Scenario::Sobre(sf::RenderWindow *window)
         L"Toi: Mais noooooooooo, pourquoi grand Johann me fais tu ca!\nMille million de mille sabords de tonnerre de brest c'est honteux."
     };
 
+    addSuccess(L"Rester sobre c'est \npouvoir ne pas \nfinir endormis \ndans une poubelle", "assets/Moine.jpg");
     while (window->isOpen() && scene != 4) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -418,6 +427,7 @@ void Scenario::Bill(sf::RenderWindow *window)
         L"Bill Gates: Deal."
     };
 
+    addSuccess(L"Rencontre avec \nBill Gates", "assets/background.jpg");
     while (window->isOpen() && scene != 7) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -448,6 +458,7 @@ void Scenario::Marier(sf::RenderWindow *window)
     sf::Event event;
     bool end = false;
 
+    addSuccess(L"nice le marriage", "assets/marriage.jpg");
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -470,6 +481,7 @@ void Scenario::Entreprise(sf::RenderWindow *window)
     sf::Event event;
     bool end = false;
 
+    addSuccess(L"À cette age, diriger \nmicrosoft, gg", "assets/microsoft.jpg");
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -492,6 +504,7 @@ void Scenario::BAC(sf::RenderWindow *window)
     sf::Event event;
     bool end = false;
 
+    addSuccess(L"owi lez go to the BAC", "assets/banana.jpg");
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -530,6 +543,7 @@ void Scenario::Medecine(sf::RenderWindow *window)
         L"Ali: Bonjour, je suis Ali, je suis le maître de la medecine. Je suis le seul à mîtrisé le MEME."
     };
 
+    addSuccess(L"Rencontre avec ALI!!", "assets/banana.jpg");
     while (window->isOpen() && scene != 3) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -559,6 +573,7 @@ void Scenario::Ens(sf::RenderWindow *window)
         L"Rendre l'école obligatoire jusqu'à 4ans uniquement par exemple"
     };
 
+    addSuccess(L"toi tu vas finir bien", "assets/banan.jpg");
     while (window->isOpen() && scene != 3) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -603,6 +618,7 @@ void Scenario::Epitech(sf::RenderWindow *window)
         L"La meilleur école enfait"
     };
 
+    addSuccess(L"Choisir la meilleur \necole", "assets/Epitech.png");
     while (window->isOpen() && scene != 3) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -635,6 +651,7 @@ void Scenario::Ecole(sf::RenderWindow *window)
         L"Toi: ..."
     };
 
+    addSuccess(L"Les École supp, \nGG le reuf", "assets/ecole.png");
     while (window->isOpen() && scene != 6) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -673,6 +690,7 @@ void Scenario::Travailler(sf::RenderWindow *window)
         L"Toi: *bosse*",
     };
 
+    addSuccess(L"Mis en place \nde ta futur vie\n Commence ici", "assets/travail.jpg");
     while (window->isOpen() && scene != 6) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -706,6 +724,7 @@ void Scenario::Rien(sf::RenderWindow *window)
         L"Grand Manitou qui pop et depop : L'ecole buissonniere est une education abrupte qui donne\nle diamant brut de la vie."
     };
 
+    addSuccess(L"Le cerveau \nà besoin de repo \nde temps en temps", "assets/banana.jpg");
     while (window->isOpen() && scene != 1) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -811,6 +830,7 @@ void Scenario::Entendre(sf::RenderWindow *window)
         L"En d'autre termes, je peux peut-être t'aider."
     };
 
+    addSuccess(L"Rencontrer JOHANN", "assets/johannisme.png");
     while (window->isOpen() && scene != 7) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -870,6 +890,7 @@ void Scenario::Chute(sf::RenderWindow *window)
     sf::Event event;
     bool end = false;
 
+    addSuccess(L"Découverte de la \nréalité derrière la \nvie", "assets/chute.png");
     while (window->isOpen() && end == false) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -896,6 +917,7 @@ void Scenario::Puissant(sf::RenderWindow *window)
         L"Moi : Bon faut vraiment que je fasse quelque chose de ma vie moi, parce que\nla ca va plus je deviens completement zinzolinax."
     };
 
+    addSuccess(L"Le choix s'offre \nà toi, pas demain, \nmaintenant", "assets/chute.png");
     while (window->isOpen() && scene != 2) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -931,6 +953,7 @@ void Scenario::Johannisme(sf::RenderWindow *window)
         L"Moi : C'est note, entendu, on s'organisera une p'tite reu.\n"
     };
 
+    addSuccess(L"La vérité de Johann", "assets/johannisme.png");
     while (window->isOpen() && scene != 2) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -968,6 +991,7 @@ void Scenario::EquitationGates(sf::RenderWindow *window)
         L"Jennifer Gates : Impressionnant, tu manies ton cheval comme personne tu le monte extrêmement bien…",
     };
 
+    addSuccess(L"Rencontre Jennifer Gates", "assets/equitation_gates.png");
     while (window->isOpen() && scene != 1) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -1003,6 +1027,7 @@ void Scenario::Repartie(sf::RenderWindow *window)
         L"Jennifer Gates : Quelle repartie haha, je t'epouse"
     };
 
+    addSuccess(L"Reparti de fou", "assets/equitation_gates.png");
     while (window->isOpen() && scene != 3) {
         window->clear();
         while (window->pollEvent(event)) {
@@ -1032,9 +1057,10 @@ void Scenario::Normale(sf::RenderWindow *window)
         L"Jennifer Gates : Ouah ! Tu as l'air d'avoir une vie passionnante… Raconte moi un peu plus",
         L"Moi : Blablablablablablabla…",
         L"Jennifer Gates : Blablablablablabla !",
-        L"Moi : Blablablablablabla – Blablablablablablabla"
+        L"Moi : Blablablablablabla - Blablablablablablabla"
     };
 
+    addSuccess(L"Compétence papotage", "assets/equitation_gates.png");
     while (window->isOpen() && scene != 6) {
         window->clear();
         while (window->pollEvent(event)) {
